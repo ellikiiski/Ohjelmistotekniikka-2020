@@ -1,0 +1,104 @@
+commit e1228c3c38101f2bd067331e4ea960c5f5b734cc
+Author: ellikiiski <kiiski.elli@gmail.com>
+Date:   Tue Nov 3 23:28:27 2020 +0200
+
+    lopu jo prkl
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 8c9b2e61a9061e2ef3e16ae882c6f3f7bf064b77
+Author: ellikiiski <kiiski.elli@gmail.com>
+Date:   Tue Nov 3 23:24:55 2020 +0200
+
+    asdfghkl
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 6f7d186723a720f3b1563e918a93f298aafab484
+Author: ellikiiski <kiiski.elli@gmail.com>
+Date:   Tue Nov 3 23:10:45 2020 +0200
+
+    juujuu
+
+ eka.txt    | 2 +-
+ kolmas.txt | 3 ++-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+commit 9ff6c3d9420af0c27a3058d9c4d6075c900a8859
+Author: ellikiiski <kiiski.elli@gmail.com>
+Date:   Tue Nov 3 23:09:08 2020 +0200
+
+    haluun nukkumaa
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit a89b4ecca1f836977db6b976e75212128b55c778
+Author: ellikiiski <kiiski.elli@gmail.com>
+Date:   Tue Nov 3 23:07:53 2020 +0200
+
+    plzzz
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 7cb671c7a7f41ccf9c92663010d1d6a868bbf258
+Author: ellikiiski <kiiski.elli@gmail.com>
+Date:   Tue Nov 3 23:05:38 2020 +0200
+
+    lameee
+
+ tiedosto.txt | 108 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 107 insertions(+), 1 deletion(-)
+
+commit 2bfab6724a378d4a391bfb8a26e357e05d803a77
+Author: ellikiiski <kiiski.elli@gmail.com>
+Date:   Tue Nov 3 23:01:20 2020 +0200
+
+    loppuis jo
+
+ stuff/boring.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit fd0a6d8b8a80235e4b35bbb5693b3053a7a5515d
+Author: ellikiiski <kiiski.elli@gmail.com>
+Date:   Tue Nov 3 23:00:32 2020 +0200
+
+    kauanko mun pitää pelleillä
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 0c12209355d63d8161c4a6563eabea3e89dda108
+Author: ellikiiski <kiiski.elli@gmail.com>
+Date:   Tue Nov 3 22:59:31 2020 +0200
+
+    kolmas hommeli
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 589d39814170495ff53f78902cc7f5598ca565c0
+Author: ellikiiski <kiiski.elli@gmail.com>
+Date:   Tue Nov 3 22:58:02 2020 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit a8fb61935cdb628658bcdc6a9ecb3906bdbe65b8
+Author: ellikiiski <kiiski.elli@gmail.com>
+Date:   Tue Nov 3 22:56:23 2020 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
