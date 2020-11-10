@@ -34,4 +34,4 @@ pyörivän onnenpyörän!
   
 ### Käyttäjät
 
-Peli ei periaatteessa tarvitse kuin yhdenlaisia käyttäjiä, mutta jonkinlainen moderointi uusien fraasien lisäyksessä voisi olla tarpeen.
+Peli ei periaatteessa tarvitse kuin yhdenlaisia käyttäjiä, mutta jonkinlainen moderointi uusien fraasien lisäyksessä voisi olla varteenotettava lisäys, jos aikaa riittää.
