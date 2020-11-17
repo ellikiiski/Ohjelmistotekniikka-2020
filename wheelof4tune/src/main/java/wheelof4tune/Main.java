@@ -5,8 +5,15 @@ public class Main {
     
     public static void main(String[] args) {
         
-        System.out.println("SE  ON  OIKEIN  !!!");
+        // tämä on nyt alkuun pelkkää onnenpyörän pyörittelyä
         
+        Game game = new Game();
+        game.addPlayer(new Player("elli"));
+        game.addPlayer(new Player("luuseri"));
+        
+        for (int i = 0; i < 10; i++) {
+            game.playTurn();
+        }
     }
     
 }
