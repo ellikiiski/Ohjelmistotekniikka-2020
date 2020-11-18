@@ -7,13 +7,13 @@ public class Main {
         
         // tämä on nyt alkuun pelkkää onnenpyörän pyörittelyä
         
-        Game game = new Game();
+        Phrase guessThis = new Phrase("Elli on intellektielli", Category.COMMON);
+        Game game = new Game(guessThis);
         game.addPlayer(new Player("elli"));
         game.addPlayer(new Player("luuseri"));
         
-        for (int i = 0; i < 10; i++) {
-            game.playTurn();
-        }
+        TextUI ui = new TextUI(game);
+        ui.start();
     }
     
 }

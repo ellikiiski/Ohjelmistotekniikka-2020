@@ -4,10 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 import wheelof4tune.Player;
 
-/**
- *
- * @author kiisk
- */
 public class PlayerTest {
     
     Player player;
@@ -18,7 +14,7 @@ public class PlayerTest {
     }
     
     @Test
-    public void PlayerToStringTest() {
+    public void NewPlayerCreated() {
         assertEquals("Pelaaja: tester, rahatilanne: 0€", player.toString());
     }
 }

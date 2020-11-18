@@ -14,6 +14,10 @@ public class Sector {
     public int getValue() {
        return value;
     }
+    
+    public SectorType getType() {
+        return type;
+    }
 
     @Override
     public String toString() {
