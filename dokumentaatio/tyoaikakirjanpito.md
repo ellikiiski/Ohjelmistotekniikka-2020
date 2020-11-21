@@ -7,4 +7,5 @@
 | 17.11. | 3        | Sovelluksen rakenteen suunnittelua ja onnenpyörän pyörittämisominaisuuden koodaus |
 | 18.11. | 1        | Phrase luokan lisäys ja jotain muuta pientä |
 | 21.11. | 3        | Spagetit tekstikäyttöliittymään ja pelilogiikan kehittelyä |
-| yht    | 9        | | 
+| 21.11. | 1        | Vielä pakkausrakenne ja checkstyle kuntoon tänään |
+| yht    | 10       | | 
