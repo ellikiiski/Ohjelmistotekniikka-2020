@@ -1,5 +1,7 @@
 
-package wheelof4tune;
+package wheelof4tune.domain;
+
+import wheelof4tune.ui.TextUI;
 
 public class Main {
     

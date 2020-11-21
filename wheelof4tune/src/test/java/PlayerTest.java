@@ -2,7 +2,7 @@
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import wheelof4tune.Player;
+import wheelof4tune.domain.Player;
 
 public class PlayerTest {
     

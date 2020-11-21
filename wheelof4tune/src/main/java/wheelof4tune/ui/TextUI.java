@@ -1,7 +1,8 @@
 
-package wheelof4tune;
+package wheelof4tune.ui;
 
 import java.util.Scanner;
+import wheelof4tune.domain.Game;
 
 public class TextUI {
     

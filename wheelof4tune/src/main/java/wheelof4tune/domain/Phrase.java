@@ -1,5 +1,5 @@
 
-package wheelof4tune;
+package wheelof4tune.domain;
 
 public class Phrase {
     
