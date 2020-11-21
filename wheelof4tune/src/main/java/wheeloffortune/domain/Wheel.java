@@ -1,5 +1,5 @@
 
-package wheelof4tune.domain;
+package wheeloffortune.domain;
 
 import java.util.Random;
 

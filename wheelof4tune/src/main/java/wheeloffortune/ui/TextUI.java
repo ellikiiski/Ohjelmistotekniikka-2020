@@ -1,8 +1,9 @@
 
-package wheelof4tune.ui;
+package wheeloffortune.ui;
+
 
 import java.util.Scanner;
-import wheelof4tune.domain.Game;
+import wheeloffortune.domain.Game;
 
 public class TextUI {
     
@@ -39,7 +40,7 @@ public class TextUI {
                 if (game.latestSpinIsSkip()) {
                     System.out.println("Et voi arvata konsonanttia. Vuoro vaihtuu.");
                     System.out.println("");
-                } else if(game.latestSpinIsBankcrupt()) {
+                } else if (game.latestSpinIsBankcrupt()) {
                     System.out.println("Kaikki rahasi vietiin, kuten myös arvausvuorosi.");
                     System.out.println("");
                 } else {

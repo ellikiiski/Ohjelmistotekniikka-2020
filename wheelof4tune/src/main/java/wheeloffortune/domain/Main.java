@@ -1,7 +1,7 @@
 
-package wheelof4tune.domain;
+package wheeloffortune.domain;
 
-import wheelof4tune.ui.TextUI;
+import wheeloffortune.ui.TextUI;
 
 public class Main {
     

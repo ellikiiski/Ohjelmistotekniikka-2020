@@ -1,5 +1,5 @@
 
-package wheelof4tune.domain;
+package wheeloffortune.domain;
 
 public class Sector {
     
@@ -12,7 +12,7 @@ public class Sector {
     }
     
     public int getValue() {
-       return value;
+        return value;
     }
     
     public SectorType getCategory() {
