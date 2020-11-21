@@ -2,41 +2,137 @@
 package wheelof4tune;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Game {
     
-    private ArrayList<Player> players;
-    private int playerInTurn;
-    private Wheel wheel;
-    private Phrase phrase;
+    private HashMap<Player, Integer> score;
+    private ArrayList<Player> turnTracker;
+    private int turnIndex;
+    private Player playerInTurn;
+    private final Wheel wheel;
+    private final Phrase phrase;
     private ArrayList<Character> guessed;
+    private char[] revealed;
+    private Sector latestSpin;
     
     public Game(Phrase phrase) {
-        this.players = new ArrayList<>();
-        this.playerInTurn = 0;
+        this.score = new HashMap<>();
+        this.turnTracker = new ArrayList<>();
+        this.turnIndex = 0;
+        this.playerInTurn = null;
         this.wheel = new Wheel(800);
         this.phrase = phrase;
         this.guessed = new ArrayList<>();
+        this.revealed = this.hideLetters();
+        this.latestSpin = null;
     }
     
     public void addPlayer(Player newPlayer) {
-        players.add(newPlayer);
+        score.put(newPlayer, 0);
+        turnTracker.add(newPlayer);
+        playerInTurn = turnTracker.get(0);
     }
     
-    public Player playerInTurn() {
-        return players.get(playerInTurn);
+    public String playerInTurn() {
+        if (playerInTurn == null) {
+            System.out.println("Pelistä puuttuu pelaajat!");
+        }
+        return playerInTurn.getName();
+    }
+    
+    public void nextPlayersTurn() {
+        turnIndex = (turnIndex + 1) % turnTracker.size();
+        playerInTurn = turnTracker.get(turnIndex);
     }
     
     public boolean isOver() {
         return false;
     }
     
-    public Sector spinWheel() {
-        Player inTurn = players.get(playerInTurn);
-        Sector spinned = wheel.spin();
-        inTurn.addMoney(spinned.getValue());
-        playerInTurn = (playerInTurn + 1) % players.size();
-        return spinned;
+    public String getPhraseAsString() {
+        return this.letterArrayToString();
+    }
+    
+    public String getCategory() {
+        return phrase.getCategory();
+    }
+    
+    public String getLatestSpinSectorName() {
+        return latestSpin.toString();
+    }
+    
+    public boolean latestSpinIsBankcrupt() {
+        return latestSpin.getCategory() == SectorType.BANKCRUPT;
+    }
+    
+    public boolean latestSpinIsSkip() {
+        return latestSpin.getCategory() == SectorType.SKIP;
+    }
+    
+    public boolean canBuyNoun() {
+        return score.get(playerInTurn) >= 250;
+    }
+    
+    public int buyNoun(char noun) {
+        score.put(playerInTurn, score.get(playerInTurn) - 250);
+        return revealLetter(noun);
+    }
+    
+    public int guessConsonant(char consonant) {
+        int guessedConsonants = revealLetter(consonant);
+        this.addScore(guessedConsonants);
+        if (guessedConsonants == 0) {
+            this.nextPlayersTurn();
+        }
+        return guessedConsonants;
+    }
+    
+    public void spinWheel() {
+        latestSpin = wheel.spin();
+        if (this.latestSpinIsBankcrupt() || this.latestSpinIsSkip()) {
+            this.nextPlayersTurn();
+        }
+    }
+    
+    public void addScore(int x) {
+        score.put(playerInTurn, score.get(playerInTurn) + x * latestSpin.getValue());
+    }
+    
+    public void resetScore() {
+        score.put(playerInTurn, 0);
+    }
+    
+    public int revealLetter(char letter) {
+        int lettersFound = 0;
+        for (int i = 0; i < phrase.getLetters().length; i++) {
+            if (phrase.getLetters()[i] == letter) {
+                revealed[i] = letter;
+                lettersFound++;
+            }
+        }
+        guessed.add(letter);
+        return lettersFound;
+    }
+    
+    private char[] hideLetters() {
+        char[] allHidden = new char[phrase.getLetters().length];
+        for (int i = 0; i < phrase.getLetters().length; i++) {
+            if (phrase.getLetters()[i] == ' ') {
+                allHidden[i] = ' ';
+            } else {
+                allHidden[i] = '_';
+            }
+        }
+        return allHidden;
+    }
+    
+    private String letterArrayToString() {
+        StringBuilder s = new StringBuilder("");
+        for (char letter : revealed) {
+            s.append(letter);
+        }
+        return s.toString();
     }
     
 }

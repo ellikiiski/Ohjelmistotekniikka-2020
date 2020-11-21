@@ -11,8 +11,19 @@ public class Phrase {
         this.category = category;
     }
     
-    public char[] getLetterArray() {
+    public char[] getLetters() {
         return letters;
+    }
+    
+    public String getCategory() {
+        if (category == Category.COMMON) {
+            return "YLEISTIETO";
+        } else if (category == Category.SCIENCE) {
+            return "TIEDE";
+        } else if (category == Category.CULTURE) {
+            return "KULTTUURI";
+        }
+        return "Joku muu ???";
     }
     
     private void initLetterArray(String phrase) {

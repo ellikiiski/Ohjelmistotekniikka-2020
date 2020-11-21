@@ -3,21 +3,27 @@ package wheelof4tune;
 
 public class Player {
     
+    private int id;
     private String name;
-    private int money;
+    private int bank;
     
     public Player(String name) {
+        this.id = 666;
         this.name = name;
-        this.money = 0;
+        this.bank = 0;
     }
     
-    public void addMoney(int howMuch) {
-        money = Math.max(0, money + howMuch);
+    public String getName() {
+        return name;
+    }
+    
+    public void addToBank(int howMuch) {
+        bank = howMuch;
     }
 
     @Override
     public String toString() {
-        return "Pelaaja: " + name + ", rahatilanne: " + money + "€";
+        return "Pelaaja: " + name + ", rahaa pankissa: " + bank + "€";
     }
     
     

@@ -15,7 +15,7 @@ public class Sector {
        return value;
     }
     
-    public SectorType getType() {
+    public SectorType getCategory() {
         return type;
     }
 
