@@ -13,8 +13,14 @@ public class PlayerTest {
         player = new Player("tester");
     }
     
-    /*@Test
+    @Test
     public void NewPlayerCreated() {
-        assertEquals("Pelaaja: tester, rahatilanne: 0€", player.toString());
-    }*/
+        assertEquals("Pelaaja: tester, rahaa pankissa: 0€", player.toString());
+    }
+    
+    @Test
+    public void moneyAddedToBank() {
+        player.addToBank(10);
+        assertEquals("Pelaaja: tester, rahaa pankissa: 10€", player.toString());
+    }
 }
