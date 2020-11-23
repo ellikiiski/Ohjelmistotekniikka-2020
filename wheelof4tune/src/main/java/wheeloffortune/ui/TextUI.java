@@ -22,19 +22,30 @@ public class TextUI {
         System.out.println("TERVETULOA ONNENPYÖRÄÄN!");
         System.out.println("Kategoria: " + game.getCategory());
         System.out.println("");
-        System.out.println("Arvuuteltava fraasi: " + game.getPhraseAsString());
         while (!game.isOver()) {
+            System.out.println("Arvuuteltava fraasi: " + game.getPhraseAsString());
             System.out.println("");
             System.out.println("Pelaajan " + game.playerInTurn() + " vuoro");
+            System.out.println("");
             System.out.println("Mahdollisuutesi: ");
+            System.out.println("- Koita ratkaista tehtävä syöttämällä \"guess\"");
             System.out.println("- Pyöritä onnenpyörää syöttämällä \"spin\"");
             if (game.canBuyNoun()) {
-                System.out.println("- Osta vokaali syöttämällä ainoastaan yksi vokaali kirjaimena");
+                System.out.println("- Osta vokaali syöttämällä ainoastaan yksi vokaali ISONA kirjaimena");
             }
             System.out.println("");
             String command = scanner.nextLine();
             System.out.println("");
-            if (command.equals("spin")) {
+            if (command.equals("guess")) {
+                System.out.println("Kirjoita arvauksesi täsmälleen:");
+                String guess = scanner.nextLine();
+                if (game.tryToGuessPhrase(guess)) {
+                    System.out.println("");
+                    System.out.println("SE ON OIKEIN!!!");
+                } else {
+                    System.out.println("Väärin meni, vuoro vaihtuu.");
+                }
+            } else if (command.equals("spin")) {
                 game.spinWheel();
                 System.out.println("Osuit sektoriin " + game.getLatestSpinSectorName() + "!");
                 if (game.latestSpinIsSkip()) {
@@ -44,7 +55,7 @@ public class TextUI {
                     System.out.println("Kaikki rahasi vietiin, kuten myös arvausvuorosi.");
                     System.out.println("");
                 } else {
-                    System.out.println("Arvaa kirjainta syöttämällä yksi konsonantti: ");
+                    System.out.println("Arvaa kirjainta syöttämällä yksi konsonantti ISONA kirjaimena: ");
                     System.out.println("");
                     String c = scanner.nextLine();
                     System.out.println("");
@@ -62,18 +73,12 @@ public class TextUI {
             } else {
                 System.out.println("Syötä validi komento.");
             }
-            System.out.println("Arvuuteltava fraasi: " + game.getPhraseAsString());
-            
-            /*System.out.println(game.playerInTurn());
-            System.out.println("Pyöritä onnenpyörää syöttämällä \"spin\"");
-            String command = scanner.nextLine();
-            if (command.equals("spin")) {
-                Sector spinned = game.spinWheel();
-                System.out.println("Pyöräytit " + spinned);
-            } else {
-                System.out.println("Ootko sokee? Syötä \"spin\"");
-            }*/
+           
         }
+        System.out.println("");
+        System.out.println("Oikea vastaus oli siis: " + game.getPhraseAsString());
+        System.out.println("");
+        System.out.println("Onneksi olkoon " + game.playerInTurn() + ", sait talletettua pankkiin " + game.declrareWinner() + " euroa!");
     }
     
 }

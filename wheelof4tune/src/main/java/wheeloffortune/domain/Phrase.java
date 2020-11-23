@@ -15,6 +15,14 @@ public class Phrase {
         return letters;
     }
     
+    public String getPhrase() {
+        StringBuilder sb = new StringBuilder("");
+        for (int i = 0; i < letters.length; i++) {
+            sb.append(letters[i]);
+        }
+        return sb.toString();
+    }
+    
     public String getCategory() {
         if (category == Category.COMMON) {
             return "YLEISTIETO";

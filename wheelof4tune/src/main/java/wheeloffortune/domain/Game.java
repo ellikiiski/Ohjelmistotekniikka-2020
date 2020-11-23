@@ -15,6 +15,7 @@ public class Game {
     private ArrayList<Character> guessed;
     private char[] revealed;
     private Sector latestSpin;
+    private boolean isOver;
     
     public Game(Phrase phrase) {
         this.score = new HashMap<>();
@@ -26,6 +27,7 @@ public class Game {
         this.guessed = new ArrayList<>();
         this.revealed = this.hideLetters();
         this.latestSpin = null;
+        this.isOver = false;
     }
     
     public void addPlayer(Player newPlayer) {
@@ -47,7 +49,7 @@ public class Game {
     }
     
     public boolean isOver() {
-        return false;
+        return isOver;
     }
     
     public String getPhraseAsString() {
@@ -93,6 +95,23 @@ public class Game {
         if (this.latestSpinIsBankcrupt() || this.latestSpinIsSkip()) {
             this.nextPlayersTurn();
         }
+    }
+    
+    public boolean tryToGuessPhrase(String guess) {
+        if (guess.toUpperCase().equals(phrase.getPhrase())) {
+            for (int i = 0; i < revealed.length; i++) {
+                revealed[i] = phrase.getLetters()[i];
+            }
+            isOver = true;
+            return true;
+        }
+        nextPlayersTurn();
+        return false;
+    }
+    
+    public int declrareWinner() {
+        playerInTurn.addToBank(score.get(playerInTurn));
+        return score.get(playerInTurn);
     }
     
     public void addScore(int x) {
