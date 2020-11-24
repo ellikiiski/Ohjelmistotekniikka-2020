@@ -9,4 +9,5 @@
 | 21.11. | 3        | Spagetit tekstikäyttöliittymään ja pelilogiikan kehittelyä |
 | 21.11. | 1        | Vielä pakkausrakenne ja checkstyle kuntoon tänään |
 | 23.11. | 1        | Pelilogiikkaan tehtävän ratkaisumahdollisuuden lisääminen ja pelin päättyminen |
-| yht    | 11       | | 
+| 24.11. | 2        | Testejä, arkkitehtuuri ja vähän pelilogiikan hiomistakin |
+| yht    | 13       | | 
