@@ -2,7 +2,7 @@
 
 ### Sovelluksen idea
 
-Onnenpyörä eli Wheel of Fortune on hupipelailuun tarkoittu sovellus, joka on häikäilemättömästi kopioinut konseptinsa ja nimensä suoraan tunnetusta tv-ohjelmasta.
+Onnenpyörä eli Wheel of Fortune on hupipelailuun tarkoitettu sovellus, joka on häikäilemättömästi kopioinut konseptinsa ja nimensä suoraan tunnetusta tv-ohjelmasta.
 Sovellus tulee toimimaan siten, että haluttu määrä pelaajia (2-4) osallistuu peliin ja pyörittää vuorollaan onnenpyörää, kunnes joku pelaajista arvaa kysytyn fraasin oikein.
 Joka kierroksella, riippuen onnenpyörän antamasta sektorista ja siihen asti keräämästään rahasummasta, vuorossa oleva pelaaja suorittaa jonkin pelin sääntöjen mukaisen
 peliliikkeen.
@@ -10,7 +10,7 @@ peliliikkeen.
 ### Toiminnallisuudet
 
 1. Peliin voi lisätä omia fraaseja, joita arvuutellaan myöhemmissä peleissä
-2. Peliä voi pelata lisäämällä vähintään kaksi pelaajaa ja aloittamalla pelin
+2. Peliä voi pelata lisäämällä vähintään kaksi pelaajaa ja aloittamalla pelin *TEHTY (teksti-ui)*
 3. Pelaajien kerryttämää voittojen yhteissummaa voi tarkastella pankkitaulukosta
 
 ### Toteutus
