@@ -33,9 +33,3 @@ public class Sector {
     }
     
 }
-
-enum SectorType {
-    MONEY,
-    SKIP,
-    BANKCRUPT
-}

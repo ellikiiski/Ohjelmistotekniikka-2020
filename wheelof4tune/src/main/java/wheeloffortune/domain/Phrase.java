@@ -42,9 +42,3 @@ public class Phrase {
         }
     }
 }
-
-enum Category {
-    COMMON,
-    SCIENCE,
-    CULTURE
-}
