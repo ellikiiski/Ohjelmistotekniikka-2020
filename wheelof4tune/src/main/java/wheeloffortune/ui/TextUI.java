@@ -18,14 +18,14 @@ public class TextUI {
     public void start() {
         // Tää on nyt toistaseks hirveetä spagettia kun on vasta välaikanen tekstikäyttöliittymä
         // Myöskään kaikkia mahdollisisa käyttiksen väärinkäytöksiä ei hoidella vielä tällä spagetilla
-        // Myöskään kaikki ei vielä sääntöjenkään osalta toimi ihan kuten lopputuloksessa on tarkoitus
+        // Myöskään kaikki (esim. konsonanttien erottelu vokaaleista) ei vielä sääntöjenkään osalta toimi ihan kuten lopputuloksessa on tarkoitus
         System.out.println("TERVETULOA ONNENPYÖRÄÄN!");
         System.out.println("Kategoria: " + game.getCategory());
         System.out.println("");
         while (!game.isOver()) {
             System.out.println("Arvuuteltava fraasi: " + game.getPhraseAsString());
             System.out.println("");
-            System.out.println("Pelaajan " + game.playerInTurn() + " vuoro");
+            System.out.println("Pelaajan " + game.playerInTurn() + " vuoro, tähän mennessä olet kerännyt " + game.getScore() + "€");
             System.out.println("");
             System.out.println("Mahdollisuutesi: ");
             System.out.println("- Koita ratkaista tehtävä syöttämällä \"guess\"");

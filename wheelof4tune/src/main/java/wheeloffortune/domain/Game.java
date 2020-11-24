@@ -43,6 +43,10 @@ public class Game {
         return playerInTurn.getName();
     }
     
+    public int getScore() {
+        return score.get(playerInTurn);
+    }
+    
     public void nextPlayersTurn() {
         turnIndex = (turnIndex + 1) % turnTracker.size();
         playerInTurn = turnTracker.get(turnIndex);
