@@ -3,8 +3,11 @@ package wheeloffortune.domain;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import wheeloffortune.dao.PlayerDao;
 
 public class Game {
+    
+    private PlayerDao playerDao;
     
     private HashMap<Player, Integer> score;
     private ArrayList<Player> turnTracker;
@@ -17,7 +20,10 @@ public class Game {
     private Sector latestSpin;
     private boolean isOver;
     
-    public Game(Phrase phrase) {
+    public Game(Phrase phrase, PlayerDao pDao) {
+        
+        this.playerDao = pDao;
+        
         this.score = new HashMap<>();
         this.turnTracker = new ArrayList<>();
         this.turnIndex = 0;
@@ -30,10 +36,21 @@ public class Game {
         this.isOver = false;
     }
     
-    public void addPlayer(Player newPlayer) {
+    public boolean addPlayer(String name){
+        Player newPlayer = playerDao.findByName(name);
+        if (newPlayer == null) {
+            newPlayer = new Player(name);
+            try {
+                playerDao.create(newPlayer);
+            } catch (Exception e) {
+                return false;
+            }
+            
+        }
         score.put(newPlayer, 0);
         turnTracker.add(newPlayer);
         playerInTurn = turnTracker.get(0);
+        return true;
     }
     
     public String playerInTurn() {

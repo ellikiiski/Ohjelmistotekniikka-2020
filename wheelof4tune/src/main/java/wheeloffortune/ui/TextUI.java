@@ -15,10 +15,25 @@ public class TextUI {
         this.scanner = new Scanner(System.in);
     }
     
-    public void start() {
+    private void addPlayers() {
+        for (int i = 0; i < 3; i++) {
+            System.out.println("Syötä pelaajan nimi:");
+            String name = scanner.nextLine();
+            boolean playerAdded = game.addPlayer(name);
+            if (!playerAdded) {
+                System.out.println("Jotain meni vikaan");
+            } else {
+                System.out.println("Tervetuloa " + name + "!");
+            }
+        }
+    }
+    
+    public void startGame() {
         // Tää on nyt toistaseks hirveetä spagettia kun on vasta välaikanen tekstikäyttöliittymä
         // Myöskään kaikkia mahdollisisa käyttiksen väärinkäytöksiä ei hoidella vielä tällä spagetilla
         // Myöskään kaikki (esim. konsonanttien erottelu vokaaleista) ei vielä sääntöjenkään osalta toimi ihan kuten lopputuloksessa on tarkoitus
+        addPlayers();
+        System.out.println("");
         System.out.println("TERVETULOA ONNENPYÖRÄÄN!");
         System.out.println("Kategoria: " + game.getCategory());
         System.out.println("");
