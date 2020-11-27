@@ -10,4 +10,5 @@
 | 21.11. | 1        | Vielä pakkausrakenne ja checkstyle kuntoon tänään |
 | 23.11. | 1        | Pelilogiikkaan tehtävän ratkaisumahdollisuuden lisääminen ja pelin päättyminen |
 | 24.11. | 2        | Testejä, arkkitehtuuri ja vähän pelilogiikan hiomistakin |
-| yht    | 13       | | 
+| 26.11. | 2        | Tietokantajuttuja alulle |
+| yht    | 15       | | 
