@@ -10,6 +10,8 @@ public interface PlayerDao {
     
     Player findByName(String name);
     
+    int addMoney(Player player, int euros) throws Exception;
+    
     List<Player> getAll();
     
 }

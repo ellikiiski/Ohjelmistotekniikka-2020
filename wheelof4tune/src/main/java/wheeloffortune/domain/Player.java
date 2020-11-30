@@ -6,9 +6,9 @@ public class Player {
     private String name;
     private int bank;
     
-    public Player(String name) {
+    public Player(String name, int bank) {
         this.name = name;
-        this.bank = 0;
+        this.bank = bank;
     }
     
     public String getName() {
@@ -20,7 +20,7 @@ public class Player {
     }
     
     public void addToBank(int howMuch) {
-        bank = howMuch;
+        bank += howMuch;
     }
 
     @Override

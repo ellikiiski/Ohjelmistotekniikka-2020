@@ -1,3 +1,3 @@
-elli	0
+elli	2500
 luuseri	0
-toinen luuseri	0
+saku	0

@@ -38,6 +38,14 @@ public class FilePlayerDao implements PlayerDao {
                 .findFirst()
                 .orElse(null);
     }
+    
+    @Override
+    public int addMoney(Player player, int euros) throws Exception {
+        Player p = findByName(player.getName());
+        p.addToBank(euros);
+        save();
+        return p.getBank();
+    }
 
     @Override
     public List<Player> getAll() {
@@ -49,12 +57,11 @@ public class FilePlayerDao implements PlayerDao {
             Scanner reader = new Scanner(new File(file));
             while (reader.hasNextLine()) {
                 String[] parts = reader.nextLine().split("\t");
-                Player p = new Player(parts[0]);
+                Player p = new Player(parts[0], Integer.valueOf(parts[1]));
                 players.add(p);
             }
         } catch (Exception e) {
-            FileWriter writer = new FileWriter(new File(file));
-            writer.close();
+            System.out.println("Virhe: " + e);
         }
     }
     
@@ -64,5 +71,5 @@ public class FilePlayerDao implements PlayerDao {
                 writer.write(player.getName() + "\t" + player.getBank() + "\n");
             }
         } 
-    }    
+    }
 }

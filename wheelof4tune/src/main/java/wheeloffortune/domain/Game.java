@@ -7,7 +7,7 @@ import wheeloffortune.dao.PlayerDao;
 
 public class Game {
     
-    private PlayerDao playerDao;
+    public PlayerDao playerDao;
     
     private HashMap<Player, Integer> score;
     private ArrayList<Player> turnTracker;
@@ -39,7 +39,7 @@ public class Game {
     public boolean addPlayer(String name){
         Player newPlayer = playerDao.findByName(name);
         if (newPlayer == null) {
-            newPlayer = new Player(name);
+            newPlayer = new Player(name, 0);
             try {
                 playerDao.create(newPlayer);
             } catch (Exception e) {
@@ -131,7 +131,11 @@ public class Game {
     }
     
     public int declrareWinner() {
-        playerInTurn.addToBank(score.get(playerInTurn));
+        try {
+            playerDao.addMoney(playerInTurn, score.get(playerInTurn));
+        } catch (Exception ex) {
+            return -666;
+        }
         return score.get(playerInTurn);
     }
     
