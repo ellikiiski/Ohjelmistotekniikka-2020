@@ -39,6 +39,8 @@ public class Game {
         this.isOver = false;
     }
     
+    // pelaajien lisäys
+    
     public boolean addPlayer(String name){
         Player newPlayer = playerDao.findByName(name);
         if (newPlayer == null) {
@@ -56,63 +58,7 @@ public class Game {
         return true;
     }
     
-    public String playerInTurn() {
-        if (playerInTurn == null) {
-            System.out.println("Pelistä puuttuu pelaajat!");
-        }
-        return playerInTurn.getName();
-    }
-    
-    public int getScore() {
-        return score.get(playerInTurn);
-    }
-    
-    public void nextPlayersTurn() {
-        turnIndex = (turnIndex + 1) % turnTracker.size();
-        playerInTurn = turnTracker.get(turnIndex);
-    }
-    
-    public boolean isOver() {
-        return isOver;
-    }
-    
-    public String getPhraseAsString() {
-        return this.letterArrayToString();
-    }
-    
-    public String getCategory() {
-        return phrase.getCategoryString();
-    }
-    
-    public String getLatestSpinSectorName() {
-        return latestSpin.toString();
-    }
-    
-    public boolean latestSpinIsBankcrupt() {
-        return latestSpin.getCategory() == SectorType.BANKCRUPT;
-    }
-    
-    public boolean latestSpinIsSkip() {
-        return latestSpin.getCategory() == SectorType.SKIP;
-    }
-    
-    public boolean canBuyNoun() {
-        return score.get(playerInTurn) >= 250;
-    }
-    
-    public int buyNoun(char noun) {
-        score.put(playerInTurn, score.get(playerInTurn) - 250);
-        return revealLetter(noun);
-    }
-    
-    public int guessConsonant(char consonant) {
-        int guessedConsonants = revealLetter(consonant);
-        this.addScore(guessedConsonants);
-        if (guessedConsonants == 0) {
-            this.nextPlayersTurn();
-        }
-        return guessedConsonants;
-    }
+    // onnenpyörän pyörittäminen ja sen apumetodit
     
     public void spinWheel() {
         latestSpin = wheel.spin();
@@ -120,6 +66,21 @@ public class Game {
             this.nextPlayersTurn();
         }
     }
+    
+    public boolean latestSpinIsBankcrupt() {
+        return latestSpin.getCategory() == SectorType.BANKCRUPT;
+    }
+
+    public boolean latestSpinIsSkip() {
+        return latestSpin.getCategory() == SectorType.SKIP;
+    }
+    
+    public void nextPlayersTurn() {
+        turnIndex = (turnIndex + 1) % turnTracker.size();
+        playerInTurn = turnTracker.get(turnIndex);
+    }
+    
+    // pelaajan peliliikkeet ja niiden apumetodit
     
     public boolean tryToGuessPhrase(String guess) {
         if (guess.toUpperCase().equals(phrase.getPhrase())) {
@@ -133,21 +94,22 @@ public class Game {
         return false;
     }
     
-    public int declrareWinner() {
-        try {
-            playerDao.addMoney(playerInTurn, score.get(playerInTurn));
-        } catch (Exception ex) {
-            return -666;
+    public int guessConsonant(char consonant) {
+        int guessedConsonants = revealLetter(consonant);
+        this.addScore(guessedConsonants);
+        if (guessedConsonants == 0) {
+            this.nextPlayersTurn();
         }
-        return score.get(playerInTurn);
+        return guessedConsonants;
     }
     
-    public void addScore(int x) {
-        score.put(playerInTurn, score.get(playerInTurn) + x * latestSpin.getValue());
+    public boolean canBuyNoun() {
+        return score.get(playerInTurn) >= 250;
     }
     
-    public void resetScore() {
-        score.put(playerInTurn, 0);
+    public int buyNoun(char noun) {
+        score.put(playerInTurn, score.get(playerInTurn) - 250);
+        return revealLetter(noun);
     }
     
     public int revealLetter(char letter) {
@@ -161,6 +123,58 @@ public class Game {
         guessed.add(letter);
         return lettersFound;
     }
+    
+    // pisteiden lisäys ja nollaus
+    
+    public void addScore(int x) {
+        score.put(playerInTurn, score.get(playerInTurn) + x * latestSpin.getValue());
+    }
+
+    public void resetScore() {
+        score.put(playerInTurn, 0);
+    }
+    
+    // pelin päättyminen
+    
+    public int declrareWinner() {
+        try {
+            playerDao.addMoney(playerInTurn, score.get(playerInTurn));
+        } catch (Exception ex) {
+            return -666;
+        }
+        return score.get(playerInTurn);
+    }
+    
+    // gettereitä
+    
+    public String playerInTurn() {
+        if (playerInTurn == null) {
+            System.out.println("Pelistä puuttuu pelaajat!");
+        }
+        return playerInTurn.getName();
+    }
+    
+    public int getScore() {
+        return score.get(playerInTurn);
+    }
+    
+    public boolean isOver() {
+        return isOver;
+    }
+    
+    public String getPhraseAsString() {
+        return this.letterArrayToString();
+    }
+
+    public String getCategory() {
+        return phrase.getCategoryString();
+    }
+
+    public String getLatestSpinSectorName() {
+        return latestSpin.toString();
+    }
+    
+    // private apumetodeja
     
     private char[] hideLetters() {
         char[] allHidden = new char[phrase.getLetters().length];
