@@ -11,4 +11,5 @@
 | 23.11. | 1        | Pelilogiikkaan tehtävän ratkaisumahdollisuuden lisääminen ja pelin päättyminen |
 | 24.11. | 2        | Testejä, arkkitehtuuri ja vähän pelilogiikan hiomistakin |
 | 26.11. | 2        | Tietokantajuttuja alulle |
-| yht    | 15       | | 
+| 30.11. | 4        | Tietokannat toimimaan ja testausta lisää |
+| yht    | 19       | | 
