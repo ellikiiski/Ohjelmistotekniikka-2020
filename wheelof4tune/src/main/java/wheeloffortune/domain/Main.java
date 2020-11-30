@@ -1,6 +1,7 @@
 
 package wheeloffortune.domain;
 
+import wheeloffortune.dao.FilePhraseDao;
 import wheeloffortune.dao.FilePlayerDao;
 import wheeloffortune.dao.PlayerDao;
 import wheeloffortune.ui.TextUI;
@@ -11,10 +12,10 @@ public class Main {
         
         // päästään vähän pelaulun alkuun jo
         
-        FilePlayerDao pDao = new FilePlayerDao("playerDB.txt");
+        FilePlayerDao plDao = new FilePlayerDao("playerDB.txt");
+        FilePhraseDao phDao = new FilePhraseDao("phraseDB.txt");
         
-        Phrase guessThis = new Phrase("Elli on intellektuelli", Category.COMMON);
-        Game game = new Game(guessThis, pDao);
+        Game game = new Game(plDao, phDao);
         
         TextUI ui = new TextUI(game);
         ui.startGame();

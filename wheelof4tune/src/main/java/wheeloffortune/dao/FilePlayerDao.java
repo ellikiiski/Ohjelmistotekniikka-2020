@@ -70,6 +70,6 @@ public class FilePlayerDao implements PlayerDao {
             for (Player player : players) {
                 writer.write(player.getName() + "\t" + player.getBank() + "\n");
             }
-        } 
+        }
     }
 }

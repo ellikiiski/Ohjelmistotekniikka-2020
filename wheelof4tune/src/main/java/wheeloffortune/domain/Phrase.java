@@ -5,10 +5,16 @@ public class Phrase {
     
     private char[] letters;
     private Category category;
+    private int used;
     
-    public Phrase(String phrase, Category category) {
+    public Phrase(String phrase, Category category, int used) {
         this.initLetterArray(phrase);
         this.category = category;
+        this.used = used;
+    }
+    
+    public void addUse() {
+        used++;
     }
     
     public char[] getLetters() {
@@ -23,7 +29,11 @@ public class Phrase {
         return sb.toString();
     }
     
-    public String getCategory() {
+    public Category getCategory() {
+        return category;
+    }
+    
+    public String getCategoryString() {
         if (category == Category.COMMON) {
             return "YLEISTIETO";
         } else if (category == Category.SCIENCE) {
@@ -32,6 +42,10 @@ public class Phrase {
             return "KULTTUURI";
         }
         return "Joku muu ???";
+    }
+    
+    public int getUses() {
+        return used;
     }
     
     private void initLetterArray(String phrase) {

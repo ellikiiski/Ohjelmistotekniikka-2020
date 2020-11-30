@@ -3,11 +3,13 @@ package wheeloffortune.domain;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import wheeloffortune.dao.PhraseDao;
 import wheeloffortune.dao.PlayerDao;
 
 public class Game {
     
     public PlayerDao playerDao;
+    public PhraseDao phraseDao;
     
     private HashMap<Player, Integer> score;
     private ArrayList<Player> turnTracker;
@@ -20,16 +22,17 @@ public class Game {
     private Sector latestSpin;
     private boolean isOver;
     
-    public Game(Phrase phrase, PlayerDao pDao) {
+    public Game(PlayerDao playerDao, PhraseDao phraseDao) {
         
-        this.playerDao = pDao;
+        this.playerDao = playerDao;
+        this.phraseDao = phraseDao;
         
         this.score = new HashMap<>();
         this.turnTracker = new ArrayList<>();
         this.turnIndex = 0;
         this.playerInTurn = null;
         this.wheel = new Wheel(800);
-        this.phrase = phrase;
+        this.phrase = this.phraseDao.getRandomPhrase();
         this.guessed = new ArrayList<>();
         this.revealed = this.hideLetters();
         this.latestSpin = null;
@@ -78,7 +81,7 @@ public class Game {
     }
     
     public String getCategory() {
-        return phrase.getCategory();
+        return phrase.getCategoryString();
     }
     
     public String getLatestSpinSectorName() {
