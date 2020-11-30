@@ -4,17 +4,13 @@ package wheeloffortune.test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import wheeloffortune.dao.FilePhraseDao;
-import wheeloffortune.dao.FilePlayerDao;
 import wheeloffortune.domain.Game;
 import wheeloffortune.domain.Phrase;
-import wheeloffortune.domain.Category;
-import wheeloffortune.domain.Player;
 
 public class GameTest {
     
-    FilePlayerDao plDao;
-    FilePhraseDao phDao;
+    FakePlayerDao plDao;
+    FakePhraseDao phDao;
     
     Game game;
     Phrase phrase;
@@ -23,8 +19,8 @@ public class GameTest {
 
     @Before
     public void setUp() {
-        plDao = new FilePlayerDao("testPlayerDB.txt");
-        phDao = new FilePhraseDao("testPhraseDB.txt");
+        plDao = new FakePlayerDao();
+        phDao = new FakePhraseDao();
         game = new Game(plDao, phDao);
         player1name = "eka";
         player2name = "toka";
@@ -48,9 +44,14 @@ public class GameTest {
         assertEquals(game.playerInTurn(), "toka");
     }
     
-    /*@Test
+    @Test
+    public void spinningWheel() {
+        game.spinWheel();
+        assertFalse(game.getLatestSpinSectorName().equals("Ei mikään"));
+    }
+    
+    @Test
     public void tryToGuessThePhrase() {
-        boolean wasRight = game.tryToGuessPhrase("testaa pois");
-        assertEquals(wasRight, true);
-    }*/
+        assertTrue(game.tryToGuessPhrase("testaa pois"));
+    }
 }

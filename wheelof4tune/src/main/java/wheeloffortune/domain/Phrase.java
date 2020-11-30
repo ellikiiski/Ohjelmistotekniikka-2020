@@ -41,7 +41,7 @@ public class Phrase {
         } else if (category == Category.CULTURE) {
             return "KULTTUURI";
         }
-        return "Joku muu ???";
+        return "Ei mikään";
     }
     
     public int getUses() {

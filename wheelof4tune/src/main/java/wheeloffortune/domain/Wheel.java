@@ -1,6 +1,7 @@
 
 package wheeloffortune.domain;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Wheel {
@@ -22,6 +23,10 @@ public class Wheel {
         int variance = sectors.length / 2;
         currentSector = (currentSector + minSpin + rnd.nextInt(variance)) % sectors.length;
         return sectors[currentSector];
+    }
+    
+    public Sector[] getSectors() {
+        return sectors;
     }
     
     private void initWheel() {

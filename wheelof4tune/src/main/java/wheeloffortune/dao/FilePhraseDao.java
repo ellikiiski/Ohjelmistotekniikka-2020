@@ -20,12 +20,8 @@ public class FilePhraseDao implements PhraseDao {
         this.phrases = new ArrayList<>();
         this.categories = new HashMap<>();
         this.file = fileName;
-        initCategories();
-        try {
-            initPhrases();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        this.initCategories();
+        this.initPhrases();
     }
     
     @Override

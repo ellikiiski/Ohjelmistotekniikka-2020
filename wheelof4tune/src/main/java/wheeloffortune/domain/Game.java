@@ -68,11 +68,11 @@ public class Game {
     }
     
     public boolean latestSpinIsBankcrupt() {
-        return latestSpin.getCategory() == SectorType.BANKCRUPT;
+        return latestSpin.getSectorType() == SectorType.BANKCRUPT;
     }
 
     public boolean latestSpinIsSkip() {
-        return latestSpin.getCategory() == SectorType.SKIP;
+        return latestSpin.getSectorType() == SectorType.SKIP;
     }
     
     public void nextPlayersTurn() {
