@@ -32,7 +32,7 @@ public class FilePhraseDao implements PhraseDao {
     }
     
     @Override
-    public Phrase getRandomPhrase(){
+    public Phrase getRandomPhrase() {
         try {
             Random random = new Random();
             int i = random.nextInt(phrases.size());

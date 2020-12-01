@@ -44,37 +44,29 @@ public class Game {
     public boolean addPhrase(String phrase, String categoryName) {
         // tiedän tää on tyhmää toistoa joka paikassa muuttaa categoryja stringeiksi ja toisinpäin
         // koitan keksiä järkevämmän toteutuksen ensi viikolla
-        if (categoryName.toUpperCase().equals("YLEISTIETO")) {
-            Phrase p = new Phrase(phrase, Category.COMMON, 0);
-            try {
+        try {
+            if (categoryName.toUpperCase().equals("YLEISTIETO")) {
+                Phrase p = new Phrase(phrase, Category.COMMON, 0);
                 phraseDao.create(p);
-            } catch (Exception e) {
-                return false;
-            }
-            return true;
-        } else if (categoryName.toUpperCase().equals("TIEDE")) {
-            Phrase p = new Phrase(phrase, Category.SCIENCE, 0);
-            try {
+                return true;
+            } else if (categoryName.toUpperCase().equals("TIEDE")) {
+                Phrase p = new Phrase(phrase, Category.SCIENCE, 0);
                 phraseDao.create(p);
-            } catch (Exception e) {
-                return false;
-            }
-            return true;
-        } else if (categoryName.toUpperCase().equals("KULTUURI")) {
-            Phrase p = new Phrase(phrase, Category.CULTURE, 0);
-            try {
+                return true;
+            } else if (categoryName.toUpperCase().equals("KULTUURI")) {
+                Phrase p = new Phrase(phrase, Category.CULTURE, 0);
                 phraseDao.create(p);
-            } catch (Exception e) {
-                return false;
+                return true;
             }
-            return true;
+        } catch (Exception e) {
+            return false;
         }
         return false;
     }
     
     // pelaajien lisäys
     
-    public boolean addPlayer(String name){
+    public boolean addPlayer(String name) {
         Player newPlayer = playerDao.findByName(name);
         if (newPlayer == null) {
             newPlayer = new Player(name, 0);
@@ -82,8 +74,7 @@ public class Game {
                 playerDao.create(newPlayer);
             } catch (Exception e) {
                 return false;
-            }
-            
+            }            
         }
         score.put(newPlayer, 0);
         turnTracker.add(newPlayer);
