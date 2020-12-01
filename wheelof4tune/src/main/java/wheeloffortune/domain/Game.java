@@ -39,6 +39,39 @@ public class Game {
         this.isOver = false;
     }
     
+    // fraasien lisäys tietokantaan
+    
+    public boolean addPhrase(String phrase, String categoryName) {
+        // tiedän tää on tyhmää toistoa joka paikassa muuttaa categoryja stringeiksi ja toisinpäin
+        // koitan keksiä järkevämmän toteutuksen ensi viikolla
+        if (categoryName.toUpperCase().equals("YLEISTIETO")) {
+            Phrase p = new Phrase(phrase, Category.COMMON, 0);
+            try {
+                phraseDao.create(p);
+            } catch (Exception e) {
+                return false;
+            }
+            return true;
+        } else if (categoryName.toUpperCase().equals("TIEDE")) {
+            Phrase p = new Phrase(phrase, Category.SCIENCE, 0);
+            try {
+                phraseDao.create(p);
+            } catch (Exception e) {
+                return false;
+            }
+            return true;
+        } else if (categoryName.toUpperCase().equals("KULTUURI")) {
+            Phrase p = new Phrase(phrase, Category.CULTURE, 0);
+            try {
+                phraseDao.create(p);
+            } catch (Exception e) {
+                return false;
+            }
+            return true;
+        }
+        return false;
+    }
+    
     // pelaajien lisäys
     
     public boolean addPlayer(String name){

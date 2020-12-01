@@ -10,7 +10,7 @@ public class Main {
     
     public static void main(String[] args) {
         
-        // päästään vähän pelaulun alkuun jo
+        // peli pyörii vaikka käyttöliittymä on yhä vain tekstinen
         
         FilePlayerDao plDao = new FilePlayerDao("playerDB.txt");
         FilePhraseDao phDao = new FilePhraseDao("phraseDB.txt");
@@ -18,7 +18,7 @@ public class Main {
         Game game = new Game(plDao, phDao);
         
         TextUI ui = new TextUI(game);
-        ui.startGame();
+        ui.startWheelOfFortune();
     }
     
 }

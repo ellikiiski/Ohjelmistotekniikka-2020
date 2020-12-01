@@ -15,9 +15,51 @@ public class TextUI {
         this.scanner = new Scanner(System.in);
     }
     
+    public void startWheelOfFortune() {
+        while (true) {
+            System.out.println("Tervetuloa! Haluatko kenties lisätä oman fraasin vai siirtyä suoraan pelaamaan?");
+            System.out.println("\nSyötä \"phrase\" jos halua lisätä fraasin");
+            System.out.println("Syötä \"play\" jos tahdot suoraan pelaamaan");
+            System.out.println("Sulje ohjelma syöttämällä \"byee\"");
+            String command = scanner.nextLine();
+            if (command.equals("phrase")) {
+                addNewPhrase();
+                break;
+            } else if (command.equals("play")) {
+                playGame();
+                break;
+            } else if (command.equals("byee")) {
+                break;
+            } else {
+                System.out.println("\nSyötä validi komento.");
+            }
+        }
+    }
+    
+    private void addNewPhrase() {
+        System.out.println("Tervetuloa lisäämään oma fraasi onnenpyörään!");
+        while (true) {
+            System.out.println("\nKirjoita alle fraasisi:");
+            String newP = scanner.nextLine();
+            System.out.println("\nKirjoita vielä mihin seuraavista kategorioista fraasi parhaiten kuuluu:");
+            System.out.println("YLEISTIETO");
+            System.out.println("TIEDE");
+            System.out.println("KULTTUURI");
+            System.out.println("(Kirjoita kategoria täsmälleen oikein!)");
+            String newPC = scanner.nextLine();
+            if (game.addPhrase(newP, newPC)) {
+                System.out.println("\nFraasi lisätty onnistuneesti!");
+                break;
+            } else {
+                System.out.println("\nJotain meni vikaan, koitapa uudelleen.");
+            }
+        }        
+    }
+    
     private void addPlayers() {
+        System.out.println("Peliin tarvitaan 3 pelaajaa.");
         for (int i = 0; i < 3; i++) {
-            System.out.println("Syötä pelaajan nimi:");
+            System.out.println("\nSyötä pelaajan nimi:");
             String name = scanner.nextLine();
             boolean playerAdded = game.addPlayer(name);
             if (!playerAdded) {
@@ -28,7 +70,7 @@ public class TextUI {
         }
     }
     
-    public void startGame() {
+    private void playGame() {
         // Tää on nyt toistaseks hirveetä spagettia kun on vasta välaikanen tekstikäyttöliittymä
         // Myöskään kaikkia mahdollisisa käyttiksen väärinkäytöksiä ei hoidella vielä tällä spagetilla
         // Myöskään kaikki (esim. konsonanttien erottelu vokaaleista) ei vielä sääntöjenkään osalta toimi ihan kuten lopputuloksessa on tarkoitus
