@@ -2,4 +2,6 @@
 /wheelof4tune/target/
 /wheelof4tune/nbproject/
 /wheelof4tune/nbactions.xml
-/wheelof4tune/*.txt
+/wheelof4tune/playerDB.txt
+/wheelof4tune/phraseDB.txt
+
