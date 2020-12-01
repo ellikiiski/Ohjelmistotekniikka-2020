@@ -12,4 +12,5 @@
 | 24.11. | 2        | Testejä, arkkitehtuuri ja vähän pelilogiikan hiomistakin |
 | 26.11. | 2        | Tietokantajuttuja alulle |
 | 30.11. | 4        | Tietokannat toimimaan ja testausta lisää |
-| yht    | 19       | | 
+| 1.12.  | 2        | Koodin korjailua ja hiomista plus releaset ja sekvenssikaaviot sun mut |
+| yht    | 21       | | 
