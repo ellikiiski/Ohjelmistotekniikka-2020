@@ -9,7 +9,7 @@ peliliikkeen.
 
 ### Toiminnallisuudet
 
-1. Peliin voi lisätä omia fraaseja, joita arvuutellaan myöhemmissä peleissä
+1. Peliin voi lisätä omia fraaseja, joita arvuutellaan myöhemmissä peleissä *TEHTY (teksti-ui)*
 2. Peliä voi pelata lisäämällä vähintään kaksi pelaajaa ja aloittamalla pelin *TEHTY (teksti-ui)*
 3. Pelaajien kerryttämää voittojen yhteissummaa voi tarkastella pankkitaulukosta
 
