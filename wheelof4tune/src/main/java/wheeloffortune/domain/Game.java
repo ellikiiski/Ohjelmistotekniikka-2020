@@ -42,8 +42,6 @@ public class Game {
     // fraasien lisäys tietokantaan
     
     public boolean addPhrase(String phrase, String categoryName) {
-        // tiedän tää on tyhmää toistoa joka paikassa muuttaa categoryja stringeiksi ja toisinpäin
-        // koitan keksiä järkevämmän toteutuksen ensi viikolla
         try {
             Category c = Category.getCategory(categoryName);
             Phrase p = new Phrase(phrase, c, 0);

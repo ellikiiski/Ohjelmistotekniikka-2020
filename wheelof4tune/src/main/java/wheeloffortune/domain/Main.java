@@ -10,7 +10,13 @@ public class Main {
     
     public static void main(String[] args) {
         
-        // peli pyörii vaikka käyttöliittymä on yhä vain tekstinen
+        // KOODIKATSELMOIJA!!
+        // Jos sattumalta tässä vaiheessa lataat koodini,
+        // niin graafisen käyttöliittymän kehitys on vasta alkuvaiheessa,
+        // joten ei kannata välittää vielä lainkaan mistään muusta
+        // wheeloffortune.ui -paketin alaisesta luokasta kuin TextUI.java.
+        // Yritän muistaa olla pushaamaatt muutoksia tähän main luokkaan githubiin,
+        // että pystyt vielä antaa palautetta tästä tekstikäyttöliittymästä.
         
         FilePlayerDao plDao = new FilePlayerDao("playerDB.txt");
         FilePhraseDao phDao = new FilePhraseDao("phraseDB.txt");

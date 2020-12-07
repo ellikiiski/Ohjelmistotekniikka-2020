@@ -7,6 +7,10 @@ import wheeloffortune.domain.Game;
 
 public class TextUI {
     
+    // KOODIKATSELMOIJA!!
+    // Tämä on toistaiseksi ainoa toimiva, vaikkakin spagettinen, käyttöliittymä.
+    // Jätä siis huomiotta muut tämän pakkauksen tiedostot.
+    
     private Game game;
     private Scanner scanner;
     
