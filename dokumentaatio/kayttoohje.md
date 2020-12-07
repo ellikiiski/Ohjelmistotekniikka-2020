@@ -48,5 +48,5 @@ Vuorollaan pelaajat valitsevat kolmesta mahdollisuudesta:
 2. Pyörittää onnenpyörää
 3. Ostaa vokaali (mahdollista vain pelaajalla ollessa kerättynä vähintään 250€ rahaa)
 
-Tätäkään ei ole vielä toteutettu loppuun saakka, mutta tavoitteena on pelin jouheva kulku siihen saakka, että joku pelaajista arvaa tehtävän oikein.
+Tätäkään ei ole vielä toteutettu loppuun saakka, mutta tavoitteena on pelin jouheva kulku siihen saakka, että joku pelaajista arvaa tehtävän oikein. Tällöin voittajan keräämä rahasumma tallentuu hänen pankkiinsa ja ohjelma siirtyy takaisin aloitusnäkymään.
 
