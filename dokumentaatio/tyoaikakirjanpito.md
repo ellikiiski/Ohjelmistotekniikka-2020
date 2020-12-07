@@ -13,4 +13,5 @@
 | 26.11. | 2        | Tietokantajuttuja alulle |
 | 30.11. | 4        | Tietokannat toimimaan ja testausta lisää |
 | 1.12.  | 2        | Koodin korjailua ja hiomista plus releaset ja sekvenssikaaviot sun mut |
-| yht    | 21       | | 
+| 7.12.  | 6        | Sirtymistä graafiseen käyttöliittymään, mikä työmaa... |
+| yht    | 27       | | 
