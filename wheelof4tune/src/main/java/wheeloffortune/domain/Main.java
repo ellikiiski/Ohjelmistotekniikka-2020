@@ -19,8 +19,8 @@ public class Main {
         // Yritän muistaa olla pushaamaatt muutoksia tähän main luokkaan githubiin,
         // että pystyt vielä antaa palautetta tästä tekstikäyttöliittymästä.
         
-        FilePlayerDao plDao = new FilePlayerDao("playerDB.txt");
-        FilePhraseDao phDao = new FilePhraseDao("phraseDB.txt");
+        PlayerDBhandler plDao = new PlayerDBhandler("playerDB.txt");
+        PhraseDBhandler phDao = new PhraseDBhandler("phraseDB.txt");
         
         Game game = new Game(plDao, phDao);
         

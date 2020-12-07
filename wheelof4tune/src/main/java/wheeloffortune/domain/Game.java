@@ -8,8 +8,8 @@ import wheeloffortune.dao.PlayerDao;
 
 public class Game {
     
-    public PlayerDao playerDao;
-    public PhraseDao phraseDao;
+    private PlayerDBhandler plDBh;
+    private PhraseDBhandler phDBh;
     
     private HashMap<Player, Integer> score;
     private ArrayList<Player> turnTracker;
@@ -22,17 +22,17 @@ public class Game {
     private Sector latestSpin;
     private boolean isOver;
     
-    public Game(PlayerDao playerDao, PhraseDao phraseDao) {
+    public Game(PlayerDBhandler playerDBh, PhraseDBhandler phraseDBh) {
         
-        this.playerDao = playerDao;
-        this.phraseDao = phraseDao;
+        this.plDBh  = playerDBh;
+        this.phDBh = phraseDBh;
         
         this.score = new HashMap<>();
         this.turnTracker = new ArrayList<>();
         this.turnIndex = 0;
         this.playerInTurn = null;
         this.wheel = new Wheel(800);
-        this.phrase = this.phraseDao.getRandomPhrase();
+        this.phrase = this.phDBh.getPhrase();
         this.guessed = new ArrayList<>();
         this.revealed = this.hideLetters();
         this.latestSpin = null;
@@ -40,34 +40,21 @@ public class Game {
     }
     
     // fraasien lisäys tietokantaan
-    
     public boolean addPhrase(String phrase, String categoryName) {
-        try {
-            Category c = Category.getCategory(categoryName);
-            Phrase p = new Phrase(phrase, c, 0);
-            phraseDao.create(p);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+        return phDBh.addPhrase(phrase, categoryName);
     }
     
     // pelaajien lisäys
     
     public boolean addPlayer(String name) {
-        Player newPlayer = playerDao.findByName(name);
-        if (newPlayer == null) {
-            newPlayer = new Player(name, 0);
-            try {
-                playerDao.create(newPlayer);
-            } catch (Exception e) {
-                return false;
-            }            
-        }
-        score.put(newPlayer, 0);
-        turnTracker.add(newPlayer);
-        playerInTurn = turnTracker.get(0);
-        return true;
+        Player newPlayer = plDBh.addPlayer(name);
+        if (newPlayer != null) {
+            score.put(newPlayer, 0);
+            turnTracker.add(newPlayer);
+            playerInTurn = turnTracker.get(0);
+            return true;
+        }        
+        return false;
     }
     
     // onnenpyörän pyörittäminen ja sen apumetodit
@@ -149,11 +136,7 @@ public class Game {
     // pelin päättyminen
     
     public int declrareWinner() {
-        try {
-            playerDao.addMoney(playerInTurn, score.get(playerInTurn));
-        } catch (Exception ex) {
-            return -666;
-        }
+        plDBh.addMoneyToPlayer(playerInTurn, score.get(playerInTurn));
         return score.get(playerInTurn);
     }
     

@@ -6,9 +6,8 @@ import wheeloffortune.dao.FilePlayerDao;
 public class PlayerDBhandler {
     
     // KOODIKATSELMOIJA!!
-    // Ei kannata välittää tästäkään luokasta koska en ole käyttänyt sitä
-    // hyödyksi muuta kuin graafisessa käyttöliittymässä.
-    // Eli tekstikäyttöliittymän (jota arvioit) kannalta ei relevantti.
+    // Nämä DBhandler-luokat on ilmesynyt releasen jälkeen,
+    // mutta niiden ei pitäis olla muuttanut mitään toiminnallisuuksia
     
     private FilePlayerDao plDao;
 
@@ -27,5 +26,14 @@ public class PlayerDBhandler {
             }
         }
         return newPlayer;
-    }    
+    }
+    
+    public boolean addMoneyToPlayer(Player player, int money) {
+        try {
+            plDao.addMoney(player, money);
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
 }

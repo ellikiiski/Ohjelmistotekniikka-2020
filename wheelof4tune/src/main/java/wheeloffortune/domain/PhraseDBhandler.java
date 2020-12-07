@@ -6,9 +6,8 @@ import wheeloffortune.dao.FilePhraseDao;
 public class PhraseDBhandler {
     
     // KOODIKATSELMOIJA!!
-    // Ei kannata välittää tästäkään luokasta koska en ole käyttänyt sitä
-    // hyödyksi muuta kuin graafisessa käyttöliittymässä.
-    // Eli tekstikäyttöliittymän (jota arvioit) kannalta ei relevantti.
+    // Nämä DBhandler-luokat on ilmesynyt releasen jälkeen,
+    // mutta niiden ei pitäis olla muuttanut mitään toiminnallisuuksia
     
     private FilePhraseDao phDao;
     
