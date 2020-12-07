@@ -45,23 +45,13 @@ public class Game {
         // tiedän tää on tyhmää toistoa joka paikassa muuttaa categoryja stringeiksi ja toisinpäin
         // koitan keksiä järkevämmän toteutuksen ensi viikolla
         try {
-            if (categoryName.toUpperCase().equals("YLEISTIETO")) {
-                Phrase p = new Phrase(phrase, Category.COMMON, 0);
-                phraseDao.create(p);
-                return true;
-            } else if (categoryName.toUpperCase().equals("TIEDE")) {
-                Phrase p = new Phrase(phrase, Category.SCIENCE, 0);
-                phraseDao.create(p);
-                return true;
-            } else if (categoryName.toUpperCase().equals("KULTUURI")) {
-                Phrase p = new Phrase(phrase, Category.CULTURE, 0);
-                phraseDao.create(p);
-                return true;
-            }
+            Category c = Category.getCategory(categoryName);
+            Phrase p = new Phrase(phrase, c, 0);
+            phraseDao.create(p);
+            return true;
         } catch (Exception e) {
             return false;
         }
-        return false;
     }
     
     // pelaajien lisäys

@@ -3,8 +3,8 @@ package wheeloffortune.domain;
 
 public class Phrase {
     
+    private final Category category;
     private char[] letters;
-    private Category category;
     private int used;
     
     public Phrase(String phrase, Category category, int used) {
@@ -34,14 +34,7 @@ public class Phrase {
     }
     
     public String getCategoryString() {
-        if (category == Category.COMMON) {
-            return "YLEISTIETO";
-        } else if (category == Category.SCIENCE) {
-            return "TIEDE";
-        } else if (category == Category.CULTURE) {
-            return "KULTTUURI";
-        }
-        return "Ei mikään";
+        return category.getCategoryName();
     }
     
     public int getUses() {

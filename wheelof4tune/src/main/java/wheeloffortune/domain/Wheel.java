@@ -1,7 +1,6 @@
 
 package wheeloffortune.domain;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class Wheel {
