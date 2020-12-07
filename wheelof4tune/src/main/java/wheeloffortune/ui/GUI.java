@@ -2,6 +2,7 @@
 package wheeloffortune.ui;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.stage.Stage;
 import wheeloffortune.dao.FilePhraseDao;
 import wheeloffortune.dao.FilePlayerDao;
@@ -20,9 +21,28 @@ public class GUI extends Application {
         
         FilePlayerDao plDao = new FilePlayerDao("playerDB.txt");
         FilePhraseDao phDao = new FilePhraseDao("phraseDB.txt");
-
-        Game game = new Game(plDao, phDao);
         
+        StartView startView = new StartView();
+        AddPhraseView apView = new AddPhraseView();
+        StatisticsView statView = new StatisticsView();
+        GameView gameView = new GameView();
+        
+        /*startView.getAddPhraseButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
+            @Override
+            public void handle(javafx.event.ActionEvent event) {
+                stage.setScene(apView.getScene());
+            }
+        });
+        
+        startView.getPlayButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
+            @Override
+            public void handle(javafx.event.ActionEvent event) {
+                stage.setScene(gameView.getScene());
+            }
+        });*/
+        
+        stage.setScene(startView.getScene());
+        stage.show();
     }
     
 }

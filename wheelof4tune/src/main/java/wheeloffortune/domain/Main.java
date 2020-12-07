@@ -4,6 +4,7 @@ package wheeloffortune.domain;
 import wheeloffortune.dao.FilePhraseDao;
 import wheeloffortune.dao.FilePlayerDao;
 import wheeloffortune.dao.PlayerDao;
+import wheeloffortune.ui.GUI;
 import wheeloffortune.ui.TextUI;
 
 public class Main {
@@ -25,6 +26,13 @@ public class Main {
         
         TextUI ui = new TextUI(game);
         ui.startWheelOfFortune();
+        
+        /*new Thread() {
+            @Override
+            public void run() {
+                javafx.application.Application.launch(GUI.class);
+            }
+        }.start();*/
     }
     
 }

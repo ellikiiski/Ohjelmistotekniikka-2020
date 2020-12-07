@@ -11,7 +11,7 @@ public class GameView implements View {
     // Jätä siis huomiotta kaikki tämän pakkauksen luokat paitsi TextUI.java.
 
     @Override
-    public Scene getView() {
+    public Scene getScene() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
