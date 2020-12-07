@@ -22,8 +22,9 @@ public class GUI extends Application {
         PhraseDBhandler phDBh = new PhraseDBhandler("phraseDB.txt");
         
         StartView startView = new StartView();
-        AddPhraseView apView = new AddPhraseView();
+        AddPhraseView aPhView = new AddPhraseView();
         StatisticsView statView = new StatisticsView();
+        AddPlayersView aPlView = new AddPlayersView();
         GameView gameView = new GameView();
         
         //
@@ -53,32 +54,43 @@ public class GUI extends Application {
         startView.getAddPhraseButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
             public void handle(javafx.event.ActionEvent event) {
-                stage.setScene(apView.getScene());
+                stage.setScene(aPhView.getScene());
             }
         });
         
         //// uuden fraasin tallentaminen 
         
-        apView.getSaveButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
+        aPhView.getSaveButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
             public void handle(javafx.event.ActionEvent event) {
-                if (apView.allowedToSave()) {
-                    phDBh.addPhrase(apView.getPhraseText(), apView.getCategoryName());
-                    apView.emptyScene();
+                if (aPhView.allowedToSave()) {
+                    phDBh.addPhrase(aPhView.getPhraseText(), aPhView.getCategoryName());
+                    aPhView.emptyScene();
                     stage.setScene(startView.getScene());
                 } else {
-                    apView.setInvalidSelections();
-                    stage.setScene(apView.getScene());
+                    aPhView.setInvalidSelections();
+                    stage.setScene(aPhView.getScene());
                 }                
             }
         });
         
         //// takaisin aloitussivulle tallentamatta mitään
         
-        apView.getBackButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
+        aPhView.getBackButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
             public void handle(javafx.event.ActionEvent event) {
                     stage.setScene(startView.getScene());
+            }
+        });
+        
+        //
+        // PELAAJIEN LISÄYSNÄKYMÄÄN
+        //
+        
+        startView.getPlayButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
+            @Override
+            public void handle(javafx.event.ActionEvent event) {
+                stage.setScene(aPlView.getScene());
             }
         });
         
@@ -86,12 +98,12 @@ public class GUI extends Application {
         // PELINÄKYMÄÄN
         //
         
-        /*startView.getPlayButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
+        aPlView.getAddPlayersButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
             public void handle(javafx.event.ActionEvent event) {
                 stage.setScene(gameView.getScene());
             }
-        });*/
+        });
         
         stage.setScene(startView.getScene());
         stage.show();
