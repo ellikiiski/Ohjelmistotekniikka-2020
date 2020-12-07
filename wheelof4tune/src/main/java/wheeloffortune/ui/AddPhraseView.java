@@ -51,7 +51,7 @@ public class AddPhraseView implements View {
         this.layout.setSpacing(20);
         this.layout.getChildren().addAll(this.addNewhraseHere, this.chooseCategory, this.checkBoxLayout, this.writePhrase, this.phraseText, this.buttonLayout);
 
-        this.scene = new Scene(this.layout);
+        this.scene = new Scene(this.layout, 600, 400);
     }
     
     private void initCheckBoxLayout() {

@@ -4,9 +4,6 @@ package wheeloffortune.ui;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
-import wheeloffortune.dao.FilePhraseDao;
-import wheeloffortune.dao.FilePlayerDao;
-import wheeloffortune.domain.Game;
 import wheeloffortune.domain.PhraseDBhandler;
 import wheeloffortune.domain.PlayerDBhandler;
 
@@ -29,7 +26,29 @@ public class GUI extends Application {
         StatisticsView statView = new StatisticsView();
         GameView gameView = new GameView();
         
+        //
+        // STATISTIIKKANÄKYMÄÄN (ei toteutettu)
+        //
+        
+        startView.getPlayerStatsButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
+            @Override
+            public void handle(javafx.event.ActionEvent event) {
+                stage.setScene(statView.getScene());
+            }
+        });
+        
+        //// takaisin aloitussivulle
+        
+        statView.getBackButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
+            @Override
+            public void handle(javafx.event.ActionEvent event) {
+                stage.setScene(startView.getScene());
+            }
+        });
+        
+        //
         // UUDEN FLRAASIN LISÄÄMISNÄKYMÄÄN
+        //
         
         startView.getAddPhraseButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
@@ -54,12 +73,18 @@ public class GUI extends Application {
             }
         });
         
+        //// takaisin aloitussivulle tallentamatta mitään
+        
         apView.getBackButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
             public void handle(javafx.event.ActionEvent event) {
                     stage.setScene(startView.getScene());
             }
         });
+        
+        //
+        // PELINÄKYMÄÄN
+        //
         
         /*startView.getPlayButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
