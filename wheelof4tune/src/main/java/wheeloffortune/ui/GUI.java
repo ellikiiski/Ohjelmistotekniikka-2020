@@ -4,6 +4,7 @@ package wheeloffortune.ui;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
+import wheeloffortune.domain.Game;
 import wheeloffortune.domain.PhraseDBhandler;
 import wheeloffortune.domain.PlayerDBhandler;
 
@@ -101,7 +102,13 @@ public class GUI extends Application {
         aPlView.getAddPlayersButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
             public void handle(javafx.event.ActionEvent event) {
-                stage.setScene(gameView.getScene());
+                if (aPlView.all3PlayersFilledIn()) {
+                    gameView.setGame(plDBh, phDBh, aPlView.getGivenPlayers());
+                    stage.setScene(gameView.getScene());
+                } else {
+                    aPlView.invalidPlayersMessage();
+                    stage.setScene(aPlView.getScene());
+                }
             }
         });
         
