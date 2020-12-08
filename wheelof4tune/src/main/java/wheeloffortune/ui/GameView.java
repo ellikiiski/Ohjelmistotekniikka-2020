@@ -15,6 +15,7 @@ import wheeloffortune.domain.Phrase;
 import wheeloffortune.domain.PhraseDBhandler;
 import wheeloffortune.domain.Player;
 import wheeloffortune.domain.PlayerDBhandler;
+import wheeloffortune.domain.Sector;
 
 public class GameView implements View {
     
@@ -27,6 +28,9 @@ public class GameView implements View {
     
     private Label wheeloffortune;
     private Button nextTurnTEST;
+    private Button spinButtonTEST;
+    
+    private PlayersLayout inTurn;
     
     private PhraseLayout phlo;
     private WheelLayout wlo;
@@ -40,7 +44,8 @@ public class GameView implements View {
         game = null;
         
         wheeloffortune = new Label("ONNENPYÖRÄ");
-        nextTurnTEST = new Button("Testinappula: vuoronvaihto");
+        nextTurnTEST = new Button("Testinappi: vuoronvaihto");
+        spinButtonTEST = new Button("Testinappi: Pyöritys");
         
         layout = new VBox();
         layout.setSpacing(50);
@@ -59,11 +64,7 @@ public class GameView implements View {
         wlo = new WheelLayout();
         pllo = initPllo();
         
-        layout = new VBox();
-        layout.setSpacing(50);
-        layout.getChildren().addAll(wheeloffortune, nextTurnTEST, phlo.getLayout(), wlo.getLayout(), pllo.getLayout());
-        
-        scene = new Scene(layout, 800, 400);
+        refresh();
     }
     
     private PlayersLayout initPllo() {
@@ -81,147 +82,31 @@ public class GameView implements View {
         return new PlayersLayout(helpList.get(0), helpList.get(1), helpList.get(2), buttons);
     }
     
-    public void changeTurn() {
-        game.nextPlayersTurn();
-        pllo.setPlayerInTurn(game.getPlayerInTurn());
+    public void spinTheWheel() {
+        game.spinWheel();
+        wlo.setSpinnedSector(game.getLatestSpinSectorName());
+        refresh();
     }
     
     public Button getNextTurnButton() {
         return nextTurnTEST;
     }
+    
+    public Button getSpinButton() {
+        return spinButtonTEST;
+    }
+    
+    public void refresh() {
+        layout = new VBox();
+        layout.setSpacing(50);
+        layout.getChildren().addAll(wheeloffortune, spinButtonTEST, phlo.getLayout(), wlo.getLayout(), pllo.getLayout());
+        
+        scene = new Scene(layout, 800, 500);
+    }
 
     @Override
     public Scene getScene() {
         return scene;
-    }
-    
-    // Erillinen luokka pelaaja-asettelua varten
-    
-    private class PlayersLayout {
-        
-        private OnePlayerLayout plo1;
-        private OnePlayerLayout plo2;
-        private OnePlayerLayout plo3;
-        
-        private HBox layout;
-        
-        public PlayersLayout(Player p1, Player p2, Player p3, String[] bs) {
-            plo1 = new OnePlayerLayout(p1, bs);
-            plo2 = new OnePlayerLayout(p2, bs);
-            plo3 = new OnePlayerLayout(p3, bs);
-            
-            layout = new HBox();
-            layout.setSpacing(30);
-            layout.getChildren().addAll(plo1.getLayout(), plo2.getLayout(), plo3.getLayout());
-        }
-        
-        private void setPlayerInTurn(Player p) {
-            if (plo1.getPlayer().equals(p)) {
-                plo1.setPlayerInTurn();
-                plo3.setPlayerOutOfTurn();
-            } else if (plo2.getPlayer().equals(p)) {
-                plo2.setPlayerInTurn();
-                plo1.setPlayerOutOfTurn();
-            } else if (plo3.getPlayer().equals(p)) {
-                plo3.setPlayerInTurn();
-                plo2.setPlayerOutOfTurn();
-            }
-        }
-
-        public HBox getLayout() {
-            return layout;
-        }
-        
-    }
-    
-    private class OnePlayerLayout {
-        
-        private Player player;
-        
-        private Label name;
-        private Label money;
-        private ButtonLayout buttons;
-        
-        private VBox layout;
-        
-        public OnePlayerLayout(Player p, String[] bs) {
-            player = p;
-            
-            name = new Label(player.getName());
-            money = new Label("0€");
-            buttons = new ButtonLayout(bs, 5);
-            buttons.disableAll();
-            
-            layout = new VBox();
-            layout.setSpacing(20);
-            layout.getChildren().addAll(name, money, buttons.getLayout());
-        }
-        
-        public void setPlayerInTurn() {
-            buttons.enableAll();
-            name = new Label(player.getName().toUpperCase());
-            if (!game.canBuyNoun()) {
-                buttons.disableButton("Osta vokaali");
-            }
-        }
-        
-        public void setPlayerOutOfTurn() {
-            buttons.disableAll();
-            name = new Label(player.getName());
-        }
-        
-        public Player getPlayer() {
-            return player;
-        }
-        
-        public VBox getLayout() {
-            return layout;
-        }
-        
-    }
-    
-    private class ButtonLayout {
-        
-        private HashMap<String, Button> buttons;
-        private HBox layout;
-        
-        public ButtonLayout(String[] bs, int spacing) {
-            buttons = new HashMap<>();
-            for (String b : bs) {
-                buttons.put(b, new Button(b));
-            }
-            
-            layout = new HBox();
-            layout.setSpacing(spacing);
-            
-            for (Button button : buttons.values()) {
-                layout.getChildren().add(button);
-            }
-        }
-        
-        public void disableButton(String b) {
-            for (String buttonName : buttons.keySet()) {
-                if (buttonName.equals(b)) {
-                    buttons.get(b).setDisable(true);
-                }
-            }
-        }
-        
-        public void disableAll() {
-            for (Button b : buttons.values()) {
-                b.setDisable(true);
-            }
-        }
-        
-        public void enableAll() {
-            for (Button b : buttons.values()) {
-                b.setDisable(false);
-            }
-        }
-        
-        public HBox getLayout() {
-            return layout;
-        }        
     }
     
     // Erillinen luokka onnenpyöräasettelua varten
@@ -237,6 +122,17 @@ public class GameView implements View {
             heading = new Label("OSUIT SEKTORIIN ");
             spinned = new Label("ei vielä mitään");
             
+            layout = new HBox();
+            layout.setSpacing(10);
+            layout.getChildren().addAll(heading, spinned);
+        }
+        
+        public void setSpinnedSector(String spin) {
+            spinned = new Label(spin);
+            refresh();
+        }
+        
+        public void refresh() {
             layout = new HBox();
             layout.setSpacing(10);
             layout.getChildren().addAll(heading, spinned);
