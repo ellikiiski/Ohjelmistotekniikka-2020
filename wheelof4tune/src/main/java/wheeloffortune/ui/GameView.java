@@ -2,6 +2,7 @@
 package wheeloffortune.ui;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -25,6 +26,8 @@ public class GameView implements View {
     private Game game;
     
     private Label wheeloffortune;
+    private Button nextTurnTEST;
+    
     private PhraseLayout phlo;
     private WheelLayout wlo;
     private PlayersLayout pllo;
@@ -37,6 +40,7 @@ public class GameView implements View {
         game = null;
         
         wheeloffortune = new Label("ONNENPYÖRÄ");
+        nextTurnTEST = new Button("Testinappula: vuoronvaihto");
         
         layout = new VBox();
         layout.setSpacing(50);
@@ -57,7 +61,7 @@ public class GameView implements View {
         
         layout = new VBox();
         layout.setSpacing(50);
-        layout.getChildren().addAll(wheeloffortune, phlo.getLayout(), wlo.getLayout(), pllo.getLayout());
+        layout.getChildren().addAll(wheeloffortune, nextTurnTEST, phlo.getLayout(), wlo.getLayout(), pllo.getLayout());
         
         scene = new Scene(layout, 800, 400);
     }
@@ -75,6 +79,15 @@ public class GameView implements View {
         buttons[2] = "Osta vokaali";
         
         return new PlayersLayout(helpList.get(0), helpList.get(1), helpList.get(2), buttons);
+    }
+    
+    public void changeTurn() {
+        game.nextPlayersTurn();
+        pllo.setPlayerInTurn(game.getPlayerInTurn());
+    }
+    
+    public Button getNextTurnButton() {
+        return nextTurnTEST;
     }
 
     @Override
@@ -101,6 +114,19 @@ public class GameView implements View {
             layout.setSpacing(30);
             layout.getChildren().addAll(plo1.getLayout(), plo2.getLayout(), plo3.getLayout());
         }
+        
+        private void setPlayerInTurn(Player p) {
+            if (plo1.getPlayer().equals(p)) {
+                plo1.setPlayerInTurn();
+                plo3.setPlayerOutOfTurn();
+            } else if (plo2.getPlayer().equals(p)) {
+                plo2.setPlayerInTurn();
+                plo1.setPlayerOutOfTurn();
+            } else if (plo3.getPlayer().equals(p)) {
+                plo3.setPlayerInTurn();
+                plo2.setPlayerOutOfTurn();
+            }
+        }
 
         public HBox getLayout() {
             return layout;
@@ -110,20 +136,42 @@ public class GameView implements View {
     
     private class OnePlayerLayout {
         
-        private final Label name;
+        private Player player;
+        
+        private Label name;
         private Label money;
         private ButtonLayout buttons;
         
         private VBox layout;
         
         public OnePlayerLayout(Player p, String[] bs) {
-            name = new Label(p.getName());
+            player = p;
+            
+            name = new Label(player.getName());
             money = new Label("0€");
             buttons = new ButtonLayout(bs, 5);
+            buttons.disableAll();
             
             layout = new VBox();
             layout.setSpacing(20);
             layout.getChildren().addAll(name, money, buttons.getLayout());
+        }
+        
+        public void setPlayerInTurn() {
+            buttons.enableAll();
+            name = new Label(player.getName().toUpperCase());
+            if (!game.canBuyNoun()) {
+                buttons.disableButton("Osta vokaali");
+            }
+        }
+        
+        public void setPlayerOutOfTurn() {
+            buttons.disableAll();
+            name = new Label(player.getName());
+        }
+        
+        public Player getPlayer() {
+            return player;
         }
         
         public VBox getLayout() {
@@ -134,33 +182,42 @@ public class GameView implements View {
     
     private class ButtonLayout {
         
-        private String[] buttons;
+        private HashMap<String, Button> buttons;
         private HBox layout;
         
         public ButtonLayout(String[] bs, int spacing) {
-            buttons = bs;
+            buttons = new HashMap<>();
+            for (String b : bs) {
+                buttons.put(b, new Button(b));
+            }
             
             layout = new HBox();
             layout.setSpacing(spacing);
             
-            for (String button : buttons) {
-                layout.getChildren().addAll(new Button(button));
+            for (Button button : buttons.values()) {
+                layout.getChildren().add(button);
             }
         }
         
-        /*public HBox disableButton(Button b) {
-            for (Button button : buttons) {
-                if (button.equals(b)) {
-                    button.disableProperty();
-                    layout.getChildren().addAll(button);
+        public void disableButton(String b) {
+            for (String buttonName : buttons.keySet()) {
+                if (buttonName.equals(b)) {
+                    buttons.get(b).setDisable(true);
                 }
             }
-            return layout;
         }
-         public HBox disableAll() {
-             ///toteuta
-             return layout;
-         }*/
+        
+        public void disableAll() {
+            for (Button b : buttons.values()) {
+                b.setDisable(true);
+            }
+        }
+        
+        public void enableAll() {
+            for (Button b : buttons.values()) {
+                b.setDisable(false);
+            }
+        }
         
         public HBox getLayout() {
             return layout;

@@ -147,6 +147,10 @@ public class Game {
         return score.keySet();
     }
     
+    public Player getPlayerInTurn() {
+        return playerInTurn;
+    }
+    
     public String playerInTurn() {
         if (playerInTurn == null) {
             System.out.println("Pelistä puuttuu pelaajat!");

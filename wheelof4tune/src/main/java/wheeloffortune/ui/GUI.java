@@ -112,6 +112,13 @@ public class GUI extends Application {
             }
         });
         
+        gameView.getNextTurnButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
+            @Override
+            public void handle(javafx.event.ActionEvent event) {
+                gameView.changeTurn();
+            }
+        });
+        
         stage.setScene(startView.getScene());
         stage.show();
     }
