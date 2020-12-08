@@ -9,11 +9,6 @@ import wheeloffortune.domain.PhraseDBhandler;
 import wheeloffortune.domain.PlayerDBhandler;
 
 public class GUI extends Application {
-    
-    // KOODIKATSELMOIJA!!
-    // Ei kannata välittää tästä tai mistään muustakaan graafiseen käyttöliittymään
-    // liittyvästä luokasta, sillä ne ovat pahasti kesken!!
-    // Jätä siis huomiotta kaikki tämän pakkauksen luokat paitsi TextUI.java.
 
     @Override
     public void start(Stage stage) throws Exception {

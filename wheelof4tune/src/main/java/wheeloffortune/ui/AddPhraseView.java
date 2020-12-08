@@ -13,11 +13,6 @@ import wheeloffortune.domain.Category;
 
 public class AddPhraseView implements View {
     
-    // KOODIKATSELMOIJA!!
-    // Ei kannata välittää tästä tai mistään muustakaan graafiseen käyttöliittymään
-    // liittyvästä luokasta, sillä ne ovat pahasti kesken!!
-    // Jätä siis huomiotta kaikki tämän pakkauksen luokat paitsi TextUI.java.
-    
     private VBox layout;
     private Label addNewhraseHere;
     private Text chooseCategory;
