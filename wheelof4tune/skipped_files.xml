@@ -6,4 +6,5 @@
 
 <suppressions>
     <suppress files="wheeloffortune.ui.TextUI.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="wheeloffortune.ui.GUI.java" checks="[a-zA-Z0-9]*"/>
 </suppressions>
