@@ -9,6 +9,8 @@ import wheeloffortune.domain.Phrase;
 
 public class FakePhraseDao implements PhraseDao {
     
+    // nää saattaa jäädä nyt turhaksi
+    
     private ArrayList<Phrase> phrases;
     private HashMap<String, Category> categories;
     

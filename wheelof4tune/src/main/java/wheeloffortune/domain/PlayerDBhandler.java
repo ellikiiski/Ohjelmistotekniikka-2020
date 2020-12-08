@@ -3,11 +3,7 @@ package wheeloffortune.domain;
 
 import wheeloffortune.dao.FilePlayerDao;
 
-public class PlayerDBhandler {
-    
-    // KOODIKATSELMOIJA!!
-    // Nämä DBhandler-luokat on ilmesynyt releasen jälkeen,
-    // mutta niiden ei pitäis olla muuttanut mitään toiminnallisuuksia
+public class PlayerDBhandler implements DBhandler {
     
     private FilePlayerDao plDao;
 

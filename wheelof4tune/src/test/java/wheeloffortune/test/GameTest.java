@@ -6,11 +6,13 @@ import org.junit.Before;
 import org.junit.Test;
 import wheeloffortune.domain.Game;
 import wheeloffortune.domain.Phrase;
+import wheeloffortune.domain.PhraseDBhandler;
+import wheeloffortune.domain.PlayerDBhandler;
 
 public class GameTest {
     
-    FakePlayerDao plDao;
-    FakePhraseDao phDao;
+    PlayerDBhandler plDBh;
+    PhraseDBhandler phDBh;
     
     Game game;
     Phrase phrase;
@@ -19,9 +21,9 @@ public class GameTest {
 
     @Before
     public void setUp() {
-        plDao = new FakePlayerDao();
-        phDao = new FakePhraseDao();
-        game = new Game(plDao, phDao);
+        plDBh = new PlayerDBhandler("testPlayerDB.txt");
+        phDBh = new PhraseDBhandler("testPhraseDB.txt");
+        game = new Game(plDBh, phDBh);
         player1name = "eka";
         player2name = "toka";
         game.addPlayer(player1name);
@@ -52,6 +54,29 @@ public class GameTest {
     
     @Test
     public void tryToGuessThePhrase() {
-        assertTrue(game.tryToGuessPhrase("testaa pois"));
+        assertTrue(game.tryToGuessPhrase("testaaminen on rasittavaa"));
+    }
+    
+    @Test
+    public void guessingConsonant() {
+        game.spinWheel();
+        int consonants = game.guessConsonant('T');
+        assertEquals(consonants, 4);
+    }
+    
+    @Test
+    public void cantBuyNoun() {
+        assertFalse(game.canBuyNoun());
+    }
+    
+    @Test
+    public void hidinPhrase() {
+        assertEquals(game.getPhraseAsString(), "___________ __ __________");
+    }
+    
+    @Test
+    public void revealingLetter() {
+        game.revealLetter('A');
+        assertEquals(game.getPhraseAsString(), "____AA_____ __ _A____A_AA");
     }
 }

@@ -3,11 +3,7 @@ package wheeloffortune.domain;
 
 import wheeloffortune.dao.FilePhraseDao;
 
-public class PhraseDBhandler {
-    
-    // KOODIKATSELMOIJA!!
-    // Nämä DBhandler-luokat on ilmesynyt releasen jälkeen,
-    // mutta niiden ei pitäis olla muuttanut mitään toiminnallisuuksia
+public class PhraseDBhandler implements DBhandler {
     
     private FilePhraseDao phDao;
     

@@ -8,6 +8,8 @@ import wheeloffortune.domain.Player;
 
 public class FakePlayerDao implements PlayerDao {
     
+    // nää saattaa jäädä nyt turhaksi
+    
     private ArrayList<Player> players;
     
     public FakePlayerDao() {
