@@ -9,6 +9,9 @@ import wheeloffortune.domain.PhraseDBhandler;
 import wheeloffortune.domain.PlayerDBhandler;
 
 public class GUI extends Application {
+    
+    // GUIssa toimii toistaiseksi kunnolla vain uuden fraasin lisäys.
+    // Pelin pelaamisessa toimii pelaajien lisäys ja onnenpyörän pyörittely.
 
     @Override
     public void start(Stage stage) throws Exception {

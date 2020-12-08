@@ -7,6 +7,8 @@ import wheeloffortune.domain.Game;
 
 public class TextUI {
     
+    // TextUI hengalee täällä vielä niin kauan kunnes saan toteutettua GUIn loppuun.
+    
     private Game game;
     private Scanner scanner;
     
