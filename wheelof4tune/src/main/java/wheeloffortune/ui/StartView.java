@@ -26,22 +26,22 @@ public class StartView implements View {
     
     public StartView() {
         
-        this.play = new Button("Pelaa onnenpyörää");
-        this.addPhrase = new Button("Lisää uusi fraasi");
-        this.playerStats = new Button("Pelaajatilastot");
+        play = new Button("Pelaa onnenpyörää");
+        addPhrase = new Button("Lisää uusi fraasi");
+        playerStats = new Button("Pelaajatilastot");
         
-        this.welcome = new Label("Tervetuloa!");
-        this.instructions = new Text("Tarkastele pelaajatilastoja, lisää uusi fraasi tai pelaa peliä!");
+        welcome = new Label("Tervetuloa!");
+        instructions = new Text("Tarkastele pelaajatilastoja, lisää uusi fraasi tai pelaa peliä!");
         
-        this.buttonLayout = new HBox();
-        this.buttonLayout.setSpacing(10);
-        this.buttonLayout.getChildren().addAll(this.playerStats, this.addPhrase, this.play);
+        buttonLayout = new HBox();
+        buttonLayout.setSpacing(10);
+        buttonLayout.getChildren().addAll(playerStats, addPhrase, play);
         
-        this.layout = new VBox();
-        this.layout.setSpacing(20);
-        this.layout.getChildren().addAll(this.welcome, this.instructions, this.buttonLayout);
+        layout = new VBox();
+        layout.setSpacing(20);
+        layout.getChildren().addAll(welcome, instructions, buttonLayout);
         
-        this.scene = new Scene(layout, 600, 400);
+        scene = new Scene(layout, 600, 400);
     }
     
     public Button getPlayerStatsButton() {

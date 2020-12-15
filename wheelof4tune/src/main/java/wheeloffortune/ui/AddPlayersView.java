@@ -24,19 +24,19 @@ public class AddPlayersView implements View {
     
     public AddPlayersView() {
         
-        this.addPlayers = new Text("Lisää peliin kolme pelaajaa:");
-        this.player1 = new TextField();
-        this.player2 = new TextField();
-        this.player3 = new TextField();
-        this.add = new Button("Lisää pelaajat");
-        this.subPlayerLayout = new HBox();
-        this.subPlayerLayout.setSpacing(30);
-        this.subPlayerLayout.getChildren().addAll(this.player1, this.player2, this.player3);
-        this.playerLayout = new VBox();
-        this.playerLayout.setSpacing(10);
-        this.playerLayout.getChildren().addAll(this.addPlayers, this.subPlayerLayout, this.add);
+        addPlayers = new Text("Lisää peliin kolme pelaajaa:");
+        player1 = new TextField();
+        player2 = new TextField();
+        player3 = new TextField();
+        add = new Button("Lisää pelaajat");
+        subPlayerLayout = new HBox();
+        subPlayerLayout.setSpacing(30);
+        subPlayerLayout.getChildren().addAll(player1, player2, player3);
+        playerLayout = new VBox();
+        playerLayout.setSpacing(10);
+        playerLayout.getChildren().addAll(addPlayers, subPlayerLayout, add);
         
-        this.scene = new Scene(this.playerLayout, 600, 400);
+        scene = new Scene(playerLayout, 600, 400);
     }
     
     public Button getAddPlayersButton() {

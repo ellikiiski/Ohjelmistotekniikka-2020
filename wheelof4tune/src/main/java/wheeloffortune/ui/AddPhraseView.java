@@ -26,31 +26,31 @@ public class AddPhraseView implements View {
     private Scene scene;
     
     public AddPhraseView() {
-        this.emptyScene();
+        emptyScene();
     }
     
     public void emptyScene() {
-        this.addNewhraseHere = new Label("Täällä voit lisätä uuden fraasin tietokantaan");
-        this.chooseCategory = new Text("Valitse fraasin kategoria allaolevista (tasan yksi)");
-        this.initCheckBoxLayout();
-        this.writePhrase = new Text("Kirjoita alle uusi fraasi (väh. 10 merkkiä pitkä!), varo kirjoitusvirheitä");
-        this.phraseText = new TextArea();
+        addNewhraseHere = new Label("Täällä voit lisätä uuden fraasin tietokantaan");
+        chooseCategory = new Text("Valitse fraasin kategoria allaolevista (tasan yksi)");
+        initCheckBoxLayout();
+        writePhrase = new Text("Kirjoita alle uusi fraasi (väh. 10 merkkiä pitkä!), varo kirjoitusvirheitä");
+        phraseText = new TextArea();
 
-        this.back = new Button("Takaisin aloitussivulle");
-        this.save = new Button("Tallenna uusi fraasi");
-        this.buttonLayout = new HBox();
-        this.buttonLayout.setSpacing(10);
-        this.buttonLayout.getChildren().addAll(this.back, this.save);
+        back = new Button("Takaisin aloitussivulle");
+        save = new Button("Tallenna uusi fraasi");
+        buttonLayout = new HBox();
+        buttonLayout.setSpacing(10);
+        buttonLayout.getChildren().addAll(back, save);
 
-        this.layout = new VBox();
-        this.layout.setSpacing(20);
-        this.layout.getChildren().addAll(this.addNewhraseHere, this.chooseCategory, this.checkBoxLayout, this.writePhrase, this.phraseText, this.buttonLayout);
+        layout = new VBox();
+        layout.setSpacing(20);
+        layout.getChildren().addAll(addNewhraseHere, chooseCategory, checkBoxLayout, writePhrase, phraseText, buttonLayout);
 
-        this.scene = new Scene(this.layout, 600, 400);
+        scene = new Scene(layout, 600, 400);
     }
     
     private void initCheckBoxLayout() {
-        this.initCategoryCheckBoxes();
+        initCategoryCheckBoxes();
         checkBoxLayout = new VBox();
         checkBoxLayout.setSpacing(10);
         for (CheckBox cb : categories) {

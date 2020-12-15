@@ -14,13 +14,13 @@ public class StatisticsView implements View {
     private Scene scene;
     
     public StatisticsView() {
-        this.notImplemented = new Text("Statistiikat ei vielä toteutettu!!");
-        this.back = new Button("Takaisin aloitussivulle");
-        this.layout = new VBox();
-        this.layout.setSpacing(20);
-        this.layout.getChildren().addAll(this.notImplemented, this.back);
+        notImplemented = new Text("Statistiikat ei vielä toteutettu!!");
+        back = new Button("Takaisin aloitussivulle");
+        layout = new VBox();
+        layout.setSpacing(20);
+        layout.getChildren().addAll(notImplemented, back);
         
-        this.scene = new Scene(this.layout, 600, 400);
+        scene = new Scene(layout, 600, 400);
     }
     
     public Button getBackButton() {

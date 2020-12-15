@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
         
         // Tiedän, että tää on just nyt vähän levällään koko projekti,
-        // kun yrityän siirtyä tekstikäyttöliittymään.
+        // kun yrityän siirtyä graafiseen käyttöliittymään.
         
         new Thread() {
             @Override
