@@ -10,50 +10,41 @@ import javafx.scene.text.Text;
 
 public class StartView implements View {
     
-    // KOODIKATSELMOIJA!!
-    // Ei kannata välittää tästä tai mistään muustakaan graafiseen käyttöliittymään
-    // liittyvästä luokasta, sillä ne ovat pahasti kesken!!
-    // Jätä siis huomiotta kaikki tämän pakkauksen luokat paitsi TextUI.java.
-    
     private VBox layout;
-    private HBox buttonLayout;
-    private Button play;
-    private Button addPhrase;
-    private Button playerStats;
+    private ButtonLayout buttonLO;
+    private String[] buttonNames;
     private Label welcome;
     private Text instructions;
     private Scene scene;
     
     public StartView() {
-        
-        play = new Button("Pelaa onnenpyörää");
-        addPhrase = new Button("Lisää uusi fraasi");
-        playerStats = new Button("Pelaajatilastot");
+        buttonNames = new String[3];
+        buttonNames[0] = "Pelaajatilastot";
+        buttonNames[1] = "Lisää uusi fraasi";
+        buttonNames[2] = "Pelaa onnenpyörää";
         
         welcome = new Label("Tervetuloa!");
         instructions = new Text("Tarkastele pelaajatilastoja, lisää uusi fraasi tai pelaa peliä!");
         
-        buttonLayout = new HBox();
-        buttonLayout.setSpacing(10);
-        buttonLayout.getChildren().addAll(playerStats, addPhrase, play);
+        buttonLO = new ButtonLayout(buttonNames, 10);
         
         layout = new VBox();
         layout.setSpacing(20);
-        layout.getChildren().addAll(welcome, instructions, buttonLayout);
+        layout.getChildren().addAll(welcome, instructions, buttonLO.getLayout());
         
         scene = new Scene(layout, 600, 400);
     }
     
     public Button getPlayerStatsButton() {
-        return playerStats;
+        return buttonLO.getButton("Pelaajatilastot");
     }
     
     public Button getAddPhraseButton() {
-        return addPhrase;
+        return buttonLO.getButton("Lisää uusi fraasi");
     }
     
     public Button getPlayButton() {
-        return play;
+        return buttonLO.getButton("Pelaa onnenpyörää");
     }
 
     @Override

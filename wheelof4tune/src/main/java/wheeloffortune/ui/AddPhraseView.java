@@ -20,9 +20,8 @@ public class AddPhraseView implements View {
     private VBox checkBoxLayout;
     private Text writePhrase;
     private TextArea phraseText;
-    private Button back;
-    private Button save;
-    private HBox buttonLayout;
+    private ButtonLayout buttonLO;
+    private String[] buttonNames;
     private Scene scene;
     
     public AddPhraseView() {
@@ -33,18 +32,18 @@ public class AddPhraseView implements View {
         addNewhraseHere = new Label("Täällä voit lisätä uuden fraasin tietokantaan");
         chooseCategory = new Text("Valitse fraasin kategoria allaolevista (tasan yksi)");
         initCheckBoxLayout();
-        writePhrase = new Text("Kirjoita alle uusi fraasi (väh. 10 merkkiä pitkä!), varo kirjoitusvirheitä");
+        writePhrase = new Text("Kirjoita alle uusi fraasi (väh. 10-40!), varo kirjoitusvirheitä");
         phraseText = new TextArea();
+        phraseText.setPrefHeight(80);
 
-        back = new Button("Takaisin aloitussivulle");
-        save = new Button("Tallenna uusi fraasi");
-        buttonLayout = new HBox();
-        buttonLayout.setSpacing(10);
-        buttonLayout.getChildren().addAll(back, save);
+        buttonNames = new String[2];
+        buttonNames[0] = "Takaisin aloitussivulle";
+        buttonNames[1] = "Tallenna uusi fraasi";
+        buttonLO = new ButtonLayout(buttonNames, 10);
 
         layout = new VBox();
         layout.setSpacing(20);
-        layout.getChildren().addAll(addNewhraseHere, chooseCategory, checkBoxLayout, writePhrase, phraseText, buttonLayout);
+        layout.getChildren().addAll(addNewhraseHere, chooseCategory, checkBoxLayout, writePhrase, phraseText, buttonLO.getLayout());
 
         scene = new Scene(layout, 600, 400);
     }
@@ -85,20 +84,20 @@ public class AddPhraseView implements View {
                 categoriesSelected++;
             }
         }
-        return categoriesSelected == 1 && phraseText.getText().length() > 10;
+        return categoriesSelected == 1 && phraseText.getText().length() >= 10 && phraseText.getText().length() <= 40;
     }
     
     public void setInvalidSelections() {
         Text invalid = new Text("Lue ohjeet (suluissa)!");
-        buttonLayout.getChildren().add(invalid);
+        layout.getChildren().add(invalid);
     }
     
     public Button getBackButton() {
-        return back;
+        return buttonLO.getButton("Takaisin aloitussivulle");
     }
     
     public Button getSaveButton() {
-        return save;
+        return buttonLO.getButton("Tallenna uusi fraasi");
     }
 
     @Override
