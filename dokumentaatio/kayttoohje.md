@@ -6,8 +6,7 @@ Ohjelmasta on toistaiseksi kaksi versiota käyttöliittymän mukaan:
 - Tekstikäyttöliittymä: sisältää hieman enemmän toiminnallisuutta, mutta on luonnollisesti kömpelömpi käytettävä
 - Graafinen käyttöliittymä: kaikkea toiminnallisuutta en ole vielä kerennyt tässä toteuttaa, mutta toimivilta osiltaan GUI on tietysti miellyttävämpi käyttää
 
-Keskityn tässä käyttöohjeessa graafisen käyttöliittymän versioon, koska tekstikäyttöliittymästä on tarkoitus luopua heti,
-kun loputkin toiminnallisuudet on saatu toteutettu GUI:ssa.
+Kummankin version voi lata [täältä](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/releases/tag/viikko6). Muista ladata myös tarvittavat tietokantatiedostot!
 
 ### Konfigurointi
 
@@ -18,7 +17,22 @@ yksi validi "tietokantarivi".
 
 Käynnistäminen onnistuu komentoriviltä komennolla
 
-LISÄÄÄÄÄ TÄHÄN KOMENTO
+<pre>
+$ java -jar wheelof4tune-GUI.jar
+</pre>
+
+tai
+
+<pre>
+$ java -jar wheelof4tune-textUI.jar
+</pre>
+
+riippuen kumman version haluaa suorittaa.
+
+#### Välihuomautus
+
+Keskityn tässä käyttöohjeessa graafisen käyttöliittymän versioon, koska tekstikäyttöliittymästä on tarkoitus luopua heti,
+kun loputkin toiminnallisuudet on saatu toteutettu GUI:ssa.
 
 #### Aloitusnäkymä
 

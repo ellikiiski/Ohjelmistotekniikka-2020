@@ -14,4 +14,5 @@
 | 30.11. | 4        | Tietokannat toimimaan ja testausta lisää |
 | 1.12.  | 2        | Koodin korjailua ja hiomista plus releaset ja sekvenssikaaviot sun mut |
 | 7.12.  | 6        | Sirtymistä graafiseen käyttöliittymään, mikä työmaa... |
-| yht    | 27       | | 
+| 8.12.  | 7        | Graafisen käyttöliittymän väsäystä ja dokumentaation naputtelua |
+| yht    | 34       | | 
