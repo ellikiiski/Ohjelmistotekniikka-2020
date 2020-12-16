@@ -15,4 +15,5 @@
 | 1.12.  | 2        | Koodin korjailua ja hiomista plus releaset ja sekvenssikaaviot sun mut |
 | 7.12.  | 6        | Sirtymistä graafiseen käyttöliittymään, mikä työmaa... |
 | 8.12.  | 7        | Graafisen käyttöliittymän väsäystä ja dokumentaation naputtelua |
-| yht    | 34       | | 
+| 15.12. | 1        | Vähän koodin siistimistä ja refaktorointia |
+| yht    | 35       | | 
