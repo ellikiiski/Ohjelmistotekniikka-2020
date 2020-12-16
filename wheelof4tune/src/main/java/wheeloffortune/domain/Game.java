@@ -4,8 +4,6 @@ package wheeloffortune.domain;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
-import wheeloffortune.dao.PhraseDao;
-import wheeloffortune.dao.PlayerDao;
 
 public class Game {
     

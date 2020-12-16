@@ -4,7 +4,6 @@ package wheeloffortune.ui;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
-import wheeloffortune.domain.Game;
 import wheeloffortune.domain.PhraseDBhandler;
 import wheeloffortune.domain.PlayerDBhandler;
 

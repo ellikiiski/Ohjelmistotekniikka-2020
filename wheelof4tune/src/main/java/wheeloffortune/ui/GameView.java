@@ -2,20 +2,14 @@
 package wheeloffortune.ui;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import wheeloffortune.domain.Game;
-import wheeloffortune.domain.Phrase;
 import wheeloffortune.domain.PhraseDBhandler;
 import wheeloffortune.domain.Player;
 import wheeloffortune.domain.PlayerDBhandler;
-import wheeloffortune.domain.Sector;
 
 public class GameView implements View {
     
