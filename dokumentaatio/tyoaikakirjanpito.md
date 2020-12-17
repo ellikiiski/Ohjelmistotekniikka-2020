@@ -16,4 +16,6 @@
 | 7.12.  | 6        | Sirtymistä graafiseen käyttöliittymään, mikä työmaa... |
 | 8.12.  | 7        | Graafisen käyttöliittymän väsäystä ja dokumentaation naputtelua |
 | 15.12. | 1        | Vähän koodin siistimistä ja refaktorointia |
-| yht    | 35       | | 
+| 16.12. | 1        | Käyttöliittymän asettelun uudelleen suunnittelua ja muuta pohtimista |
+| 17.12. | 4        | Graafinen käyttöliittymä uuteen uskoon (pariinkin kertaan) ja pyörän pyöritys ja vuoronvaihto toimimaan. Konsonantin arvaamisen toteuttaminen jäi vielä levälleen. |
+| yht    | 40       | | 
