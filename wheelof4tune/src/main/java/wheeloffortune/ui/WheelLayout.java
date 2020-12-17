@@ -7,21 +7,22 @@ import javafx.scene.layout.Pane;
 
 public class WheelLayout implements Layout {
     
-    private final Label heading;
+    private Label heading;
     private Label spinned;
 
     private HBox layout;
 
     public WheelLayout() {
-        heading = new Label("OSUIT SEKTORIIN ");
-        spinned = new Label("ei vielä mitään");
+        heading = new Label("ALOITTAKAA PELI PYÖRITTÄMÄLLÄ ONNENPYÖRÄÄ");
+        spinned = new Label("(nappi: Pyöritä)");
 
         layout = new HBox();
         layout.setSpacing(10);
         layout.getChildren().addAll(heading, spinned);
     }
 
-    public void setSpinnedSector(String spin) {
+    public void setNewSpin(String player, String spin) {
+        heading = new Label(player.toUpperCase() + ", OSUIT SEKTORIIN ");
         spinned = new Label(spin);
         refresh();
     }

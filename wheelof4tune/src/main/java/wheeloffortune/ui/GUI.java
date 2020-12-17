@@ -111,6 +111,18 @@ public class GUI extends Application {
             }
         });
         
+        //
+        // PELAAMINEN
+        //
+        
+        gameView.getSpinButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
+            @Override
+            public void handle(javafx.event.ActionEvent event) {
+                gameView.spinTheWheel();
+                stage.setScene(gameView.getScene());
+            }
+        });
+        
         stage.setScene(startView.getScene());
         stage.show();
     }

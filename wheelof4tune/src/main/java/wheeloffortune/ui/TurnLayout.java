@@ -1,6 +1,7 @@
 
 package wheeloffortune.ui;
 
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -18,6 +19,15 @@ public class TurnLayout implements Layout {
         buttons = new ButtonLayout(bs, 10);
         
         refresh();
+    }
+    
+    public void setPlayerInTurn(String player) {
+        whosTurn = new Label("Pelaajan " + player + " vuoro");
+        refresh();
+    }
+    
+    public Button getSpinButton() {
+        return buttons.getButton("Pyöritä");
     }
 
     @Override

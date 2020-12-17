@@ -40,6 +40,10 @@ public class GameView implements View {
         //nextTurnTEST = new Button("Testinappi: vuoronvaihto");
         //spinButtonTEST = new Button("Testinappi: Pyöritys");
         
+        wlo = new WheelLayout();
+        tlo = new TurnLayout();
+        llo = new LettersLayout();
+        
         layout = new VBox();
         layout.setSpacing(50);
         layout.getChildren().add(wheeloffortune);
@@ -55,9 +59,8 @@ public class GameView implements View {
         
         pllo = initPllo();
         phlo = new PhraseLayout(game.getPhraseAsString(), game.getCategory());
-        wlo = new WheelLayout();
-        tlo = new TurnLayout();
-        llo = new LettersLayout();
+        
+        tlo.setPlayerInTurn(game.getPlayerInTurn().getName());
         
         refresh();
     }
@@ -72,15 +75,21 @@ public class GameView implements View {
         return new PlayersLayout(helpList.get(0), helpList.get(1), helpList.get(2));
     }
     
+    public void setPlayerInTurn(Player player) {
+        tlo.setPlayerInTurn(player.getName());
+    }
+    
     public void spinTheWheel() {
+        String spinner = game.playerInTurn();
         game.spinWheel();
-        wlo.setSpinnedSector(game.getLatestSpinSectorName());
+        wlo.setNewSpin(spinner, game.getLatestSpinSectorName());
+        tlo.setPlayerInTurn(game.getPlayerInTurn().getName());
         refresh();
     }
     
-    /*public Button getNextTurnButton() {
-        return nextTurnTEST;
-    }*/
+    public Button getSpinButton() {
+        return tlo.getSpinButton();
+    }
     
     public void refresh() {
         //pllo.setPlayerInTurn(game.getPlayerInTurn());
