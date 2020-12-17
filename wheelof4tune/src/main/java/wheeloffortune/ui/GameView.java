@@ -17,8 +17,6 @@ public class GameView implements View {
     private Game game;
     
     private final Label wheeloffortune;
-    //private Button nextTurnTEST;
-    //private Button spinButtonTEST;
     
     private PlayersLayout pllo;
     private PhraseLayout phlo;
@@ -37,8 +35,6 @@ public class GameView implements View {
         game = null;
         
         wheeloffortune = new Label("ONNENPYÖRÄ");
-        //nextTurnTEST = new Button("Testinappi: vuoronvaihto");
-        //spinButtonTEST = new Button("Testinappi: Pyöritys");
         
         wlo = new WheelLayout();
         tlo = new TurnLayout();
@@ -82,7 +78,13 @@ public class GameView implements View {
     public void spinTheWheel() {
         String spinner = game.playerInTurn();
         game.spinWheel();
-        wlo.setNewSpin(spinner, game.getLatestSpinSectorName());
+        String instruction = "Klikkaa alta konsonanttia, jota haluat arvata.";
+        if (game.latestSpinIsBankcrupt()) {
+            instruction = "Voi ei! Menitit kaikki rahasi ja vuorosikin.";
+        } else if (game.latestSpinIsSkip()) {
+            instruction = "Menetät vuorosi, mutta rahasi säästyvät.";
+        }
+        wlo.setNewSpin(spinner, game.getLatestSpinSectorName(), instruction);
         tlo.setPlayerInTurn(game.getPlayerInTurn().getName());
         refresh();
     }
@@ -92,7 +94,6 @@ public class GameView implements View {
     }
     
     public void refresh() {
-        //pllo.setPlayerInTurn(game.getPlayerInTurn());
         subLO1 = new HBox();
         subLO1.setSpacing(40);
         subLO1.getChildren().addAll(phlo.getLayout(), wlo.getLayout());

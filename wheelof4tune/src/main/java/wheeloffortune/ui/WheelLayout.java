@@ -4,34 +4,35 @@ package wheeloffortune.ui;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 public class WheelLayout implements Layout {
     
-    private Label heading;
     private Label spinned;
+    private Label instructions;
 
-    private HBox layout;
+    private VBox layout;
 
     public WheelLayout() {
-        heading = new Label("ALOITTAKAA PELI PYÖRITTÄMÄLLÄ ONNENPYÖRÄÄ");
-        spinned = new Label("(nappi: Pyöritä)");
+        spinned = new Label("ALOITA PELI PYÖRITTÄMÄLLÄ ONNENPYÖRÄÄ");
+        instructions = new Label("(Paina nappia \"Pyöritä\")");
 
-        layout = new HBox();
+        layout = new VBox();
         layout.setSpacing(10);
-        layout.getChildren().addAll(heading, spinned);
+        layout.getChildren().addAll(spinned, instructions);
     }
 
-    public void setNewSpin(String player, String spin) {
-        heading = new Label(player.toUpperCase() + ", OSUIT SEKTORIIN ");
-        spinned = new Label(spin);
+    public void setNewSpin(String player, String spin, String instruction) {
+        spinned = new Label(player.toUpperCase() + ", OSUIT SEKTORIIN " + spin);
+        instructions = new Label(instruction);
         refresh();
     }
 
     @Override
     public void refresh() {
-        layout = new HBox();
+        layout = new VBox();
         layout.setSpacing(10);
-        layout.getChildren().addAll(heading, spinned);
+        layout.getChildren().addAll(spinned, instructions);
     }
 
     @Override
