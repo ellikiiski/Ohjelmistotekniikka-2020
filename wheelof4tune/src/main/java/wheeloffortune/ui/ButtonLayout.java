@@ -39,6 +39,14 @@ public class ButtonLayout implements Layout {
             b.setDisable(true);
         }
     }
+    
+    public void enableButton(String b) {
+        for (String buttonName : buttons.keySet()) {
+            if (buttonName.equals(b)) {
+                buttons.get(b).setDisable(false);
+            }
+        }
+    }
 
     public void enableAll() {
         for (Button b : buttons.values()) {

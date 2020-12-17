@@ -13,7 +13,7 @@ public class GuessLayout implements Layout {
     private final Label nLabel;
     
     private TextField field;
-    private Button guess;
+    private ButtonLayout buttons;
     
     private Label labelShown;
     
@@ -24,26 +24,29 @@ public class GuessLayout implements Layout {
         nLabel = new Label("Osta vokaalit hintaan 250€ (A, E, I, O, U, Y, Å, Ä, Ö)");
         
         field = new TextField();
-        guess = new Button("Veikkaa");
+        String[] bs = {"Veikkaa", "Osta"};
+        buttons = new ButtonLayout(bs, 4);
         
         setToInit();
     }
     
     public void setGuessConsonant() {
         labelShown = cLabel;
-        guess.setDisable(false);
+        buttons.enableButton("Veikkaa");
+        buttons.disableButton("Osta");
         refresh();
     }
     
     public void setBuyNoun() {
         labelShown = nLabel;
-        guess.setDisable(false);
+        buttons.disableButton("Veikkaa");
+        buttons.enableButton("Osta");
         refresh();
     }
     
     public void setToInit() {
         labelShown = new Label("(Pyöritä pyörää tai valitse vokaalin osto)");
-        guess.setDisable(true);
+        buttons.disableAll();
         refresh();
     }
 
@@ -51,7 +54,7 @@ public class GuessLayout implements Layout {
     public void refresh() {
         layout = new VBox();
         layout.setSpacing(6);
-        layout.getChildren().addAll(field, labelShown, guess);
+        layout.getChildren().addAll(field, labelShown, buttons.getLayout());
     }
 
     @Override
