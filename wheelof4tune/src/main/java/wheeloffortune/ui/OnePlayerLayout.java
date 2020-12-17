@@ -13,18 +13,15 @@ public class OnePlayerLayout implements Layout {
 
     private Label name;
     private Label money;
-    private ButtonLayout buttons;
 
     private VBox layout;
 
-    public OnePlayerLayout(Player p, String[] bs) {
+    public OnePlayerLayout(Player p) {
         player = p;
         inTurn = false;
 
         name = new Label(player.getName());
         money = new Label("0€");
-        buttons = new ButtonLayout(bs, 5);
-        buttons.disableAll();
 
         refresh();
     }
@@ -32,10 +29,6 @@ public class OnePlayerLayout implements Layout {
     public void setTurn(boolean turn) {
         inTurn = turn;
         refresh();
-    }
-    
-    public ButtonLayout getButtonLayout() {
-        return buttons;
     }
 
     public Player getPlayer() {
@@ -46,7 +39,7 @@ public class OnePlayerLayout implements Layout {
     public void refresh() {
         layout = new VBox();
         layout.setSpacing(20);
-        layout.getChildren().addAll(name, money, buttons.getLayout());
+        layout.getChildren().addAll(name, money);
     }
 
     @Override

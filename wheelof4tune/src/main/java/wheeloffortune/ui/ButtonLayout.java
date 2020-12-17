@@ -18,6 +18,7 @@ public class ButtonLayout implements Layout {
             buttons.put(b, new Button(b));
         }
         spacing = space;
+        
         refresh();
     }
 

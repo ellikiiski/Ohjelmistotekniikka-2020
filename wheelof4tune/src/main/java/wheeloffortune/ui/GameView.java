@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import wheeloffortune.domain.Game;
 import wheeloffortune.domain.PhraseDBhandler;
@@ -15,17 +16,20 @@ public class GameView implements View {
     
     private Game game;
     
-    private Label wheeloffortune;
-    private Button nextTurnTEST;
-    private Button spinButtonTEST;
+    private final Label wheeloffortune;
+    //private Button nextTurnTEST;
+    //private Button spinButtonTEST;
     
-    private PlayersLayout inTurn;
-    
+    private PlayersLayout pllo;
     private PhraseLayout phlo;
     private WheelLayout wlo;
-    private PlayersLayout pllo;
+    private TurnLayout tlo;
+    private LettersLayout llo;
     
     private VBox layout;
+    
+    private HBox subLO1;
+    private HBox subLO2;
     
     private Scene scene;
     
@@ -33,8 +37,8 @@ public class GameView implements View {
         game = null;
         
         wheeloffortune = new Label("ONNENPYÖRÄ");
-        nextTurnTEST = new Button("Testinappi: vuoronvaihto");
-        spinButtonTEST = new Button("Testinappi: Pyöritys");
+        //nextTurnTEST = new Button("Testinappi: vuoronvaihto");
+        //spinButtonTEST = new Button("Testinappi: Pyöritys");
         
         layout = new VBox();
         layout.setSpacing(50);
@@ -49,9 +53,11 @@ public class GameView implements View {
             game.addPlayer(p);
         }
         
+        pllo = initPllo();
         phlo = new PhraseLayout(game.getPhraseAsString(), game.getCategory());
         wlo = new WheelLayout();
-        pllo = initPllo();
+        tlo = new TurnLayout();
+        llo = new LettersLayout();
         
         refresh();
     }
@@ -63,12 +69,7 @@ public class GameView implements View {
             helpList.add(player);
         }
         
-        String[] buttons = new String[3];
-        buttons[0] = "Arvaa";
-        buttons[1] = "Pyöritä";
-        buttons[2] = "Osta vokaali";
-        
-        return new PlayersLayout(helpList.get(0), helpList.get(1), helpList.get(2), buttons);
+        return new PlayersLayout(helpList.get(0), helpList.get(1), helpList.get(2));
     }
     
     public void spinTheWheel() {
@@ -77,18 +78,23 @@ public class GameView implements View {
         refresh();
     }
     
-    public Button getNextTurnButton() {
+    /*public Button getNextTurnButton() {
         return nextTurnTEST;
-    }
-    
-    public Button getSpinButton() {
-        return spinButtonTEST;
-    }
+    }*/
     
     public void refresh() {
+        //pllo.setPlayerInTurn(game.getPlayerInTurn());
+        subLO1 = new HBox();
+        subLO1.setSpacing(40);
+        subLO1.getChildren().addAll(phlo.getLayout(), wlo.getLayout());
+        
+        subLO2 = new HBox();
+        subLO2.setSpacing(40);
+        subLO2.getChildren().addAll(tlo.getLayout(), llo.getLayout());
+        
         layout = new VBox();
         layout.setSpacing(50);
-        layout.getChildren().addAll(wheeloffortune, spinButtonTEST, phlo.getLayout(), wlo.getLayout(), pllo.getLayout());
+        layout.getChildren().addAll(wheeloffortune,  pllo.getLayout(), subLO1, subLO2);
         
         scene = new Scene(layout, 800, 500);
     }

@@ -2,7 +2,6 @@
 package wheeloffortune.ui;
 
 import java.util.HashMap;
-import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import wheeloffortune.domain.Player;
@@ -15,16 +14,16 @@ public class PlayersLayout implements Layout {
 
     private HBox layout;
 
-    public PlayersLayout(Player p1, Player p2, Player p3, String[] bs) {
+    public PlayersLayout(Player p1, Player p2, Player p3) {
         oplos = new HashMap<>();
-        oplos.put(p1, new OnePlayerLayout(p1, bs));
-        oplos.put(p2, new OnePlayerLayout(p2, bs));
-        oplos.put(p3, new OnePlayerLayout(p3, bs));
+        oplos.put(p1, new OnePlayerLayout(p1));
+        oplos.put(p2, new OnePlayerLayout(p2));
+        oplos.put(p3, new OnePlayerLayout(p3));
 
         refresh();
     }
 
-    private void setPlayerInTurn(Player p) {
+    public void setPlayerInTurn(Player p) {
         for (Player player : oplos.keySet()) {
             if (player.equals(p)) {
                 oplos.get(p).setTurn(true);
@@ -32,10 +31,6 @@ public class PlayersLayout implements Layout {
                 oplos.get(p).setTurn(false);
             }
         }
-    }
-
-    public Button getPlayerButton(Player p, String b) {
-        return oplos.get(p).getButtonLayout().getButton(b);
     }
 
     @Override

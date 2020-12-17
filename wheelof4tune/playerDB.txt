@@ -1,3 +1,6 @@
 elli	4350
 luuseri	0
 saku	100
+a	0
+b	0
+c	0

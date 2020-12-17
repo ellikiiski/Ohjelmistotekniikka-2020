@@ -25,6 +25,8 @@ public class GUI extends Application {
         AddPlayersView aPlView = new AddPlayersView();
         GameView gameView = new GameView();
         
+        boolean gameInitialized = false;
+        
         //
         // STATISTIIKKANÄKYMÄÄN (ei toteutettu)
         //
@@ -106,14 +108,6 @@ public class GUI extends Application {
                     aPlView.invalidPlayersMessage();
                     stage.setScene(aPlView.getScene());
                 }
-            }
-        });
-        
-        gameView.getSpinButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
-            @Override
-            public void handle(javafx.event.ActionEvent event) {
-                gameView.spinTheWheel();
-                stage.setScene(gameView.getScene());
             }
         });
         
