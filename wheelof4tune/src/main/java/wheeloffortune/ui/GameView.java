@@ -22,7 +22,7 @@ public class GameView implements View {
     private PhraseLayout phlo;
     private WheelLayout wlo;
     private TurnLayout tlo;
-    private LettersLayout llo;
+    private GuessLayout glo;
     
     private VBox layout;
     
@@ -38,7 +38,7 @@ public class GameView implements View {
         
         wlo = new WheelLayout();
         tlo = new TurnLayout();
-        llo = new LettersLayout();
+        glo = new GuessLayout();
         
         layout = new VBox();
         layout.setSpacing(50);
@@ -78,15 +78,24 @@ public class GameView implements View {
     public void spinTheWheel() {
         String spinner = game.playerInTurn();
         game.spinWheel();
-        String instruction = "Klikkaa alta konsonanttia, jota haluat arvata.";
+        String instruction = "";
         if (game.latestSpinIsBankcrupt()) {
             instruction = "Voi ei! Menitit kaikki rahasi ja vuorosikin.";
+            newTurn();
         } else if (game.latestSpinIsSkip()) {
             instruction = "Menetät vuorosi, mutta rahasi säästyvät.";
+            newTurn();
+        } else {
+            instruction = "Kirjoita alle konsonantti, jota haluat veikata.";
+            glo.setGuessConsonant();
         }
         wlo.setNewSpin(spinner, game.getLatestSpinSectorName(), instruction);
         tlo.setPlayerInTurn(game.getPlayerInTurn().getName());
         refresh();
+    }
+    
+    public void newTurn() {
+        glo.setToInit();
     }
     
     public Button getSpinButton() {
@@ -100,7 +109,7 @@ public class GameView implements View {
         
         subLO2 = new HBox();
         subLO2.setSpacing(40);
-        subLO2.getChildren().addAll(tlo.getLayout(), llo.getLayout());
+        subLO2.getChildren().addAll(tlo.getLayout(), glo.getLayout());
         
         layout = new VBox();
         layout.setSpacing(50);

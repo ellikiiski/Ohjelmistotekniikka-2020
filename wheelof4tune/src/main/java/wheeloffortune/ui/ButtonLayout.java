@@ -23,7 +23,7 @@ public class ButtonLayout implements Layout {
     }
 
     public Button getButton(String b) {
-        return buttons.get(b);
+        return buttons.getOrDefault(b, null);
     }
 
     public void disableButton(String b) {
