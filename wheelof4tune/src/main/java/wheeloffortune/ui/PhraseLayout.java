@@ -19,8 +19,13 @@ public class PhraseLayout implements Layout {
         refresh();
     }
     
+    public void setPhrase(String p) {
+        phrase = new Label(p);
+        refresh();
+    }
+    
     @Override
-    public void refresh() {
+    public void refresh() {        
         layout = new VBox();
         layout.setSpacing(10);
         layout.getChildren().addAll(phrase, category);

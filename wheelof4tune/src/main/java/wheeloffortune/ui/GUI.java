@@ -127,13 +127,16 @@ public class GUI extends Application {
         
         // Konsonantin veikkaaminen
         
-        /*gameView.getSpinButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
+        gameView.getGuessButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
             public void handle(javafx.event.ActionEvent event) {
-                gameView.spinTheWheel();
-                stage.setScene(gameView.getScene());
+                if (gameView.guessConsonant()) {
+                    stage.setScene(gameView.getScene());
+                } else {
+                    gameView.setMessage("Hei tarkkana ny");
+                }
             }
-        });*/
+        });
         
         stage.setScene(startView.getScene());
         stage.show();

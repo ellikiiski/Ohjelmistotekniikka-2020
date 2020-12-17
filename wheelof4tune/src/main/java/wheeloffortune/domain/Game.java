@@ -23,19 +23,19 @@ public class Game {
     
     public Game(PlayerDBhandler playerDBh, PhraseDBhandler phraseDBh) {
         
-        this.plDBh  = playerDBh;
-        this.phDBh = phraseDBh;
+        plDBh  = playerDBh;
+        phDBh = phraseDBh;
         
-        this.score = new HashMap<>();
-        this.turnTracker = new ArrayList<>();
-        this.turnIndex = 0;
-        this.playerInTurn = null;
-        this.wheel = new Wheel(800);
-        this.phrase = this.phDBh.getPhrase();
-        this.guessed = new ArrayList<>();
-        this.revealed = this.hideLetters();
-        this.latestSpin = null;
-        this.isOver = false;
+        score = new HashMap<>();
+        turnTracker = new ArrayList<>();
+        turnIndex = 0;
+        playerInTurn = null;
+        wheel = new Wheel(800);
+        phrase = phDBh.getPhrase();
+        guessed = new ArrayList<>();
+        revealed = hideLetters();
+        latestSpin = null;
+        isOver = false;
     }
     
     // fraasien lisäys tietokantaan
@@ -60,8 +60,8 @@ public class Game {
     
     public void spinWheel() {
         latestSpin = wheel.spin();
-        if (this.latestSpinIsBankcrupt() || this.latestSpinIsSkip()) {
-            this.nextPlayersTurn();
+        if (latestSpinIsBankcrupt() || latestSpinIsSkip()) {
+            nextPlayersTurn();
         }
     }
     
@@ -93,10 +93,13 @@ public class Game {
     }
     
     public int guessConsonant(char consonant) {
+        if (isConsonant(consonant)) {
+            return -666;
+        }
         int guessedConsonants = revealLetter(consonant);
-        this.addScore(guessedConsonants);
+        addScore(guessedConsonants);
         if (guessedConsonants == 0) {
-            this.nextPlayersTurn();
+            nextPlayersTurn();
         }
         return guessedConsonants;
     }
@@ -165,7 +168,7 @@ public class Game {
     }
     
     public String getPhraseAsString() {
-        return this.letterArrayToString();
+        return letterArrayToString();
     }
 
     public String getCategory() {
@@ -177,6 +180,16 @@ public class Game {
     }
     
     // private apumetodeja
+    
+    private boolean isConsonant(char c) {
+        return c == 'B' || c == 'C' || c == 'D' || c == 'F' || c == 'G' || c == 'H'
+                || c == 'J' || c == 'K' || c == 'L' || c == 'M' || c == 'N' || c == 'P' || c == 'Q'
+                || c == 'R' || c == 'S' || c == 'T' || c == 'V' || c == 'W' || c == 'X' || c == 'Z'; 
+    }
+    
+    private boolean isNoun(char c) {
+        return c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U' || c == 'Y' || c == 'Å' || c == 'Ä' || c == 'Ö';
+    }
     
     private char[] hideLetters() {
         char[] allHidden = new char[phrase.getLetters().length];

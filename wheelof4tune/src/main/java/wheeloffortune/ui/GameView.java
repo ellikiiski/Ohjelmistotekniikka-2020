@@ -98,8 +98,46 @@ public class GameView implements View {
         glo.setToInit();
     }
     
+    // TÄTÄ PITÄÄ VIRLÄ
+    // KEHITTÄÄ PALJON
+    // konsonantin tarkistus
+    public boolean guessConsonant() {
+        String s = glo.getFieldText();
+        if (s.length() != 1) {
+            return false;
+        }
+        if (game.guessConsonant(s.charAt(0)) >= 0) {
+            phlo.setPhrase(game.getPhraseAsString());
+            return true;
+        }
+        return false;
+    }
+    
+    // huonosti toteutettu!!!
+    // korjauksia pliikku
+    
+    public void setMessage(String message) {
+        layout.getChildren().add(new Label(message));
+    }
+    
+    // TÄTÄ PITÄÄ VIRLÄ
+    // KEHITTÄÄ PALJON
+    // vokaalin tarkistus
+    public boolean guessNoun() {
+        String s = glo.getFieldText();
+        return s.length() == 1;
+    }
+    
     public Button getSpinButton() {
         return tlo.getSpinButton();
+    }
+    
+    public Button getGuessButton() {
+        return glo.getGuessButton();
+    }
+    
+    public Button getBuyButton() {
+        return glo.getBuyButton();
     }
     
     public void refresh() {

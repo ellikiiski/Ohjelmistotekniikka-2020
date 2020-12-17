@@ -49,6 +49,18 @@ public class GuessLayout implements Layout {
         buttons.disableAll();
         refresh();
     }
+    
+    public String getFieldText() {
+        return field.getText();
+    }
+    
+    public Button getGuessButton() {
+        return buttons.getButton("Veikkaa");
+    }
+    
+    public Button getBuyButton() {
+        return buttons.getButton("Osta");
+    }
 
     @Override
     public void refresh() {
