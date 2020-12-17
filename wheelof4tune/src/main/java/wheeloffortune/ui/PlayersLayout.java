@@ -36,7 +36,7 @@ public class PlayersLayout implements Layout {
     @Override
     public void refresh() {
         layout = new HBox();
-        layout.setSpacing(30);
+        layout.setSpacing(50);
         for (OnePlayerLayout lo : oplos.values()) {
             layout.getChildren().add(lo.getLayout());
         }
