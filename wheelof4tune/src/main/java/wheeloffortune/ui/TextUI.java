@@ -81,7 +81,7 @@ public class TextUI {
         System.out.println("TERVETULOA ONNENPYÖRÄÄN!");
         System.out.println("Kategoria: " + game.getCategory());
         System.out.println("");
-        while (!game.isOver()) {
+        while (true) {
             System.out.println("Arvuuteltava fraasi: " + game.getPhraseAsString());
             System.out.println("");
             System.out.println("Pelaajan " + game.playerInTurn() + " vuoro, tähän mennessä olet kerännyt " + game.getScore() + "€");
@@ -101,6 +101,7 @@ public class TextUI {
                 if (game.tryToGuessPhrase(guess)) {
                     System.out.println("");
                     System.out.println("SE ON OIKEIN!!!");
+                    break;
                 } else {
                     System.out.println("Väärin meni, vuoro vaihtuu.");
                 }

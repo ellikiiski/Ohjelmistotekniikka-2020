@@ -49,7 +49,7 @@ public class GuessLayout implements Layout {
     }
     
     public void setGuessThePhrase() {
-        labelShown = cLabel;
+        labelShown = gLabel;
         buttons.disableAll();
         buttons.enableButton("Ratkaise");
         field.setDisable(false);

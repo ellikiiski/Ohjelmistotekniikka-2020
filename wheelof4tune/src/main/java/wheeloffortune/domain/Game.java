@@ -19,7 +19,6 @@ public class Game {
     private ArrayList<Character> guessed;
     private char[] revealed;
     private Sector latestSpin;
-    private boolean isOver;
     
     public Game(PlayerDBhandler playerDBh, PhraseDBhandler phraseDBh) {
         
@@ -35,7 +34,6 @@ public class Game {
         guessed = new ArrayList<>();
         revealed = hideLetters();
         latestSpin = null;
-        isOver = false;
     }
     
     // fraasien lisäys tietokantaan
@@ -85,12 +83,13 @@ public class Game {
     
     public boolean tryToGuessPhrase(String guess) {
         if (guess.toUpperCase().equals(phrase.getPhrase())) {
-            for (int i = 0; i < revealed.length; i++) {
-                revealed[i] = phrase.getLetters()[i];
-            }
-            isOver = true;
+            System.out.println("meni oikein");
+            System.out.println(getPhraseAsString());
+            revealAll();
+            System.out.println(getPhraseAsString());
             return true;
         }
+        System.out.println("väärin meni");
         nextPlayersTurn();
         return false;
     }
@@ -131,6 +130,12 @@ public class Game {
         return lettersFound;
     }
     
+    public void revealAll() {
+        for (int i = 0; i < revealed.length; i++) {
+            revealed[i] = phrase.getLetters()[i];
+        }
+    }
+    
     // pisteiden lisäys ja nollaus
     
     public void addScore(int x) {
@@ -167,10 +172,6 @@ public class Game {
     
     public int getScore() {
         return score.get(playerInTurn);
-    }
-    
-    public boolean isOver() {
-        return isOver;
     }
     
     public String getPhraseAsString() {

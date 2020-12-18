@@ -162,6 +162,27 @@ public class GUI extends Application {
             }
         });
         
+        // ratkaisun yrittäminen
+        
+        gameView.getGuessThePhraseButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
+            @Override
+            public void handle(javafx.event.ActionEvent event) {
+                if (gameView.setGuessThePhrase()) {
+                    stage.setScene(gameView.getScene());
+                } else {
+                    gameView.setMessage("Hei tarkkana ny");
+                }
+            }
+        });
+        
+        gameView.getSolveButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
+            @Override
+            public void handle(javafx.event.ActionEvent event) {
+                gameView.guessThePhrase();
+                stage.setScene(gameView.getScene());
+            }
+        });
+        
         stage.setScene(startView.getScene());
         stage.show();
     }

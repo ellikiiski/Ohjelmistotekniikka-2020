@@ -15,7 +15,7 @@ public class TurnLayout implements Layout {
     
     public TurnLayout() {
         whosTurn = new Label("Pelaajan x vuoro");
-        String[] bs = {"Osta vokaali", "Pyöritä", "Arvaa"};
+        String[] bs = {"Osta vokaali", "Pyöritä", "Arvaa ratkaisua"};
         buttons = new ButtonLayout(bs, 10);
         
         refresh();
@@ -32,6 +32,10 @@ public class TurnLayout implements Layout {
     
     public Button getBuyNounButton() {
         return buttons.getButton("Osta vokaali");
+    }
+    
+    public Button getGuessThePhraseButton() {
+        return buttons.getButton("Arvaa ratkaisua");
     }
 
     @Override

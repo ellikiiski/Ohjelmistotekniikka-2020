@@ -95,6 +95,7 @@ public class GameView implements View {
     }
     
     public void newTurn() {
+        phlo.setPhrase(game.getPhraseAsString());
         pllo.addMoneyToBank(game.getPlayerInTurn(), game.getScore());
         glo.setToInit();
         tlo.setPlayerInTurn(game.playerInTurn());
@@ -110,7 +111,7 @@ public class GameView implements View {
         }
         int letters = game.guessConsonant(s.toUpperCase().charAt(0));
         if (letters  >= 0) {
-            phlo.setPhrase(game.getPhraseAsString());
+            //phlo.setPhrase(game.getPhraseAsString());
             newTurn();
             refresh();
             return true;
@@ -135,12 +136,26 @@ public class GameView implements View {
         }
         int letters = game.buyNoun(s.toUpperCase().charAt(0));
         if (letters >= 0) {
-            phlo.setPhrase(game.getPhraseAsString());
+            //phlo.setPhrase(game.getPhraseAsString());
             newTurn();
             refresh();
             return true;
         }
         return false;
+    }
+    
+    // tätäkin vois vähän pohtia tarkemmin
+    public boolean setGuessThePhrase() {
+        glo.setGuessThePhrase();
+        refresh();
+        return true;
+    }
+    
+    public void guessThePhrase() {
+        String s = glo.getFieldText();
+        game.tryToGuessPhrase(s);
+        newTurn();
+        refresh();
     }
     
     // huonosti toteutettu!!!
@@ -156,6 +171,10 @@ public class GameView implements View {
     
     public Button getBuyNounButton() {
         return tlo.getBuyNounButton();
+    }
+    
+    public Button getGuessThePhraseButton() {
+        return tlo.getGuessThePhraseButton();
     }
     
     public Button getGuessButton() {
