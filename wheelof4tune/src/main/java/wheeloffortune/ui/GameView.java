@@ -54,6 +54,8 @@ public class GameView implements View {
         
         tlo.setPlayerInTurn(game.getPlayerInTurn().getName());
         
+        tlo.disableAllButtons();
+        tlo.enalbleSpinButton();
         refresh();
     }
     
@@ -80,6 +82,7 @@ public class GameView implements View {
         } else {
             instruction = "osuit sektoriin " + game.getLatestSpinSectorName() + "!";
             glo.setGuessConsonant();
+            tlo.disableAllButtons();
         }
         wlo.setNewSpin(game.getLatestSpinSectorName());
         tlo.setLatestEvent(spinner, instruction);
@@ -92,6 +95,11 @@ public class GameView implements View {
         pllo.addMoneyToBank(game.getPlayerInTurn(), game.getScore());
         glo.setToInit();
         tlo.setPlayerInTurn(game.getPlayerInTurn().getName());
+        tlo.enalbleSpinButton();
+        tlo.enableGuessThePhraseButton();
+        if (game.canBuyNoun()) {
+            tlo.enabeBuyNounButton();
+        }
     }
     
     // alustava
@@ -119,6 +127,7 @@ public class GameView implements View {
     public boolean setBuyNoun() {
         glo.setBuyNoun();
         tlo.setLatestEvent(game.getPlayerInTurn().getName(), "sinulla on pankissa tarpeeksi rahaa\nostaaksesi vokaalin.");
+        tlo.disableAllButtons();
         refresh();
         return true;
     }
@@ -147,6 +156,7 @@ public class GameView implements View {
     public boolean setGuessThePhrase() {
         glo.setGuessThePhrase();
         tlo.setLatestEvent(game.getPlayerInTurn().getName(), "haluat yrittää ratkaista tehtävän...");
+        tlo.disableAllButtons();
         refresh();
         return true;
     }

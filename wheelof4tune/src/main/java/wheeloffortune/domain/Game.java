@@ -102,6 +102,7 @@ public class Game {
     }
     
     public boolean canBuyNoun() {
+        System.out.println(score.get(playerInTurn));
         return score.get(playerInTurn) >= 250;
     }
     

@@ -33,6 +33,22 @@ public class TurnLayout implements Layout {
         refresh();
     }
     
+    public void disableAllButtons() {
+        buttons.disableAll();
+    }
+    
+    public void enalbleSpinButton() {
+        buttons.enableButton("Pyöritä");
+    }
+    
+    public void enabeBuyNounButton() {
+        buttons.enableButton("Osta vokaali");
+    }
+    
+    public void enableGuessThePhraseButton() {
+        buttons.enableButton("Arvaa ratkaisua");
+    }
+    
     public Button getSpinButton() {
         return buttons.getButton("Pyöritä");
     }
