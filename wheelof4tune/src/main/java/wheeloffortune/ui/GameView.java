@@ -76,7 +76,7 @@ public class GameView implements View {
     }
     
     public void spinTheWheel() {
-        String spinner = game.playerInTurn();
+        String spinner = game.getPlayerInTurn().getName();
         game.spinWheel();
         String instruction = "";
         if (game.latestSpinIsBankcrupt()) {
@@ -98,12 +98,10 @@ public class GameView implements View {
         phlo.setPhrase(game.getPhraseAsString());
         pllo.addMoneyToBank(game.getPlayerInTurn(), game.getScore());
         glo.setToInit();
-        tlo.setPlayerInTurn(game.playerInTurn());
+        tlo.setPlayerInTurn(game.getPlayerInTurn().getName());
     }
     
-    // TÄTÄ PITÄÄ VIRLÄ
-    // KEHITTÄÄ PALJON
-    // konsonantin tarkistus
+    // alustava
     public boolean guessConsonant() {
         String s = glo.getFieldText();
         if (s.length() != 1) {
@@ -111,7 +109,6 @@ public class GameView implements View {
         }
         int letters = game.guessConsonant(s.toUpperCase().charAt(0));
         if (letters  >= 0) {
-            //phlo.setPhrase(game.getPhraseAsString());
             newTurn();
             refresh();
             return true;
@@ -126,9 +123,7 @@ public class GameView implements View {
         return true;
     }
     
-    // TÄTÄ PITÄÄ VIRLÄ
-    // KEHITTÄÄ PALJON
-    // vokaalin tarkistus
+    // alustava
     public boolean buyNoun() {
         String s = glo.getFieldText();
         if (s.length() != 1) {
@@ -136,7 +131,6 @@ public class GameView implements View {
         }
         int letters = game.buyNoun(s.toUpperCase().charAt(0));
         if (letters >= 0) {
-            //phlo.setPhrase(game.getPhraseAsString());
             newTurn();
             refresh();
             return true;
@@ -158,9 +152,7 @@ public class GameView implements View {
         refresh();
     }
     
-    // huonosti toteutettu!!!
-    // korjauksia pliikku
-    
+    // alustava
     public void setMessage(String message) {
         layout.getChildren().add(new Label(message));
     }

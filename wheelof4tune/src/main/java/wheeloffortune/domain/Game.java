@@ -36,11 +36,6 @@ public class Game {
         latestSpin = null;
     }
     
-    // fraasien lisäys tietokantaan
-    public boolean addPhrase(String phrase, String categoryName) {
-        return phDBh.addPhrase(phrase, categoryName);
-    }
-    
     // pelaajien lisäys
     
     public boolean addPlayer(String name) {
@@ -74,7 +69,7 @@ public class Game {
         return latestSpin.getSectorType() == SectorType.SKIP;
     }
     
-    public void nextPlayersTurn() {
+    private void nextPlayersTurn() {
         turnIndex = (turnIndex + 1) % turnTracker.size();
         playerInTurn = turnTracker.get(turnIndex);
     }
@@ -138,11 +133,11 @@ public class Game {
     
     // pisteiden lisäys ja nollaus
     
-    public void addScore(int x) {
+    private void addScore(int x) {
         score.put(playerInTurn, score.get(playerInTurn) + x * latestSpin.getValue());
     }
 
-    public void resetScore() {
+    private void resetScore() {
         score.put(playerInTurn, 0);
     }
     
@@ -163,13 +158,6 @@ public class Game {
         return playerInTurn;
     }
     
-    public String playerInTurn() {
-        if (playerInTurn == null) {
-            System.out.println("Pelistä puuttuu pelaajat!");
-        }
-        return playerInTurn.getName();
-    }
-    
     public int getScore() {
         return score.get(playerInTurn);
     }
@@ -186,7 +174,7 @@ public class Game {
         return latestSpin.toString();
     }
     
-    // private apumetodeja
+    // apumetodeja
     
     private boolean isConsonant(char c) {
         return c == 'B' || c == 'C' || c == 'D' || c == 'F' || c == 'G' || c == 'H'
