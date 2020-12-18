@@ -15,6 +15,9 @@ import wheeloffortune.domain.PlayerDBhandler;
 public class GameView implements View {
     
     private Game game;
+    private String winnerName;
+    private String correctPhrase;
+    private int winningMoney;
     
     private PlayersLayout pllo;
     private PhraseLayout phlo;
@@ -31,6 +34,9 @@ public class GameView implements View {
     
     public GameView() {
         game = null;
+        winnerName = "Ei kukaan";
+        correctPhrase = "Ei, ei, ei";
+        winningMoney = 0;
         
         wlo = new WheelLayout();
         tlo = new TurnLayout();
@@ -161,21 +167,40 @@ public class GameView implements View {
         return true;
     }
     
-    public void guessThePhrase() {
+    public boolean guessThePhrase() {
         String guess = glo.getFieldText();
         String playerGuessing = game.getPlayerInTurn().getName();
         if (game.tryToGuessPhrase(guess)) {
-            tlo.setLatestEvent(playerGuessing, "VOITTI PELIN!!!");
-        } else {
-            tlo.setLatestEvent(playerGuessing, "arvasi ratkaisuksi \"" + guess.toUpperCase() + "\",\nmutta se oli väärin.");
+            setGameOver();
+            return true;
         }
+        tlo.setLatestEvent(playerGuessing, "arvasi ratkaisuksi \"" + guess.toUpperCase() + "\",\nmutta se oli väärin.");
         newTurn();
         refresh();
+        return false;
     }
     
     // alustava
     public void setMessage(String message) {
         layout.getChildren().add(new Label(message));
+    }
+    
+    private void setGameOver() {
+        winningMoney = game.declrareWinner();
+        winnerName = game.getPlayerInTurn().getName();
+        correctPhrase = game.getPhraseAsString();        
+    }
+    
+    public String getWinnerName() {
+        return winnerName;
+    }
+    
+    public String getCorrectPhrase() {
+        return correctPhrase;
+    }
+    
+    public int getWinningMoney() {
+        return winningMoney;
     }
     
     public Button getSpinButton() {

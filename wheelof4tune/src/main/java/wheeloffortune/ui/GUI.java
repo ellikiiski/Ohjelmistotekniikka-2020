@@ -24,6 +24,7 @@ public class GUI extends Application {
         StatisticsView statView = new StatisticsView();
         AddPlayersView aPlView = new AddPlayersView();
         GameView gameView = new GameView();
+        GameOverView gameOverView = new GameOverView();
         
         boolean gameInitialized = false;
         
@@ -184,8 +185,32 @@ public class GUI extends Application {
         gameView.getSolveButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
             public void handle(javafx.event.ActionEvent event) {
-                gameView.guessThePhrase();
-                stage.setScene(gameView.getScene());
+                if (gameView.guessThePhrase()) {
+                    gameOverView.setGameOver(gameView.getWinnerName(), gameView.getCorrectPhrase(), gameView.getWinningMoney());
+                    stage.setScene(gameOverView.getScene());
+                } else {
+                    stage.setScene(gameView.getScene());
+                }
+            }
+        });
+        
+        // takaisin aloitussivulle
+        
+        gameOverView.getBackToTheStartButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
+            @Override
+            public void handle(javafx.event.ActionEvent event) {
+                    stage.setScene(startView.getScene());
+                    stage.setTitle("Tervetuloa");
+            }
+        });
+        
+        // statistiikkanäkymään
+        
+        gameOverView.getToStatisticsButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
+            @Override
+            public void handle(javafx.event.ActionEvent event) {
+                stage.setScene(statView.getScene());
+                stage.setTitle("Pelaajatilastot");
             }
         });
         
