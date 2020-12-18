@@ -25,8 +25,6 @@ public class GUI extends Application {
         GameView gameView = new GameView();
         GameOverView gameOverView = new GameOverView();
         
-        boolean gameInitialized = false;
-        
         //
         // STATISTIIKKANÄKYMÄÄN (ei toteutettu)
         //
@@ -68,7 +66,6 @@ public class GUI extends Application {
             public void handle(javafx.event.ActionEvent event) {
                 if (aPhView.allowedToSave()) {
                     phDBh.addPhrase(aPhView.getPhraseText(), aPhView.getCategoryName());
-                    aPhView.emptyScene();
                     stage.setScene(startView.getScene());
                 } else {
                     aPhView.setInvalidSelections();

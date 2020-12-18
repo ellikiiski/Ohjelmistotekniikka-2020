@@ -13,38 +13,25 @@ import wheeloffortune.domain.Category;
 public class AddPhraseView implements View {
     
     private VBox layout;
-    private Label addNewhraseHere;
-    private Text chooseCategory;
+    private final Label addNewhraseHere;
+    private final Text chooseCategory;
     private CheckBox[] categories;
     private VBox checkBoxLayout;
-    private Text writePhrase;
+    private final Text writePhrase;
     private TextArea phraseText;
-    private ButtonLayout buttonLO;
-    private String[] buttonNames;
+    private final ButtonLayout buttonLO;
     private Scene scene;
     
     public AddPhraseView() {
-        emptyScene();
-    }
-    
-    public void emptyScene() {
         addNewhraseHere = new Label("Täällä voit lisätä uuden fraasin tietokantaan");
         chooseCategory = new Text("Valitse fraasin kategoria allaolevista (tasan yksi)");
-        initCheckBoxLayout();
+
         writePhrase = new Text("Kirjoita alle uusi fraasi (väh. 10-40!), varo kirjoitusvirheitä");
-        phraseText = new TextArea();
-        phraseText.setPrefHeight(80);
 
-        buttonNames = new String[2];
-        buttonNames[0] = "Takaisin aloitussivulle";
-        buttonNames[1] = "Tallenna uusi fraasi";
-        buttonLO = new ButtonLayout(buttonNames, 10);
-
-        layout = new VBox();
-        layout.setSpacing(20);
-        layout.getChildren().addAll(addNewhraseHere, chooseCategory, checkBoxLayout, writePhrase, phraseText, buttonLO.getLayout());
-
-        scene = new Scene(layout, 600, 400);
+        String[] bs = {"Takaisin aloitussivulle", "Tallenna uusi fraasi"};
+        buttonLO = new ButtonLayout(bs, 10);
+        
+        refresh();
     }
     
     private void initCheckBoxLayout() {
@@ -98,9 +85,22 @@ public class AddPhraseView implements View {
     public Button getSaveButton() {
         return buttonLO.getButton("Tallenna uusi fraasi");
     }
+    
+        @Override
+    public void refresh() {
+        initCheckBoxLayout();
+        phraseText = new TextArea();
+        phraseText.setPrefHeight(80);
+        layout = new VBox();
+        layout.setSpacing(20);
+        layout.getChildren().addAll(addNewhraseHere, chooseCategory, checkBoxLayout, writePhrase, phraseText, buttonLO.getLayout());
+
+        scene = new Scene(layout, 600, 400);
+    }
 
     @Override
     public Scene getScene() {
+        refresh();
         return scene;
     }
     

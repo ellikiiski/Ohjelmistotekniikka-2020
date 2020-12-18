@@ -46,6 +46,7 @@ public class GameOverView implements View {
         return buttons.getButton("Pelaajatilastoihin");
     }
     
+    @Override
     public void refresh() {
         layout = new VBox();
         layout.setSpacing(30);
@@ -56,6 +57,7 @@ public class GameOverView implements View {
 
     @Override
     public Scene getScene() {
+        refresh();
         return scene;
     }
     

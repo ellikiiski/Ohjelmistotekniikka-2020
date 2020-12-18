@@ -10,28 +10,20 @@ import javafx.scene.text.Text;
 public class StartView implements View {
     
     private VBox layout;
-    private ButtonLayout buttonLO;
-    private String[] buttonNames;
-    private Label welcome;
-    private Text instructions;
+    private final ButtonLayout buttonLO;
+    private final Label welcome;
+    private final Text instructions;
     private Scene scene;
     
     public StartView() {
-        buttonNames = new String[3];
-        buttonNames[0] = "Pelaajatilastot";
-        buttonNames[1] = "Lisää uusi fraasi";
-        buttonNames[2] = "Pelaa onnenpyörää";
+        String[] bs = {"Pelaajatilastot", "Lisää uusi fraasi", "Pelaa onnenpyörää"};
         
         welcome = new Label("Tervetuloa!");
         instructions = new Text("Tarkastele pelaajatilastoja, lisää uusi fraasi tai pelaa peliä!");
         
-        buttonLO = new ButtonLayout(buttonNames, 10);
+        buttonLO = new ButtonLayout(bs, 10);
         
-        layout = new VBox();
-        layout.setSpacing(20);
-        layout.getChildren().addAll(welcome, instructions, buttonLO.getLayout());
-        
-        scene = new Scene(layout, 600, 400);
+        refresh();
     }
     
     public Button getPlayerStatsButton() {
@@ -45,9 +37,19 @@ public class StartView implements View {
     public Button getPlayButton() {
         return buttonLO.getButton("Pelaa onnenpyörää");
     }
+    
+    @Override
+    public void refresh() {
+        layout = new VBox();
+        layout.setSpacing(20);
+        layout.getChildren().addAll(welcome, instructions, buttonLO.getLayout());
+
+        scene = new Scene(layout, 600, 400);
+    }
 
     @Override
     public Scene getScene() {
+        refresh();
         return scene;
     }
     

@@ -11,11 +11,11 @@ import javafx.scene.text.Text;
 
 public class AddPlayersView implements View {
     
-    private Text addPlayers;
+    private final Text addPlayers;
     private TextField player1;
     private TextField player2;
     private TextField player3;
-    private Button add;
+    private final Button add;
     private HBox subPlayerLayout;
     private VBox playerLayout;
     
@@ -24,18 +24,9 @@ public class AddPlayersView implements View {
     public AddPlayersView() {
         
         addPlayers = new Text("Lisää peliin kolme pelaajaa:");
-        player1 = new TextField();
-        player2 = new TextField();
-        player3 = new TextField();
         add = new Button("Lisää pelaajat");
-        subPlayerLayout = new HBox();
-        subPlayerLayout.setSpacing(30);
-        subPlayerLayout.getChildren().addAll(player1, player2, player3);
-        playerLayout = new VBox();
-        playerLayout.setSpacing(10);
-        playerLayout.getChildren().addAll(addPlayers, subPlayerLayout, add);
         
-        scene = new Scene(playerLayout, 600, 400);
+        refresh();
     }
     
     public Button getAddPlayersButton() {
@@ -58,9 +49,30 @@ public class AddPlayersView implements View {
         playerLayout.getChildren().add(new Label("Peliin tarvitaan kolme pelaajaa!"));
         scene = new Scene(playerLayout);
     }
+    
+    public void clearView() {
+        
+    }
+    
+    @Override
+    public void refresh() {
+        player1 = new TextField();
+        player2 = new TextField();
+        player3 = new TextField();
+        
+        subPlayerLayout = new HBox();
+        subPlayerLayout.setSpacing(30);
+        subPlayerLayout.getChildren().addAll(player1, player2, player3);
+        playerLayout = new VBox();
+        playerLayout.setSpacing(10);
+        playerLayout.getChildren().addAll(addPlayers, subPlayerLayout, add);
+
+        scene = new Scene(playerLayout, 600, 400);
+    }
 
     @Override
     public Scene getScene() {
+        refresh();
         return scene;
     }
     

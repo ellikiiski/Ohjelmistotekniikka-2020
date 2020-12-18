@@ -16,11 +16,8 @@ public class StatisticsView implements View {
     public StatisticsView() {
         notImplemented = new Text("Statistiikat ei vielä toteutettu!!");
         back = new Button("Takaisin aloitussivulle");
-        layout = new VBox();
-        layout.setSpacing(20);
-        layout.getChildren().addAll(notImplemented, back);
         
-        scene = new Scene(layout, 600, 400);
+        refresh();
     }
     
     public Button getBackButton() {
@@ -28,7 +25,17 @@ public class StatisticsView implements View {
     }
 
     @Override
+    public void refresh() {
+        layout = new VBox();
+        layout.setSpacing(20);
+        layout.getChildren().addAll(notImplemented, back);
+
+        scene = new Scene(layout, 600, 400);
+    }
+    
+    @Override
     public Scene getScene() {
+        refresh();
         return scene;
     }
     

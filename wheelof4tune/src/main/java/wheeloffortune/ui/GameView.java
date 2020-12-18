@@ -227,6 +227,7 @@ public class GameView implements View {
         return glo.getSolveButton();
     }
     
+    @Override
     public void refresh() {
         subLO1 = new HBox();
         subLO1.setSpacing(100);
@@ -245,6 +246,7 @@ public class GameView implements View {
 
     @Override
     public Scene getScene() {
+        refresh();
         return scene;
     }
 }
