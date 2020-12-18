@@ -1,6 +1,6 @@
 elli	4350
 luuseri	0
 saku	100
-a	2100
+a	2300
 s	1000
 d	200

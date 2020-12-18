@@ -14,7 +14,6 @@ public class GUI extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        System.out.println("Noniin ja sit hommiin");
         
         PlayerDBhandler plDBh = new PlayerDBhandler("playerDB.txt");
         PhraseDBhandler phDBh = new PhraseDBhandler("phraseDB.txt");

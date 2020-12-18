@@ -78,13 +78,9 @@ public class Game {
     
     public boolean tryToGuessPhrase(String guess) {
         if (guess.toUpperCase().equals(phrase.getPhrase())) {
-            System.out.println("meni oikein");
-            System.out.println(getPhraseAsString());
             revealAll();
-            System.out.println(getPhraseAsString());
             return true;
         }
-        System.out.println("väärin meni");
         nextPlayersTurn();
         return false;
     }
@@ -102,7 +98,6 @@ public class Game {
     }
     
     public boolean canBuyNoun() {
-        System.out.println(score.get(playerInTurn));
         return score.get(playerInTurn) >= 250;
     }
     

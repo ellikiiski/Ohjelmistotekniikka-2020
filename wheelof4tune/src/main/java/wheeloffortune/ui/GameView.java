@@ -229,7 +229,7 @@ public class GameView implements View {
     
     public void refresh() {
         subLO1 = new HBox();
-        subLO1.setSpacing(200);
+        subLO1.setSpacing(100);
         subLO1.getChildren().addAll(phlo.getLayout(), wlo.getLayout());
         
         subLO2 = new HBox();
