@@ -67,10 +67,6 @@ public class GameView implements View {
         return new PlayersLayout(helpList.get(0), helpList.get(1), helpList.get(2));
     }
     
-    public void setPlayerInTurn(Player player) {
-        tlo.setPlayerInTurn(player.getName());
-    }
-    
     public void spinTheWheel() {
         String spinner = game.getPlayerInTurn().getName();
         game.spinWheel();
@@ -100,12 +96,18 @@ public class GameView implements View {
     
     // alustava
     public boolean guessConsonant() {
-        String s = glo.getFieldText();
-        if (s.length() != 1) {
+        String guessed = glo.getFieldText();
+        String playerGuessing = game.getPlayerInTurn().getName();
+        if (guessed.length() != 1) {
             return false;
         }
-        int letters = game.guessConsonant(s.toUpperCase().charAt(0));
+        int letters = game.guessConsonant(guessed.toUpperCase().charAt(0));
         if (letters  >= 0) {
+            if (letters == 0) {
+                tlo.setLatestEvent(playerGuessing, "arvasi konsonanttia " + guessed.toUpperCase() + ", eikä sitä löytynyt\nyhtäkään kappaletta. Vuoro vaihtui.");
+            } else {
+                tlo.setLatestEvent(playerGuessing, "arvasit konsonanttia " + guessed.toUpperCase() + ", joita löytyi yhteensä " + letters + ".");
+            }
             newTurn();
             refresh();
             return true;
@@ -116,18 +118,24 @@ public class GameView implements View {
     // alustava
     public boolean setBuyNoun() {
         glo.setBuyNoun();
+        tlo.setLatestEvent(game.getPlayerInTurn().getName(), "sinulla on pankissa tarpeeksi rahaa\nostaaksesi vokaalin.");
         refresh();
         return true;
     }
     
     // alustava
     public boolean buyNoun() {
-        String s = glo.getFieldText();
-        if (s.length() != 1) {
+        String guessed = glo.getFieldText();
+        if (guessed.length() != 1) {
             return false;
         }
-        int letters = game.buyNoun(s.toUpperCase().charAt(0));
+        int letters = game.buyNoun(guessed.toUpperCase().charAt(0));
         if (letters >= 0) {
+            if (letters == 0) {
+                tlo.setLatestEvent(game.getPlayerInTurn().getName(), "ostit vokaalin " + guessed.toUpperCase() + ", mutta sitä löytynyt\nyhtäkään kappaletta.");
+            } else {
+                tlo.setLatestEvent(game.getPlayerInTurn().getName(), "ostit vokaalin " + guessed.toUpperCase() + ", ja niitä löytyi yhteensä " + letters + ".");
+            }
             newTurn();
             refresh();
             return true;
@@ -138,13 +146,19 @@ public class GameView implements View {
     // tätäkin vois vähän pohtia tarkemmin
     public boolean setGuessThePhrase() {
         glo.setGuessThePhrase();
+        tlo.setLatestEvent(game.getPlayerInTurn().getName(), "haluat yrittää ratkaista tehtävän...");
         refresh();
         return true;
     }
     
     public void guessThePhrase() {
-        String s = glo.getFieldText();
-        game.tryToGuessPhrase(s);
+        String guess = glo.getFieldText();
+        String playerGuessing = game.getPlayerInTurn().getName();
+        if (game.tryToGuessPhrase(guess)) {
+            tlo.setLatestEvent(playerGuessing, "VOITTI PELIN!!!");
+        } else {
+            tlo.setLatestEvent(playerGuessing, "arvasi ratkaisuksi \"" + guess.toUpperCase() + "\",\nmutta se oli väärin.");
+        }
         newTurn();
         refresh();
     }
