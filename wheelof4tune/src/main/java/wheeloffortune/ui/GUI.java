@@ -138,6 +138,30 @@ public class GUI extends Application {
             }
         });
         
+        // vokaalin ostaminen
+        
+        gameView.getBuyNounButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
+            @Override
+            public void handle(javafx.event.ActionEvent event) {
+                if (gameView.setBuyNoun()) {
+                    stage.setScene(gameView.getScene());
+                } else {
+                    gameView.setMessage("Hei tarkkana ny");
+                }
+            }
+        });
+        
+        gameView.getBuyButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
+            @Override
+            public void handle(javafx.event.ActionEvent event) {
+                if (gameView.buyNoun()) {
+                    stage.setScene(gameView.getScene());
+                } else {
+                    gameView.setMessage("Hei tarkkana ny");
+                }
+            }
+        });
+        
         stage.setScene(startView.getScene());
         stage.show();
     }

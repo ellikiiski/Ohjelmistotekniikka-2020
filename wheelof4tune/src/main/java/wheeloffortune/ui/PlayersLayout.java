@@ -32,6 +32,11 @@ public class PlayersLayout implements Layout {
             }
         }
     }
+    
+    public void addMoneyToBank(Player player, int money) {
+        oplos.get(player).setMoney(money);
+        refresh();
+    }
 
     @Override
     public void refresh() {

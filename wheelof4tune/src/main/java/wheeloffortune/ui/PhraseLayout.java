@@ -13,8 +13,8 @@ public class PhraseLayout implements Layout {
     private VBox layout;
 
     public PhraseLayout(String phr, String cat) {
-        phrase = new Label(cat);
-        category = new Label(phr);
+        phrase = new Label(phr);
+        category = new Label(cat);
         
         refresh();
     }
@@ -28,11 +28,12 @@ public class PhraseLayout implements Layout {
     public void refresh() {        
         layout = new VBox();
         layout.setSpacing(10);
-        layout.getChildren().addAll(phrase, category);
+        layout.getChildren().addAll(category, phrase);
     }
 
     @Override
     public Pane getLayout() {
+        refresh();
         return layout;
     }
     

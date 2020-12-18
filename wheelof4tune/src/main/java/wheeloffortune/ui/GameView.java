@@ -95,7 +95,9 @@ public class GameView implements View {
     }
     
     public void newTurn() {
+        pllo.addMoneyToBank(game.getPlayerInTurn(), game.getScore());
         glo.setToInit();
+        tlo.setPlayerInTurn(game.playerInTurn());
     }
     
     // TÄTÄ PITÄÄ VIRLÄ
@@ -106,8 +108,36 @@ public class GameView implements View {
         if (s.length() != 1) {
             return false;
         }
-        if (game.guessConsonant(s.charAt(0)) >= 0) {
+        int letters = game.guessConsonant(s.toUpperCase().charAt(0));
+        if (letters  >= 0) {
             phlo.setPhrase(game.getPhraseAsString());
+            newTurn();
+            refresh();
+            return true;
+        }
+        return false;
+    }
+    
+    // alustava
+    public boolean setBuyNoun() {
+        glo.setBuyNoun();
+        refresh();
+        return true;
+    }
+    
+    // TÄTÄ PITÄÄ VIRLÄ
+    // KEHITTÄÄ PALJON
+    // vokaalin tarkistus
+    public boolean buyNoun() {
+        String s = glo.getFieldText();
+        if (s.length() != 1) {
+            return false;
+        }
+        int letters = game.buyNoun(s.toUpperCase().charAt(0));
+        if (letters >= 0) {
+            phlo.setPhrase(game.getPhraseAsString());
+            newTurn();
+            refresh();
             return true;
         }
         return false;
@@ -120,16 +150,12 @@ public class GameView implements View {
         layout.getChildren().add(new Label(message));
     }
     
-    // TÄTÄ PITÄÄ VIRLÄ
-    // KEHITTÄÄ PALJON
-    // vokaalin tarkistus
-    public boolean guessNoun() {
-        String s = glo.getFieldText();
-        return s.length() == 1;
-    }
-    
     public Button getSpinButton() {
         return tlo.getSpinButton();
+    }
+    
+    public Button getBuyNounButton() {
+        return tlo.getBuyNounButton();
     }
     
     public Button getGuessButton() {

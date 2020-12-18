@@ -60,7 +60,10 @@ public class Game {
     
     public void spinWheel() {
         latestSpin = wheel.spin();
-        if (latestSpinIsBankcrupt() || latestSpinIsSkip()) {
+        if (latestSpinIsBankcrupt()) {
+            resetScore();
+            nextPlayersTurn();
+        } else if (latestSpinIsSkip()) {
             nextPlayersTurn();
         }
     }
@@ -93,7 +96,7 @@ public class Game {
     }
     
     public int guessConsonant(char consonant) {
-        if (isConsonant(consonant)) {
+        if (!isConsonant(consonant)) {
             return -666;
         }
         int guessedConsonants = revealLetter(consonant);
@@ -109,6 +112,9 @@ public class Game {
     }
     
     public int buyNoun(char noun) {
+        if (!isNoun(noun)) {
+            return -666;
+        }
         score.put(playerInTurn, score.get(playerInTurn) - 250);
         return revealLetter(noun);
     }

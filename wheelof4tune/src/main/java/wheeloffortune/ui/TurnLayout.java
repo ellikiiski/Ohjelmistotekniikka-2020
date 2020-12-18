@@ -29,6 +29,10 @@ public class TurnLayout implements Layout {
     public Button getSpinButton() {
         return buttons.getButton("Pyöritä");
     }
+    
+    public Button getBuyNounButton() {
+        return buttons.getButton("Osta vokaali");
+    }
 
     @Override
     public void refresh() {

@@ -25,6 +25,11 @@ public class OnePlayerLayout implements Layout {
 
         refresh();
     }
+    
+    public void setMoney(int m) {
+        money = new Label(m + "€");
+        refresh();
+    }
 
     public void setTurn(boolean turn) {
         inTurn = turn;

@@ -34,6 +34,7 @@ public class GuessLayout implements Layout {
         labelShown = cLabel;
         buttons.enableButton("Veikkaa");
         buttons.disableButton("Osta");
+        field.setDisable(false);
         refresh();
     }
     
@@ -41,12 +42,15 @@ public class GuessLayout implements Layout {
         labelShown = nLabel;
         buttons.disableButton("Veikkaa");
         buttons.enableButton("Osta");
+        field.setDisable(false);
         refresh();
     }
     
     public void setToInit() {
         labelShown = new Label("(Pyöritä pyörää tai valitse vokaalin osto)");
         buttons.disableAll();
+        field = new TextField();
+        field.setDisable(true);
         refresh();
     }
     
