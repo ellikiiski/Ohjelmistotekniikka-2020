@@ -11,6 +11,7 @@ public class GuessLayout implements Layout {
     
     private final Label cLabel;
     private final Label nLabel;
+    private final Label gLabel;
     
     private TextField field;
     private ButtonLayout buttons;
@@ -22,9 +23,10 @@ public class GuessLayout implements Layout {
     public GuessLayout() {
         cLabel = new Label("Arvaa konsonanttia (B, C, D, F, G, H, J, K, L, M, N, P, Q, R, S, T, V, W, X, Z)");
         nLabel = new Label("Osta vokaalit hintaan 250€ (A, E, I, O, U, Y, Å, Ä, Ö)");
+        gLabel = new Label("Yritä ratkaista tehtävä!");
         
         field = new TextField();
-        String[] bs = {"Veikkaa", "Osta"};
+        String[] bs = {"Veikkaa", "Osta", "Ratkaise"};
         buttons = new ButtonLayout(bs, 4);
         
         setToInit();
@@ -32,16 +34,24 @@ public class GuessLayout implements Layout {
     
     public void setGuessConsonant() {
         labelShown = cLabel;
+        buttons.disableAll();
         buttons.enableButton("Veikkaa");
-        buttons.disableButton("Osta");
         field.setDisable(false);
         refresh();
     }
     
     public void setBuyNoun() {
         labelShown = nLabel;
-        buttons.disableButton("Veikkaa");
+        buttons.disableAll();
         buttons.enableButton("Osta");
+        field.setDisable(false);
+        refresh();
+    }
+    
+    public void setGuessThePhrase() {
+        labelShown = cLabel;
+        buttons.disableAll();
+        buttons.enableButton("Ratkaise");
         field.setDisable(false);
         refresh();
     }
@@ -64,6 +74,10 @@ public class GuessLayout implements Layout {
     
     public Button getBuyButton() {
         return buttons.getButton("Osta");
+    }
+    
+    public Button getSolveButton() {
+        return buttons.getButton("Ratkaise");
     }
 
     @Override

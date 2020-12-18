@@ -166,6 +166,10 @@ public class GameView implements View {
         return glo.getBuyButton();
     }
     
+    public Button getSolveButton() {
+        return glo.getSolveButton();
+    }
+    
     public void refresh() {
         subLO1 = new HBox();
         subLO1.setSpacing(40);
