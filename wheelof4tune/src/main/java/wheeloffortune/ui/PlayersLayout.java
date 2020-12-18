@@ -2,6 +2,7 @@
 package wheeloffortune.ui;
 
 import java.util.HashMap;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import wheeloffortune.domain.Player;
@@ -10,7 +11,7 @@ public class PlayersLayout implements Layout {
     
     private HashMap<Player, OnePlayerLayout> oplos;
 
-    private OnePlayerLayout inTurn;
+    private final Label players;
 
     private HBox layout;
 
@@ -19,6 +20,8 @@ public class PlayersLayout implements Layout {
         oplos.put(p1, new OnePlayerLayout(p1));
         oplos.put(p2, new OnePlayerLayout(p2));
         oplos.put(p3, new OnePlayerLayout(p3));
+        
+        players = new Label("Pelaajat:");
 
         refresh();
     }
@@ -42,6 +45,7 @@ public class PlayersLayout implements Layout {
     public void refresh() {
         layout = new HBox();
         layout.setSpacing(50);
+        layout.getChildren().add(players);
         for (OnePlayerLayout lo : oplos.values()) {
             layout.getChildren().add(lo.getLayout());
         }

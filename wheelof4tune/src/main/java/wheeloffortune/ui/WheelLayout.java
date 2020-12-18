@@ -8,31 +8,35 @@ import javafx.scene.layout.VBox;
 
 public class WheelLayout implements Layout {
     
+    private final Label wheelOfFortune;
+    private final Label lastSpinWas;
     private Label spinned;
-    private Label instructions;
 
-    private VBox layout;
+    private VBox subLO;
+    private HBox layout;
 
     public WheelLayout() {
-        spinned = new Label("ALOITA PELI PYÖRITTÄMÄLLÄ ONNENPYÖRÄÄ");
-        instructions = new Label("(Paina nappia \"Pyöritä\")");
+        wheelOfFortune = new Label("Onnenpyörä:");
+        lastSpinWas = new Label("VIIMEKSI PYÖRÄYTETTY");
+        spinned = new Label("(peliä ei vielä avattu)");
 
-        layout = new VBox();
-        layout.setSpacing(10);
-        layout.getChildren().addAll(spinned, instructions);
+        refresh();
     }
 
-    public void setNewSpin(String player, String spin, String instruction) {
-        spinned = new Label(player.toUpperCase() + ", OSUIT SEKTORIIN " + spin);
-        instructions = new Label(instruction);
+    public void setNewSpin(String spin) {
+        spinned = new Label(spin);
         refresh();
     }
 
     @Override
     public void refresh() {
-        layout = new VBox();
-        layout.setSpacing(10);
-        layout.getChildren().addAll(spinned, instructions);
+        subLO = new VBox();
+        subLO.setSpacing(10);
+        subLO.getChildren().addAll(lastSpinWas, spinned);
+        
+        layout = new HBox();
+        layout.setSpacing(20);
+        layout.getChildren().addAll(wheelOfFortune, subLO);
     }
 
     @Override

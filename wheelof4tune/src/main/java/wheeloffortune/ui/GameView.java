@@ -16,8 +16,6 @@ public class GameView implements View {
     
     private Game game;
     
-    private final Label wheeloffortune;
-    
     private PlayersLayout pllo;
     private PhraseLayout phlo;
     private WheelLayout wlo;
@@ -34,15 +32,13 @@ public class GameView implements View {
     public GameView() {
         game = null;
         
-        wheeloffortune = new Label("ONNENPYÖRÄ");
-        
         wlo = new WheelLayout();
         tlo = new TurnLayout();
         glo = new GuessLayout();
         
         layout = new VBox();
         layout.setSpacing(50);
-        layout.getChildren().add(wheeloffortune);
+        layout.getChildren().add(new Label("Odotetaan pelin latautumista..."));
         
         scene = new Scene(layout, 1000, 600);
     }
@@ -80,16 +76,17 @@ public class GameView implements View {
         game.spinWheel();
         String instruction = "";
         if (game.latestSpinIsBankcrupt()) {
-            instruction = "Voi ei! Menitit kaikki rahasi ja vuorosikin.";
+            instruction = " osui rosvo-sektoriin ja menitti sekä rahansa että vuoronsa.";
             newTurn();
         } else if (game.latestSpinIsSkip()) {
-            instruction = "Menetät vuorosi, mutta rahasi säästyvät.";
+            instruction = "osui ohi-sektoriin ja menetti vuoronsa.";
             newTurn();
         } else {
-            instruction = "Kirjoita alle konsonantti, jota haluat veikata.";
+            instruction = "osuit sektoriin " + game.getLatestSpinSectorName() + "!";
             glo.setGuessConsonant();
         }
-        wlo.setNewSpin(spinner, game.getLatestSpinSectorName(), instruction);
+        wlo.setNewSpin(game.getLatestSpinSectorName());
+        tlo.setLatestEvent(spinner, instruction);
         tlo.setPlayerInTurn(game.getPlayerInTurn().getName());
         refresh();
     }
@@ -183,7 +180,7 @@ public class GameView implements View {
     
     public void refresh() {
         subLO1 = new HBox();
-        subLO1.setSpacing(40);
+        subLO1.setSpacing(200);
         subLO1.getChildren().addAll(phlo.getLayout(), wlo.getLayout());
         
         subLO2 = new HBox();
@@ -192,7 +189,7 @@ public class GameView implements View {
         
         layout = new VBox();
         layout.setSpacing(50);
-        layout.getChildren().addAll(wheeloffortune,  pllo.getLayout(), subLO1, subLO2);
+        layout.getChildren().addAll( pllo.getLayout(), subLO1, subLO2);
         
         scene = new Scene(layout, 800, 500);
     }

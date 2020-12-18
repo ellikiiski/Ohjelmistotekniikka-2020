@@ -35,6 +35,7 @@ public class GUI extends Application {
             @Override
             public void handle(javafx.event.ActionEvent event) {
                 stage.setScene(statView.getScene());
+                stage.setTitle("Pelaajatilastot");
             }
         });
         
@@ -44,6 +45,7 @@ public class GUI extends Application {
             @Override
             public void handle(javafx.event.ActionEvent event) {
                 stage.setScene(startView.getScene());
+                stage.setTitle("Tervetuloa");
             }
         });
         
@@ -55,6 +57,7 @@ public class GUI extends Application {
             @Override
             public void handle(javafx.event.ActionEvent event) {
                 stage.setScene(aPhView.getScene());
+                stage.setTitle("Lisää uusi fraasi");
             }
         });
         
@@ -80,6 +83,7 @@ public class GUI extends Application {
             @Override
             public void handle(javafx.event.ActionEvent event) {
                     stage.setScene(startView.getScene());
+                    stage.setTitle("Tervetuloa");
             }
         });
         
@@ -91,6 +95,7 @@ public class GUI extends Application {
             @Override
             public void handle(javafx.event.ActionEvent event) {
                 stage.setScene(aPlView.getScene());
+                stage.setTitle("Lisää pelaajat");
             }
         });
         
@@ -104,6 +109,7 @@ public class GUI extends Application {
                 if (aPlView.all3PlayersFilledIn()) {
                     gameView.setGame(plDBh, phDBh, aPlView.getGivenPlayers());
                     stage.setScene(gameView.getScene());
+                    stage.setTitle("ONNENPYÖRÄ");
                 } else {
                     aPlView.invalidPlayersMessage();
                     stage.setScene(aPlView.getScene());
@@ -184,6 +190,7 @@ public class GUI extends Application {
         });
         
         stage.setScene(startView.getScene());
+        stage.setTitle("Tervetuloa");
         stage.show();
     }
     

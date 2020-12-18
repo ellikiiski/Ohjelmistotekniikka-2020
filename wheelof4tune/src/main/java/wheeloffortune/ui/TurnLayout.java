@@ -8,16 +8,23 @@ import javafx.scene.layout.VBox;
 
 public class TurnLayout implements Layout {
     
+    private Label latestEvent;
     private Label whosTurn;
     private ButtonLayout buttons;
     
     private VBox layout;
     
     public TurnLayout() {
+        latestEvent = new Label("Avaa peli pyöräyttämällä onnenpyörää");
         whosTurn = new Label("Pelaajan x vuoro");
         String[] bs = {"Osta vokaali", "Pyöritä", "Arvaa ratkaisua"};
         buttons = new ButtonLayout(bs, 10);
         
+        refresh();
+    }
+    
+    public void setLatestEvent(String player, String event) {
+        latestEvent = new Label("Pelaaja " + player + " " + event);
         refresh();
     }
     
@@ -42,7 +49,7 @@ public class TurnLayout implements Layout {
     public void refresh() {
         layout = new VBox();
         layout.setSpacing(20);
-        layout.getChildren().addAll(whosTurn, buttons.getLayout());
+        layout.getChildren().addAll(latestEvent, whosTurn, buttons.getLayout());
     }
 
     @Override
