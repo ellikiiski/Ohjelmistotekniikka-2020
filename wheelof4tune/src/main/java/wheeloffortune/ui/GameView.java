@@ -46,7 +46,7 @@ public class GameView implements View {
         layout.setSpacing(50);
         layout.getChildren().add(new Label("Odotetaan pelin latautumista..."));
         
-        scene = new Scene(layout, 1000, 600);
+        scene = new Scene(layout, 800, 500);
     }
     
     public void setGame(PlayerDBhandler plDBh, PhraseDBhandler phDBh, String[] players) {
@@ -58,10 +58,11 @@ public class GameView implements View {
         pllo = initPllo();
         phlo = new PhraseLayout(game.getPhraseAsString(), game.getCategory());
         
+        glo.setToInit();
+        wlo.setToInit();
+        tlo.seToInit();
         tlo.setPlayerInTurn(game.getPlayerInTurn().getName());
         
-        tlo.disableAllButtons();
-        tlo.enalbleSpinButton();
         refresh();
     }
     

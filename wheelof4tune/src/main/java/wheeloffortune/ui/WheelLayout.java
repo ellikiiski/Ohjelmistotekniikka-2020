@@ -22,6 +22,12 @@ public class WheelLayout implements Layout {
 
         refresh();
     }
+    
+    public void setToInit() {
+        spinned = new Label("(peliä ei vielä avattu)");
+        
+        refresh();
+    }
 
     public void setNewSpin(String spin) {
         spinned = new Label(spin);

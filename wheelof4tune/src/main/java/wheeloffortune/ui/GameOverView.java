@@ -52,7 +52,7 @@ public class GameOverView implements View {
         layout.setSpacing(30);
         layout.getChildren().addAll(itIsCorrect, congratulations, phrase, toBank, buttons.getLayout());
 
-        scene = new Scene(layout, 1000, 600);
+        scene = new Scene(layout, 800, 500);
     }
 
     @Override

@@ -10,7 +10,7 @@ public class TurnLayout implements Layout {
     
     private Label latestEvent;
     private Label whosTurn;
-    private ButtonLayout buttons;
+    private final ButtonLayout buttons;
     
     private VBox layout;
     
@@ -19,6 +19,15 @@ public class TurnLayout implements Layout {
         whosTurn = new Label("Pelaajan x vuoro");
         String[] bs = {"Osta vokaali", "Pyöritä", "Arvaa ratkaisua"};
         buttons = new ButtonLayout(bs, 10);
+        
+        refresh();
+    }
+    
+    public void seToInit() {
+        latestEvent = new Label("Avaa peli pyöräyttämällä onnenpyörää");
+        whosTurn = new Label("Pelaajan x vuoro");
+        disableAllButtons();
+        enalbleSpinButton();
         
         refresh();
     }
