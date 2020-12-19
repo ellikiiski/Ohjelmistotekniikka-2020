@@ -20,4 +20,5 @@
 | 17.12. | 4        | Graafinen käyttöliittymä uuteen uskoon (pariinkin kertaan) ja pyörän pyöritys ja vuoronvaihto toimimaan. Konsonantin arvaamisen toteuttaminen jäi vielä levälleen. |
 | 18.12. | 4        | Kaikki pelin eri toiminnot toimimaan (pyörän pyöritys, konsonantin veikkaus, vokaalin osto ja tehtävän ratkaiseminen) |
 | 18.12. | 3        | Myös pelin loppuminen voittoon toimimaan! Ja taas vähän muutoksia asetteluun. |
-| yht    | 47       | | 
+| 19.12. | 1        | Statistiikkanäkymän toteutus ja selkeytys fraasin esitykseen. |
+| yht    | 48       | | 
