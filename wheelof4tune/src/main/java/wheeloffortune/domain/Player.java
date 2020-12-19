@@ -1,7 +1,7 @@
 
 package wheeloffortune.domain;
 
-public class Player {
+public class Player implements Comparable<Player> {
     
     private String name;
     private int bank;
@@ -27,7 +27,9 @@ public class Player {
     public String toString() {
         return "Pelaaja: " + name + ", rahaa pankissa: " + bank + "€";
     }
-    
-    
-    
+
+    @Override
+    public int compareTo(Player p) {
+        return bank - p.getBank();
+    }    
 }

@@ -1,6 +1,9 @@
 
 package wheeloffortune.domain;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import wheeloffortune.dao.FilePlayerDao;
 
 public class PlayerDBhandler implements DBhandler {
@@ -31,5 +34,11 @@ public class PlayerDBhandler implements DBhandler {
         } catch (Exception ex) {
             return false;
         }
+    }
+    
+    public List<Player> getPlayersInOrder() {
+        List<Player> players = plDao.getAll();
+        Collections.sort(players, Collections.reverseOrder());
+        return players;
     }
 }

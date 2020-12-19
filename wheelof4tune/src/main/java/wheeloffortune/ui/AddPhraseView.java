@@ -86,7 +86,7 @@ public class AddPhraseView implements View {
         return buttonLO.getButton("Tallenna uusi fraasi");
     }
     
-        @Override
+    @Override
     public void refresh() {
         initCheckBoxLayout();
         phraseText = new TextArea();

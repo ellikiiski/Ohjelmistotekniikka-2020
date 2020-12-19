@@ -1,6 +1,4 @@
 elli	4350
-luuseri	0
 saku	100
-a	3400
-s	5700
-d	200
+luuseri	0
+alma	200

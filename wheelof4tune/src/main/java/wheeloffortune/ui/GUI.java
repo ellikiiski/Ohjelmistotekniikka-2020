@@ -20,7 +20,7 @@ public class GUI extends Application {
         
         StartView startView = new StartView();
         AddPhraseView aPhView = new AddPhraseView();
-        StatisticsView statView = new StatisticsView();
+        StatisticsView statView = new StatisticsView(plDBh);
         AddPlayersView aPlView = new AddPlayersView();
         GameView gameView = new GameView();
         GameOverView gameOverView = new GameOverView();
