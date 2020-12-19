@@ -1,4 +1,4 @@
-elli	4350
-saku	100
+elli	666
+alma	1400
+saku	0
 luuseri	0
-alma	200

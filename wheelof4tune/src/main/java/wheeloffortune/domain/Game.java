@@ -161,6 +161,15 @@ public class Game {
     public String getPhraseAsString() {
         return letterArrayToString();
     }
+    
+    public String getPhraseAsStringToPresent() {
+        StringBuilder sb = new StringBuilder("");
+        for (char c : revealed) {
+            sb.append(c);
+            sb.append(" ");
+        }
+        return sb.toString();
+    }
 
     public String getCategory() {
         return phrase.getCategoryString();

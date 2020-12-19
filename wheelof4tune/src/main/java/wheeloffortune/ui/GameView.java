@@ -56,7 +56,7 @@ public class GameView implements View {
         }
         
         pllo = initPllo();
-        phlo = new PhraseLayout(game.getPhraseAsString(), game.getCategory());
+        phlo = new PhraseLayout(game.getPhraseAsStringToPresent(), game.getCategory());
         
         glo.setToInit();
         wlo.setToInit();
@@ -98,7 +98,7 @@ public class GameView implements View {
     }
     
     public void newTurn() {
-        phlo.setPhrase(game.getPhraseAsString());
+        phlo.setPhrase(game.getPhraseAsStringToPresent());
         pllo.addMoneyToBank(game.getPlayerInTurn(), game.getScore());
         glo.setToInit();
         tlo.setPlayerInTurn(game.getPlayerInTurn().getName());
@@ -231,7 +231,7 @@ public class GameView implements View {
     @Override
     public void refresh() {
         subLO1 = new HBox();
-        subLO1.setSpacing(100);
+        subLO1.setSpacing(40);
         subLO1.getChildren().addAll(phlo.getLayout(), wlo.getLayout());
         
         subLO2 = new HBox();
