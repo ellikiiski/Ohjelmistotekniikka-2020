@@ -5,12 +5,12 @@ import wheeloffortune.gamelogic.Phrase;
 import wheeloffortune.gamelogic.Category;
 import wheeloffortune.dao.FilePhraseDao;
 
-public class PhraseDBhandler implements DBhandler {
+public class PhraseDBhandler {
     
-    private FilePhraseDao phDao;
+    private final FilePhraseDao phDao;
     
     public PhraseDBhandler(String fileName) {
-        this.phDao = new FilePhraseDao(fileName);
+        phDao = new FilePhraseDao(fileName);
     }
 
     public boolean addPhrase(String phrase, String categoryName) {

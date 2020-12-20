@@ -1,4 +1,4 @@
-alma	100
 elli	666
+alma	100
 saku	0
 luuseri	0

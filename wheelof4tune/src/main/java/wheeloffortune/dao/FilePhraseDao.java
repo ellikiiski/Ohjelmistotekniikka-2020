@@ -17,11 +17,11 @@ public class FilePhraseDao implements PhraseDao {
     private String file;
     
     public FilePhraseDao(String fileName) {
-        this.phrases = new ArrayList<>();
-        this.categories = new HashMap<>();
-        this.file = fileName;
-        this.initCategories();
-        this.initPhrases();
+        phrases = new ArrayList<>();
+        categories = new HashMap<>();
+        file = fileName;
+        initCategories();
+        initPhrases();
     }
     
     @Override

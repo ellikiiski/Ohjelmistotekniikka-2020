@@ -14,8 +14,8 @@ public class FilePlayerDao implements PlayerDao {
     private String file;
 
     public FilePlayerDao(String fileName) {
-        this.players = new ArrayList<>();
-        this.file = fileName;
+        players = new ArrayList<>();
+        file = fileName;
         try {
             initPlayers();
         } catch (Exception e) {

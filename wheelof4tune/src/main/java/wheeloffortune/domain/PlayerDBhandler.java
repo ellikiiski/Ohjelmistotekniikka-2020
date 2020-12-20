@@ -7,12 +7,12 @@ import java.util.Collections;
 import java.util.List;
 import wheeloffortune.dao.FilePlayerDao;
 
-public class PlayerDBhandler implements DBhandler {
+public class PlayerDBhandler {
     
     private FilePlayerDao plDao;
 
     public PlayerDBhandler(String fileName) {
-        this.plDao = new FilePlayerDao(fileName);
+        plDao = new FilePlayerDao(fileName);
     }
 
     public Player addPlayer(String name) {
