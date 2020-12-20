@@ -11,8 +11,9 @@
 
 ### Projektin dokumentaatio
 
-- [Määrittelydokumentti (alustava)](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/dokumentaatio/maarittelydokumentti.md)
-- [Käyttöohje (alustava)](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/dokumentaatio/kayttoohje.md)
-- [Arkkitehtuuri (alustava)](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/dokumentaatio/arkkitehtuuri.md)
+- [Määrittelydokumentti](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/dokumentaatio/maarittelydokumentti.md)
+- [Käyttöohje](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/dokumentaatio/kayttoohje.md)
+- [Arkkitehtuuri](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/dokumentaatio/arkkitehtuuri.md)
+- [Testausdokumentti](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/dokumentaatio/testausdokumentti.md)
 - [Työaikakirjanpito](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/dokumentaatio/tyoaikakirjanpito.md)
 
