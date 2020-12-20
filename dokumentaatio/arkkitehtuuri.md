@@ -36,10 +36,17 @@ KESKEN
 
 ##### Pelaajien lisäminen
 
-Pelinäkymä aukeaa ensin näkymään, jossa lisätään pelaajat.
+Pelinäkymä aukeaa ensin näkymään, jossa lisätään pelaajat. Se koostuu kolmesta tekstikentästä, pelin aloittavasta napista sekä <em>ErrorMessageLayout</em>-asettelusta, johon mahdolliset virheilmoitukset tulevat näkyviin.
 
 ##### Pelin pelaaminen
-Tämän jälkeen päästään varsinaiseen pelinäkymään <em>GameView</em>, joka puolestaan on rakennettu useista <em>Layout</em>-rajapinnan implementoivista luokista, jälleen selkeyden parantamiseksi. Kukin <em>Layout</em>-luokista huolehtii yhdestä osasta käyttöliittymän pelinäkymän toiminnallisuutta, ja tavoitteena on tietenkin saada ne toimimaan saumattomasti yhteen.
+
+Varsinainen pelinäkymä <em>GameView</em> puolestaan koostuu peräti kuudesta eri <em>Layout</em>-rajapinnan toteuttavasta komponentista:
+- <em>PlayersLayout</em> (koostuu edelleen kolmesta <em>OnePlayerLayout</em>-oliosta) kertoo käyttäjälle pelitilanteen.
+- <em>PhraseLayout</em> näyttää ratkaistavana olevan fraasin kategorian ja itse fraasin siinä muodossa kuin se on siihen mennessä saatu ratkaistua.
+- <em>WheelLayout</em> yksinkertaisesti näyttää viimeksi pyöräytetyn sektorin nimen.
+- <em>TurnLayout</em> muuttuu sen mukaan, kuka on vuorossa ja mitä on viimeksi tapahtunut, näyttämällä viimeisimmän tapahtuman ja vuorossa olevan pelaajan sekä tarjolla. olevat peliliikevaihtoehdot nappeina (hyödyntää <em>ButtonLayout</em>-luokkaa).
+- <em>GuessLayout</em> muuttuu sen mukaan, mikä toiminto on aiemmin valittu, joko konsonantin veikkaamiseen, vokaalin ostamiseen tai tehtävän ratkaisemisen yrittämiseen soveltuvaksi. Se koostuu tekstikentästä, tilanteen mukaan vaihtuvasta ohjetekstistä ja kolmesta kuhunkin tilanteeseen tarkoitetusta napista (hyödyntää <em>ButtonLayout</em>-luokkaa).
+- <em>ErrorMessageLayout</em> pysyy tyhjänä niin kauan kun käyttäjä pelaa peliä ohjeiden mukaan ja sääntöjen puitteissa. Mikäli käyttäjä yrittää antaa vääränlaisen syötteen, asetteluun ilmaantuu virhettä vastaava ilmoitus.
 
 ##### Pelin päättyminen voittoon
 
