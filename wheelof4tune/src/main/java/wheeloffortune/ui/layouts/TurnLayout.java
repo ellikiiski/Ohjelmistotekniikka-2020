@@ -1,7 +1,6 @@
 
 package wheeloffortune.ui.layouts;
 
-import wheeloffortune.ui.layouts.ButtonLayout;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
@@ -11,37 +10,36 @@ public class TurnLayout implements Layout {
     
     private Label latestEvent;
     private Label whosTurn;
-    private final ButtonLayout buttons;
-    
+    private final ButtonLayout buttons;    
     private VBox layout;
     
     public TurnLayout() {
-        latestEvent = new Label("Avaa peli pyöräyttämällä onnenpyörää");
-        whosTurn = new Label("Pelaajan x vuoro");
         String[] bs = {"Osta vokaali", "Pyöritä", "Arvaa ratkaisua"};
-        buttons = new ButtonLayout(bs, 10);
-        
-        refresh();
+        buttons = new ButtonLayout(bs, 10);        
+        seToInit();
     }
     
     public void seToInit() {
         latestEvent = new Label("Avaa peli pyöräyttämällä onnenpyörää");
-        whosTurn = new Label("Pelaajan x vuoro");
+        whosTurn = new Label("Vuorossa olevaa pelaajaa ei vielä ladattu");
         disableAllButtons();
-        enalbleSpinButton();
-        
+        enalbleSpinButton();        
         refresh();
     }
     
+    //// asettaa parametrina annetun nimen vuoroon
+    public void setPlayerInTurn(String player) {
+        whosTurn = new Label("Pelaajan " + player + " vuoro");
+        refresh();
+    }
+    
+    //// asettaa näkyviin viimeisimmän tapahtuman parametreina annetun nimen ja tapahtumakuvauksen perusteella
     public void setLatestEvent(String player, String event) {
         latestEvent = new Label("Pelaaja " + player + " " + event);
         refresh();
     }
     
-    public void setPlayerInTurn(String player) {
-        whosTurn = new Label("Pelaajan " + player + " vuoro");
-        refresh();
-    }
+    /// Nappien disablointi ja enablointi
     
     public void disableAllButtons() {
         buttons.disableAll();
@@ -59,6 +57,8 @@ public class TurnLayout implements Layout {
         buttons.enableButton("Arvaa ratkaisua");
     }
     
+    /// Nappien getterit
+    
     public Button getSpinButton() {
         return buttons.getButton("Pyöritä");
     }
@@ -70,6 +70,8 @@ public class TurnLayout implements Layout {
     public Button getGuessThePhraseButton() {
         return buttons.getButton("Arvaa ratkaisua");
     }
+    
+    /// Rajapinnan metodit
 
     @Override
     public void refresh() {

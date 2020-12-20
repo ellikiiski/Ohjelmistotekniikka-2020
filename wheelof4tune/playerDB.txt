@@ -1,7 +1,4 @@
-alma	1400
+alma	100
 elli	666
-s	2250
 saku	0
 luuseri	0
-a	0
-d	0

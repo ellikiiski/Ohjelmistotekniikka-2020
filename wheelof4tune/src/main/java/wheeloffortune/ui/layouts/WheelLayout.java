@@ -11,35 +11,33 @@ public class WheelLayout implements Layout {
     private final Label wheelOfFortune;
     private final Label lastSpinWas;
     private Label spinned;
-
     private VBox subLO;
     private HBox layout;
 
     public WheelLayout() {
         wheelOfFortune = new Label("Onnenpyörä:");
         lastSpinWas = new Label("VIIMEKSI PYÖRÄYTETTY");
-        spinned = new Label("(peliä ei vielä avattu)");
-
-        refresh();
+        setToInit();
     }
     
     public void setToInit() {
-        spinned = new Label("(peliä ei vielä avattu)");
-        
+        spinned = new Label("(peliä ei vielä avattu)");        
         refresh();
     }
 
+    //// asettaa näkyviin parametrina annetun sektorin nimen
     public void setNewSpin(String spin) {
         spinned = new Label(spin);
         refresh();
     }
 
+    /// Rajapinnan metodit
+    
     @Override
     public void refresh() {
         subLO = new VBox();
         subLO.setSpacing(10);
-        subLO.getChildren().addAll(lastSpinWas, spinned);
-        
+        subLO.getChildren().addAll(lastSpinWas, spinned);        
         layout = new HBox();
         layout.setSpacing(20);
         layout.getChildren().addAll(wheelOfFortune, subLO);
@@ -47,6 +45,7 @@ public class WheelLayout implements Layout {
 
     @Override
     public Pane getLayout() {
+        refresh();
         return layout;
     }
     

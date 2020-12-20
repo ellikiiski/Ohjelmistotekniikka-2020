@@ -23,8 +23,7 @@ public class StatisticsView implements View {
     public StatisticsView(PlayerDBhandler p) {
         plDBh = p;
         heading = new Label("Pelaajat parhausjärjestyksessä:");
-        back = new Button("Takaisin aloitussivulle");
-        
+        back = new Button("Takaisin aloitussivulle");        
         refresh();
     }
     
@@ -36,19 +35,19 @@ public class StatisticsView implements View {
         StringBuilder sb = new StringBuilder("");
         List<Player> list = plDBh.getPlayersInOrder();
         for (Player player : list) {
-            sb.append(player.getBank() + "€ --- " + player.getName() + "\n");
+            sb.append(player.getBank()).append("€ --- ").append(player.getName()).append("\n");
         }
         return sb.toString();
     }
+    
+    /// Rajapinnan metodit
 
     @Override
     public void refresh() {
-        stats = new Text(initStats());
-        
+        stats = new Text(initStats());        
         layout = new VBox();
         layout.setSpacing(20);
         layout.getChildren().addAll(heading, stats, back);
-
         scene = new Scene(layout, 600, 400);
     }
     

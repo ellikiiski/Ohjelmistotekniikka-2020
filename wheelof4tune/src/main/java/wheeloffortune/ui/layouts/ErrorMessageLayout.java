@@ -9,24 +9,27 @@ import javafx.scene.layout.VBox;
 
 public class ErrorMessageLayout implements Layout {
     
+    private List<Label> messages;    
     private VBox layout;
-    private List<Label> messages;
     
     public ErrorMessageLayout() {
         messages = new ArrayList<>();
-        
         refresh();
     }
     
+    //// lisää uuden virheilmoituksen
     public void setNewErrorMessage(String error) {
         messages.add(new Label(error));
         refresh();
     }
     
+    //// tyhjentää asettelun poistamalla vanhat virheilmoitukset
     public void clear() {
         messages = new ArrayList<>();
         refresh();
     }
+    
+    /// Rajapinnan metodit
 
     @Override
     public void refresh() {

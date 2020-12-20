@@ -11,34 +11,35 @@ import wheeloffortune.ui.layouts.ErrorMessageLayout;
 
 public class AddPlayersView implements View {
     
-    private ErrorMessageLayout emlo;
+    private final ErrorMessageLayout emlo;
     private final Text addPlayers;
     private TextField player1;
     private TextField player2;
     private TextField player3;
     private final Button add;
     private HBox subPlayerLayout;
-    private VBox playerLayout;
-    
+    private VBox playerLayout;    
     private Scene scene;
     
     public AddPlayersView() {
         
         emlo = new ErrorMessageLayout();
         addPlayers = new Text("Lisää peliin kolme pelaajaa:");
-        add = new Button("Lisää pelaajat");
-        
+        add = new Button("Lisää pelaajat");        
         clearView();
     }
     
-    public Button getAddPlayersButton() {
-        return add;
-    }
-    
+    //// tarkistaa, onko kaikkiin kenttiin lisätty pelaajan nimi
     public boolean all3PlayersFilledIn() {
         return !player1.getText().isEmpty() && !player2.getText().isEmpty() && !player3.getText().isEmpty();
     }
     
+    public void setInvalidPlayersMessage() {
+        emlo.setNewErrorMessage("Peliin tarvitaan kolme pelaajaa!");
+        refresh();
+    }
+    
+    //// palauttaa listan lisättyjen pelaajien nimistä
     public String[] getGivenPlayers() {
         String[] players = new String[3];
         players[0] = player1.getText().trim();
@@ -47,17 +48,19 @@ public class AddPlayersView implements View {
         return players;
     }
     
-    public void setInvalidPlayersMessage() {
-        emlo.setNewErrorMessage("Peliin tarvitaan kolme pelaajaa!");
-        refresh();
-    }
-    
+    //// tyhjentää näkymän
     public void clearView() {
         player1 = new TextField();
         player2 = new TextField();
         player3 = new TextField();
         refresh();
     }
+    
+    public Button getAddPlayersButton() {
+        return add;
+    }
+    
+    /// Rajapinnan metodit
     
     @Override
     public void refresh() {        

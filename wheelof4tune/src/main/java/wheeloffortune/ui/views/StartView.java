@@ -17,13 +17,10 @@ public class StartView implements View {
     private Scene scene;
     
     public StartView() {
-        String[] bs = {"Pelaajatilastot", "Lisää uusi fraasi", "Pelaa onnenpyörää"};
-        
+        String[] bs = {"Pelaajatilastot", "Lisää uusi fraasi", "Pelaa onnenpyörää"};        
         welcome = new Label("Tervetuloa!");
-        instructions = new Text("Tarkastele pelaajatilastoja, lisää uusi fraasi tai pelaa peliä!");
-        
-        buttonLO = new ButtonLayout(bs, 10);
-        
+        instructions = new Text("Tarkastele pelaajatilastoja, lisää uusi fraasi tai pelaa peliä!");        
+        buttonLO = new ButtonLayout(bs, 10);        
         refresh();
     }
     
@@ -39,12 +36,13 @@ public class StartView implements View {
         return buttonLO.getButton("Pelaa onnenpyörää");
     }
     
+    /// Rajapinnan metodit
+    
     @Override
     public void refresh() {
         layout = new VBox();
         layout.setSpacing(20);
         layout.getChildren().addAll(welcome, instructions, buttonLO.getLayout());
-
         scene = new Scene(layout, 600, 400);
     }
 

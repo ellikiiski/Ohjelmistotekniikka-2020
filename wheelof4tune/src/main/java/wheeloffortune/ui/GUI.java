@@ -118,7 +118,7 @@ public class GUI extends Application {
             @Override
             public void handle(javafx.event.ActionEvent event) {
                 if (aPlView.all3PlayersFilledIn()) {
-                    gameView.setGame(plDBh, phDBh, aPlView.getGivenPlayers());
+                    gameView.setNewGame(plDBh, phDBh, aPlView.getGivenPlayers());
                     stage.setScene(gameView.getScene());
                     stage.setTitle("ONNENPYÖRÄ");
                 } else {

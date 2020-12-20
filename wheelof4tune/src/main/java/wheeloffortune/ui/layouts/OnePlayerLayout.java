@@ -8,21 +8,15 @@ import wheeloffortune.gamelogic.Player;
 
 public class OnePlayerLayout implements Layout {
     
-    private Player player;
-    private boolean inTurn;
-
+    private final Player player;
     private Label name;
     private Label money;
-
     private VBox layout;
 
     public OnePlayerLayout(Player p) {
         player = p;
-        inTurn = false;
-
         name = new Label(player.getName());
         money = new Label("0€");
-
         refresh();
     }
     
@@ -31,14 +25,11 @@ public class OnePlayerLayout implements Layout {
         refresh();
     }
 
-    public void setTurn(boolean turn) {
-        inTurn = turn;
-        refresh();
-    }
-
     public Player getPlayer() {
         return player;
     }
+    
+    /// Rajapinnan metodit
 
     @Override
     public void refresh() {

@@ -14,8 +14,7 @@ import wheeloffortune.ui.layouts.ErrorMessageLayout;
 
 public class AddPhraseView implements View {
     
-    private ErrorMessageLayout errors;
-    
+    private final ErrorMessageLayout emlo;    
     private VBox layout;
     private final Label addNewhraseHere;
     private final Text chooseCategory;
@@ -27,18 +26,16 @@ public class AddPhraseView implements View {
     private Scene scene;
     
     public AddPhraseView() {
-        errors = new ErrorMessageLayout();
-        
+        emlo = new ErrorMessageLayout();        
         addNewhraseHere = new Label("Täällä voit lisätä uuden fraasin tietokantaan");
         chooseCategory = new Text("Valitse fraasin kategoria allaolevista (tasan yksi)");
-
         writePhrase = new Text("Kirjoita alle uusi fraasi (väh. 10-40!), varo kirjoitusvirheitä");
-
         String[] bs = {"Takaisin aloitussivulle", "Tallenna uusi fraasi"};
-        buttonLO = new ButtonLayout(bs, 10);
-        
+        buttonLO = new ButtonLayout(bs, 10);        
         clearView();
     }
+    
+    /// Checkboksien asetteluun liittyviä metodeja
     
     private void initCheckBoxLayout() {
         initCategoryCheckBoxes();
@@ -69,6 +66,9 @@ public class AddPhraseView implements View {
         return "Jotain on nyt pielessä";
     }
     
+    /// Tarkistusmetodit: täyttääkö fraasi vaatimukset
+    
+    //// tarkistaa onko tasan yksi kategoria valittu
     public boolean oneCategorySelected() {
         int categoriesSelected = 0;
         for (CheckBox cb : categories) {
@@ -79,28 +79,34 @@ public class AddPhraseView implements View {
         return categoriesSelected == 1;
     }
     
+    //// tarkistaa onko fraasi tarpeeksi pitkä eli vähintään 10 merkkiä
     public boolean phraseLongEnough() {
         return phraseText.getText().length() >= 10;
     }
     
+    //// tarkistaa onko fraasi tarpeeksi lyhyt eli maksimissaan 40 merkkiä
     public boolean phreaseNotTooLong() {
         return phraseText.getText().length() <= 40;
     }
     
+    /// Virheilmoitusten lisäys
+    
     public void setInvalidCategoriesMessage() {
-        errors.setNewErrorMessage("Valitse tasan yksi kategoria!");
+        emlo.setNewErrorMessage("Valitse tasan yksi kategoria!");
         refresh();
     }
     
     public void setTooShortPhrase() {
-        errors.setNewErrorMessage("Ehdottamasi fraasi on liian lyhyt!");
+        emlo.setNewErrorMessage("Ehdottamasi fraasi on liian lyhyt!");
         refresh();
     }
     
     public void setTooLongPhrase() {
-        errors.setNewErrorMessage("Ehdottamasi fraasi on liian pitkä!");
+        emlo.setNewErrorMessage("Ehdottamasi fraasi on liian pitkä!");
         refresh();
     }
+    
+    /// Nappien getterit
     
     public Button getBackButton() {
         return buttonLO.getButton("Takaisin aloitussivulle");
@@ -110,19 +116,22 @@ public class AddPhraseView implements View {
         return buttonLO.getButton("Tallenna uusi fraasi");
     }
     
+    //// tyhjentää näkymän
     public void clearView() {
-        errors.clear();
+        emlo.clear();
         initCheckBoxLayout();
         phraseText = new TextArea();
         phraseText.setPrefHeight(80);
         refresh();
     }
     
+    /// Rajapinnan metodit
+    
     @Override
     public void refresh() {
         layout = new VBox();
         layout.setSpacing(20);
-        layout.getChildren().addAll(addNewhraseHere, chooseCategory, checkBoxLayout, writePhrase, phraseText, buttonLO.getLayout(), errors.getLayout());
+        layout.getChildren().addAll(addNewhraseHere, chooseCategory, checkBoxLayout, writePhrase, phraseText, buttonLO.getLayout(), emlo.getLayout());
 
         scene = new Scene(layout, 600, 400);
     }

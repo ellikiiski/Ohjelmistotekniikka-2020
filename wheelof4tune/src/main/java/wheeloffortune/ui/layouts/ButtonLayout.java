@@ -8,23 +8,26 @@ import javafx.scene.layout.Pane;
 
 public class ButtonLayout implements Layout {
     
-    private HashMap<String, Button> buttons;
+    private final HashMap<String, Button> buttons;    
+    private final int spacing;    
     private HBox layout;
-    private int spacing;
 
     public ButtonLayout(String[] bs, int space) {
         buttons = new HashMap<>();
         for (String b : bs) {
             buttons.put(b, new Button(b));
         }
-        spacing = space;
-        
+        spacing = space;        
         refresh();
     }
+    
+    /// Napin getteri nimen perustteella
 
     public Button getButton(String b) {
         return buttons.getOrDefault(b, null);
     }
+    
+    /// Nappien disablointi ja enablointi nimen perusteella
 
     public void disableButton(String b) {
         for (String buttonName : buttons.keySet()) {
@@ -53,6 +56,8 @@ public class ButtonLayout implements Layout {
             b.setDisable(false);
         }
     }
+    
+    /// Rajapinnan metodit
 
     @Override
     public void refresh() {

@@ -23,67 +23,63 @@ public class GameView implements View {
     private Game game;
     private String winnerName;
     private String correctPhrase;
-    private int winningMoney;
-    
+    private int winningMoney;    
     private PlayersLayout pllo;
     private PhraseLayout phlo;
-    private WheelLayout wlo;
-    private TurnLayout tlo;
-    private GuessLayout glo;
-    private ErrorMessageLayout emlo;
-    
-    private VBox layout;
-    
+    private final WheelLayout wlo;
+    private final TurnLayout tlo;
+    private final GuessLayout glo;
+    private final ErrorMessageLayout emlo;    
+    private VBox layout;    
     private HBox subLO1;
-    private HBox subLO2;
-    
+    private HBox subLO2;    
     private Scene scene;
     
     public GameView() {
         game = null;
         winnerName = "Ei kukaan";
         correctPhrase = "Ei, ei, ei";
-        winningMoney = 0;
-        
+        winningMoney = 0;        
         wlo = new WheelLayout();
         tlo = new TurnLayout();
         glo = new GuessLayout();
-        emlo = new ErrorMessageLayout();
-        
+        emlo = new ErrorMessageLayout();        
         layout = new VBox();
         layout.setSpacing(50);
-        layout.getChildren().add(new Label("Odotetaan pelin latautumista..."));
-        
+        layout.getChildren().add(new Label("Odotetaan pelin latautumista..."));        
         scene = new Scene(layout, 800, 500);
     }
     
-    public void setGame(PlayerDBhandler plDBh, PhraseDBhandler phDBh, String[] players) {
+    //// alustaa pelinäkymän luomalla uuden peliolion parametrien avulla
+    public void setNewGame(PlayerDBhandler plDBh, PhraseDBhandler phDBh, String[] players) {
         game = new Game(plDBh, phDBh);        
         for (String p : players) {
             game.addPlayer(p);
-        }
-        
+        }        
         pllo = initPllo();
-        phlo = new PhraseLayout(game.getPhraseAsStringToPresent(), game.getCategoryName());
-        
+        phlo = new PhraseLayout(game.getPhraseAsStringToPresent(), game.getCategoryName());        
         glo.setToInit();
         wlo.setToInit();
         tlo.seToInit();
-        tlo.setPlayerInTurn(game.getPlayerInTurn().getName());
-        
+        tlo.setPlayerInTurn(game.getPlayerInTurn().getName());        
         refresh();
     }
     
+    //// apumetodi pelaajanäkymän alustamiseen
     private PlayersLayout initPllo() {
-        ArrayList<Player> helpList = new ArrayList<>();
-        
+        ArrayList<Player> helpList = new ArrayList<>();        
         for (Player player : game.getPlayerList()) {
             helpList.add(player);
-        }
-        
+        }        
         return new PlayersLayout(helpList.get(0), helpList.get(1), helpList.get(2));
     }
     
+    // PELAAMINEN
+    
+    /// Onnenpyörän pyörittäminen
+    
+    //// arpoo uuden sektorin
+    //// sekä vaihtaa asettelujen tilat vastaamaan pyöräytettyä sektoria
     public void spinTheWheel() {
         String spinner = game.getPlayerInTurn().getName();
         game.spinWheel();
@@ -105,10 +101,11 @@ public class GameView implements View {
         refresh();
     }
     
+    //// vaihtaa asettelut vuoron aloittamista vastaavaan tilaan
     public void newTurn() {
         emlo.clear();
         phlo.setPhrase(game.getPhraseAsStringToPresent());
-        pllo.addMoneyToBank(game.getPlayerInTurn(), game.getScore());
+        pllo.addMoneyToScore(game.getPlayerInTurn(), game.getScore());
         glo.setToInit();
         tlo.setPlayerInTurn(game.getPlayerInTurn().getName());
         tlo.enalbleSpinButton();
@@ -118,6 +115,7 @@ public class GameView implements View {
         }
     }
     
+    //// välittää käyttäjän arvaaman konsonantin pelilogiikalle ja riippuen syötteestä antaa virheilmoituksen tai edistää peliä
     public void guessConsonant() {
         String guessed = glo.getFieldText();
         String playerGuessing = game.getPlayerInTurn().getName();
@@ -139,7 +137,7 @@ public class GameView implements View {
         }
     }
     
-    // alustava
+    //// vaihtaa asettelujen tilat vokaalin ostamista varten
     public void setBuyNoun() {
         glo.setBuyNoun();
         tlo.setLatestEvent(game.getPlayerInTurn().getName(), "sinulla on pankissa tarpeeksi rahaa\nostaaksesi vokaalin.");
@@ -147,7 +145,7 @@ public class GameView implements View {
         refresh();
     }
     
-    // alustava
+    //// välittää käyttäjän arvaaman vokaalin pelilogiikalle ja riippuen syötteestä antaa virheilmoituksen tai edistää peliä
     public void buyNoun() {
         String guessed = glo.getFieldText();
         if (guessed.length() != 1) {
@@ -168,7 +166,7 @@ public class GameView implements View {
         }
     }
     
-    // tätäkin vois vähän pohtia tarkemmin
+    //// vaihtaa asettelujen tilat tehtävän ratkaisemista varten
     public void setGuessThePhrase() {
         glo.setGuessThePhrase();
         tlo.setLatestEvent(game.getPlayerInTurn().getName(), "haluat yrittää ratkaista tehtävän...");
@@ -176,6 +174,9 @@ public class GameView implements View {
         refresh();
     }
     
+    //// välittää käyttäjän arvaaman merkkijonon pelilogiikalle
+    //// jos arvaus oli oikea, palauttaa true
+    //// muuten palauttaa false ja vaihtaa vuoroa
     public boolean guessThePhrase() {
         String guess = glo.getFieldText();
         String playerGuessing = game.getPlayerInTurn().getName();
@@ -189,16 +190,15 @@ public class GameView implements View {
         return false;
     }
     
-    // alustava
-    public void setMessage(String message) {
-        layout.getChildren().add(new Label(message));
-    }
-    
+    //// välittää pelilogiikalle tiedon, että peli on päättynyt
+    //// ja tallentaa voiton tiedot muuttujiin
     private void setGameOver() {
         winningMoney = game.declrareWinner();
         winnerName = game.getPlayerInTurn().getName();
         correctPhrase = game.getPhraseAsString();        
     }
+    
+    /// Voittotietojen getterit
     
     public String getWinnerName() {
         return winnerName;
@@ -211,6 +211,8 @@ public class GameView implements View {
     public int getWinningMoney() {
         return winningMoney;
     }
+    
+    /// Nappien getterit
     
     public Button getSpinButton() {
         return tlo.getSpinButton();
@@ -236,20 +238,19 @@ public class GameView implements View {
         return glo.getSolveButton();
     }
     
+    /// Rajapinnan metodit
+    
     @Override
     public void refresh() {
         subLO1 = new HBox();
         subLO1.setSpacing(40);
-        subLO1.getChildren().addAll(phlo.getLayout(), wlo.getLayout());
-        
+        subLO1.getChildren().addAll(phlo.getLayout(), wlo.getLayout());        
         subLO2 = new HBox();
         subLO2.setSpacing(40);
-        subLO2.getChildren().addAll(tlo.getLayout(), glo.getLayout());
-        
+        subLO2.getChildren().addAll(tlo.getLayout(), glo.getLayout());        
         layout = new VBox();
         layout.setSpacing(50);
-        layout.getChildren().addAll( pllo.getLayout(), subLO1, subLO2, emlo.getLayout());
-        
+        layout.getChildren().addAll( pllo.getLayout(), subLO1, subLO2, emlo.getLayout());        
         scene = new Scene(layout, 800, 500);
     }
 
