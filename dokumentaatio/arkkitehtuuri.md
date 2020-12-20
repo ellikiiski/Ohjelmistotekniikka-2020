@@ -7,26 +7,43 @@ Ohjelmassa on kolme päätasoa ikäänkuin päällekkäin: ylhäältä alas käy
 ![luokkakaavio](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/luokkakaavio.jpg)
 
 Yllä olevas kuva ei vastaa yksityiskohtaisesti ohjelman luokka- ja pakettirakennetta, vaan kuvaa toiminnan ymmärtämisen kannalta merkittävät luokat. Todellisuudessa ohjelma sisältää vielä
-- <em>Main</em>-luokan sisätltävän <em>main</em>-paketin, josta graafinen käyttöliittymä käynnistetään
+- <em>Main</em>-luokan sisältävän <em>main</em>-paketin, josta graafinen käyttöliittymä käynnistetään
 - useita pienempiä pelilogiikan osia kuvaavio luokkia <em>gamlelogic</em>-paketissa
 - tietokantaan tallentamisessa avustavat <em>PlayerDBhandler</em>- ja <em>PhraseDBhandler</em>-luokat paketissa <em>dao</em>
 - lukuisia graafisen käyttöliittymän rakentamisessa apuna käytettyjä näkymäluokkia pakkauksessa <em>ui.views</em> ja niiden rakentamisessa käytettyjä asetteluluokkia pakkauksessa <em>ui.layouts</em>
 
 ### Käyttöliittymä
 
-Käyttöliittymään liittyvät komponentit löytyvät pakkauksesta <em>wheeloffortune.ui</em>.
+Itse graafinen käyttöliittymä löytyy pakkauksesta <em>wheeloffortune.ui</em>, sekä siihen liittyvät apuluokat pakkauksista <em>wheeloffortune.ui.views</em> ja <em>wheeloffortune.ui.layouts</em>.
 
 Käyttöliittymässä on aloitusnäyttö, josta pääsee kolmeen päähaaraan:
-1. Pelaajastatistiikkanäkymään (ei tosin vielä toteutettu)
+1. Pelaajastatistiikkanäkymään
 2. Lisäämään uuden fraasin tietokantaan
-3. Pelaamaan peliä (vajaasti toteutettu)
+3. Pelaamaan peliä
 
-Jokainen näistä on toteutettu rajapinnan <em>View</em> implementoivana luokkana, jotka paketoivat toiminnalisuuksiaan, jottei koodista tulisi pelkkää spagettia.
-Pelinäkymä on muita näkymiä huomattavasti monimutkaisempi ja koostuukin parista eri näkymästä <em>AddPlayerView</em> ja <em>GameView</em>.
+Jokainen näistä on toteutettu rajapinnan <em>View</em> toteuttavana näkymäluokkana, ja käyttävät hyväkseen rajapinnan <em>Layout</em> toteuttavia asetteluluokkia. Näin vältetään pahimmat spagetit käyttöliittymänkin koostavasta koodista.
+Pelinäkymä on muita näkymiä huomattavasti monimutkaisempi ja koostuukin kokonaisuudessaan kolmesta eri näkymästä <em>AddPlayerView</em>, <em>GameView</em> ja <em>GameOverView</em>.
+
+#### Pelaajastatistiikkanäkymä
+
+Statistiikkanäkymä on varsin yksikertainen, se koostuu vain tekstikomponentista (pelaajatilasto) ja takaisin aloitussivulle vievästä napista.
+
+#### Fraasinlisäysnäkymä
+
+KESKEN
 
 #### Pelinäkymä
 
-Pelinäkymä aukeaa ensin näkymään, jossa lisätään pelaajat. Tämän jälkeen päästään varsinaiseen pelinäkymään <em>GameView</em>, joka puolestaan on rakennettu useista <em>Layout</em>-rajapinnan implementoivista luokista, jälleen selkeyden parantamiseksi. Kukin <em>Layout</em>-luokista huolehtii yhdestä osasta käyttöliittymän pelinäkymän toiminnallisuutta, ja tavoitteena on tietenkin saada ne toimimaan saumattomasti yhteen.
+##### Pelaajien lisäminen
+
+Pelinäkymä aukeaa ensin näkymään, jossa lisätään pelaajat.
+
+##### Pelin pelaaminen
+Tämän jälkeen päästään varsinaiseen pelinäkymään <em>GameView</em>, joka puolestaan on rakennettu useista <em>Layout</em>-rajapinnan implementoivista luokista, jälleen selkeyden parantamiseksi. Kukin <em>Layout</em>-luokista huolehtii yhdestä osasta käyttöliittymän pelinäkymän toiminnallisuutta, ja tavoitteena on tietenkin saada ne toimimaan saumattomasti yhteen.
+
+##### Pelin päättyminen voittoon
+
+Kun peli loppuu
 
 ### Sovelluslogiikka
 
