@@ -1,12 +1,6 @@
 ## Käyttöohje - Onnenpyörä
 
-### Versiot
-
-Ohjelmasta on toistaiseksi kaksi versiota käyttöliittymän mukaan:
-- Tekstikäyttöliittymä: sisältää hieman enemmän toiminnallisuutta, mutta on luonnollisesti kömpelömpi käytettävä
-- Graafinen käyttöliittymä: kaikkea toiminnallisuutta en ole vielä kerennyt tässä toteuttaa, mutta toimivilta osiltaan GUI on tietysti miellyttävämpi käyttää
-
-Kummankin version voi lata [täältä](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/releases/tag/viikko6). Muista ladata myös tarvittavat tietokantatiedostot!
+### Lataa ohjelma [täältä](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/releases/tag/viikko6)
 
 ### Konfigurointi
 
@@ -21,46 +15,54 @@ Käynnistäminen onnistuu komentoriviltä komennolla
 $ java -jar wheelof4tune-GUI.jar
 </pre>
 
-tai
-
-<pre>
-$ java -jar wheelof4tune-textUI.jar
-</pre>
-
-riippuen kumman version haluaa suorittaa.
-
-#### Välihuomautus
-
-Keskityn tässä käyttöohjeessa graafisen käyttöliittymän versioon, koska tekstikäyttöliittymästä on tarkoitus luopua heti,
-kun loputkin toiminnallisuudet on saatu toteutettu GUI:ssa.
-
 #### Aloitusnäkymä
 
 Aloitusnäkymässä käyttäjällä on kolme vaihtoehtoa:
-1. Tarkastella pelaajastatistiikkoja (ei vielä toteutettu)
+1. Pelata peliä
 2. Lisätä uuden fraasin pelin tietokantaan myöhemmin pelatavaksi
-3. Pelata peliä
+3. Tarkastella pelaajastatistiikkoja
 
-#### Pelaajatilastot
-
-Ei toteutettu vielä, mutta tarkoituksena näyttää kuka peliä pelanneista pelaajista johtaa pankissa olevan rahasumman perusteella.
-
-#### Uuden fraasin lisääminen
-
-Tässä näkymässä käyttäjä voi kirjoittaa tekstikenttään haluamansa fraasin ja valita sille kategorian. Ohjeita minimipituudesta ja yhteen kategoriaan kuulumisesta
-tulee noudattaa. Painettaessa Tallenna-nappia fraasi tallentuu tietokantaan ja se tulee arvuuteltavaksi tulevaisuuden pelissä.
+![aloitusnäkymä](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/ohje1.JPG)
 
 #### Pelinäkymä
+
+##### Pelaajien lisäys
 
 Kun käyttäjä aloittaa pelin, ohjelma siirtyy ensin näkymään, jossa käyttäjä syöttää kolmen pelaajan nimet tekstikenttiin ja painaa nappia Lisää pelaajat.
 Tällöin pelaajat siirtyvät peliin aktiivisiksi pelaajiksi (ja mikäli heitä ei löytynyt jo valmiiksi tietokannasta, heidät lisätään sinne).
 
-Itse pelinäkymässä näkyy keskellä viimeksi "pyöritetty" sektori ja sen alla arvuuteltava tehtävä ja sen kategoria.
+![aloitusnäkymä](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/ohje3.JPG)
+
+##### Pelaaminen
+
+Itse pelinäkymässä näkyy ylhäällä pelaajat, keskellä arvuuteltava fraasi ja viimeksi onnenpyörästä pyöräytetty sektori, ja alhaalla viimeisin pelitapahtuma, vuorossa oleva pelaaja sekä hänen peliliikemahollisuutensa kussakin tilanteessa.
+
+![aloitusnäkymä](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/ohje4.JPG)
 
 Vuorollaan pelaajat valitsevat kolmesta mahdollisuudesta:
-1. Yrittää ratkaista tehtävä eli arvata arvuuteltava fraasi
-2. Pyörittää onnenpyörää
-3. Ostaa vokaali (mahdollista vain pelaajalla ollessa kerättynä vähintään 250€ rahaa)
+1. Yrittää ratkaista tehtävä eli arvata arvuuteltava fraasi (nappi "Arvaa ratkaisua")
+2. Pyörittää onnenpyörää (nappi "Pyöritä")
+3. Ostaa vokaali, mikäli pelaajalla on kerättynä vähintään 250€ rahaa
 
-Tätäkään ei ole vielä toteutettu loppuun saakka, mutta tavoitteena on pelin jouheva kulku siihen saakka, että joku pelaajista arvaa tehtävän oikein. Tällöin voittajan keräämä rahasumma tallentuu hänen pankkiinsa ja ohjelma siirtyy takaisin aloitusnäkymään.
+Ohjetekstit ja nappien disabloituminen ohjaavat vuorossa olevaa pelaaja ja kertovat mitä milloinkin on mahdollista tehdä.
+
+##### Pelin loppuminen voittoon
+
+Kun joku pelaajista arvaa fraasin oikein, peli loppuu ja siirtyy voittonäkymään. Tästä näkymästä voi joko siirtyä tarkastelemaan statiikoita tai takaisin aloitussivulle.
+
+![aloitusnäkymä](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/ohje5.JPG)
+
+#### Pelaajatilastot
+
+Tilastonäkymässä käyttäjä voi tarkastella pelaajien keräämiä rahasummia.
+
+![aloitusnäkymä](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/ohje6.JPG)
+
+#### Uuden fraasin lisääminen
+
+Fraasinäkymässä käyttäjä voi kirjoittaa tekstikenttään haluamansa fraasin ja valita sille kategorian. Ohjeita minimipituudesta ja yhteen kategoriaan kuulumisesta
+tulee noudattaa. Painettaessa Tallenna-nappia fraasi tallentuu tietokantaan ja se tulee arvuuteltavaksi tulevaisuuden pelissä.
+
+![aloitusnäkymä](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/ohje2.JPG)
+
 
