@@ -1,5 +1,5 @@
 
-package wheeloffortune.ui;
+package wheeloffortune.ui.views;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -8,7 +8,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import wheeloffortune.domain.Category;
+import wheeloffortune.gamelogic.Category;
+import wheeloffortune.ui.layouts.ButtonLayout;
+import wheeloffortune.ui.layouts.ErrorMessageLayout;
 
 public class AddPhraseView implements View {
     

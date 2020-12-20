@@ -6,7 +6,7 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import wheeloffortune.domain.Player;
+import wheeloffortune.gamelogic.Player;
 
 public class FilePlayerDao implements PlayerDao {
     

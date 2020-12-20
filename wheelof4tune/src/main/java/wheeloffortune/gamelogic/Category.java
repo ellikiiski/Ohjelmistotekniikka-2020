@@ -1,5 +1,5 @@
 
-package wheeloffortune.domain;
+package wheeloffortune.gamelogic;
 
 public enum Category {
     COMMON("YLEISTIETO"),

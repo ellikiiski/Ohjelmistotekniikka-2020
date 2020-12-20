@@ -4,8 +4,8 @@ package wheeloffortune.test;
 import java.util.ArrayList;
 import java.util.HashMap;
 import wheeloffortune.dao.PhraseDao;
-import wheeloffortune.domain.Category;
-import wheeloffortune.domain.Phrase;
+import wheeloffortune.gamelogic.Category;
+import wheeloffortune.gamelogic.Phrase;
 
 public class FakePhraseDao implements PhraseDao {
     

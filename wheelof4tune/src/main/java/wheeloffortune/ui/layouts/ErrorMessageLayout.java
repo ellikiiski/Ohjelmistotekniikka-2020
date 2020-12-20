@@ -1,5 +1,5 @@
 
-package wheeloffortune.ui;
+package wheeloffortune.ui.layouts;
 
 import java.util.ArrayList;
 import java.util.List;

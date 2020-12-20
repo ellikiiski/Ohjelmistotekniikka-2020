@@ -1,5 +1,5 @@
 
-package wheeloffortune.ui;
+package wheeloffortune.ui.views;
 
 import java.util.List;
 import javafx.scene.Scene;
@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import wheeloffortune.domain.Player;
+import wheeloffortune.gamelogic.Player;
 import wheeloffortune.domain.PlayerDBhandler;
 
 public class StatisticsView implements View {

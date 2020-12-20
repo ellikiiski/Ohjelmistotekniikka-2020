@@ -1,5 +1,5 @@
 
-package wheeloffortune.domain;
+package wheeloffortune.gamelogic;
 
 public class Player implements Comparable<Player> {
     

@@ -1,11 +1,11 @@
 
-package wheeloffortune.ui;
+package wheeloffortune.ui.layouts;
 
 import java.util.HashMap;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import wheeloffortune.domain.Player;
+import wheeloffortune.gamelogic.Player;
 
 public class PlayersLayout implements Layout {
     

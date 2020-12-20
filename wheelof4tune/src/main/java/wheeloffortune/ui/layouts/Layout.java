@@ -1,5 +1,5 @@
 
-package wheeloffortune.ui;
+package wheeloffortune.ui.layouts;
 
 import javafx.scene.layout.Pane;
 

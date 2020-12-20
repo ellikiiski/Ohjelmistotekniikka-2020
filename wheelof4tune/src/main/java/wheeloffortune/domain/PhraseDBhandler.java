@@ -1,6 +1,8 @@
 
 package wheeloffortune.domain;
 
+import wheeloffortune.gamelogic.Phrase;
+import wheeloffortune.gamelogic.Category;
 import wheeloffortune.dao.FilePhraseDao;
 
 public class PhraseDBhandler implements DBhandler {

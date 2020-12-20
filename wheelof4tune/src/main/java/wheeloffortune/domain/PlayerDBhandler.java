@@ -1,6 +1,7 @@
 
 package wheeloffortune.domain;
 
+import wheeloffortune.gamelogic.Player;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

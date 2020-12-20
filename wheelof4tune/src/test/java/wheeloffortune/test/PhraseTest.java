@@ -4,8 +4,8 @@ package wheeloffortune.test;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
-import wheeloffortune.domain.Category;
-import wheeloffortune.domain.Phrase;
+import wheeloffortune.gamelogic.Category;
+import wheeloffortune.gamelogic.Phrase;
 
 public class PhraseTest {
     

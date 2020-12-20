@@ -1,5 +1,5 @@
 
-package wheeloffortune.ui;
+package wheeloffortune.ui.views;
 
 import javafx.scene.Scene;
 

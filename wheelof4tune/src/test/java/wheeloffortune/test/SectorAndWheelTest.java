@@ -5,9 +5,9 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
-import wheeloffortune.domain.Sector;
-import wheeloffortune.domain.SectorType;
-import wheeloffortune.domain.Wheel;
+import wheeloffortune.gamelogic.Sector;
+import wheeloffortune.gamelogic.SectorType;
+import wheeloffortune.gamelogic.Wheel;
 
 public class SectorAndWheelTest {
     

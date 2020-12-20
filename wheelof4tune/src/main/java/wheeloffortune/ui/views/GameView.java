@@ -1,5 +1,5 @@
 
-package wheeloffortune.ui;
+package wheeloffortune.ui.views;
 
 import java.util.ArrayList;
 import javafx.scene.Scene;
@@ -7,10 +7,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import wheeloffortune.domain.Game;
+import wheeloffortune.gamelogic.Game;
 import wheeloffortune.domain.PhraseDBhandler;
-import wheeloffortune.domain.Player;
+import wheeloffortune.gamelogic.Player;
 import wheeloffortune.domain.PlayerDBhandler;
+import wheeloffortune.ui.layouts.ErrorMessageLayout;
+import wheeloffortune.ui.layouts.GuessLayout;
+import wheeloffortune.ui.layouts.PhraseLayout;
+import wheeloffortune.ui.layouts.PlayersLayout;
+import wheeloffortune.ui.layouts.TurnLayout;
+import wheeloffortune.ui.layouts.WheelLayout;
 
 public class GameView implements View {
     

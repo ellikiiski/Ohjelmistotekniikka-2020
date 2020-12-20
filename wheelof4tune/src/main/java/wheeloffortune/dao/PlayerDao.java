@@ -2,7 +2,7 @@
 package wheeloffortune.dao;
 
 import java.util.List;
-import wheeloffortune.domain.Player;
+import wheeloffortune.gamelogic.Player;
 
 public interface PlayerDao {
     

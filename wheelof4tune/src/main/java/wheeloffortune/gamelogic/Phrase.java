@@ -1,5 +1,7 @@
 
-package wheeloffortune.domain;
+package wheeloffortune.gamelogic;
+
+import wheeloffortune.gamelogic.Category;
 
 public class Phrase {
     

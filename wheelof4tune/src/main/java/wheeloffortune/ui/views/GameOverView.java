@@ -1,10 +1,11 @@
 
-package wheeloffortune.ui;
+package wheeloffortune.ui.views;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import wheeloffortune.ui.layouts.ButtonLayout;
 
 public class GameOverView implements View {
     

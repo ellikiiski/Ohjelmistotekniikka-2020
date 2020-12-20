@@ -1,6 +1,7 @@
 
-package wheeloffortune.ui;
+package wheeloffortune.ui.layouts;
 
+import wheeloffortune.ui.layouts.ButtonLayout;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;

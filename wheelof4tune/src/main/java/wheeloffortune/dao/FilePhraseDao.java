@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
-import wheeloffortune.domain.Category;
-import wheeloffortune.domain.Phrase;
+import wheeloffortune.gamelogic.Category;
+import wheeloffortune.gamelogic.Phrase;
 
 public class FilePhraseDao implements PhraseDao {
     

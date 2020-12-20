@@ -1,9 +1,15 @@
 
-package wheeloffortune.domain;
+package wheeloffortune.gamelogic;
 
+import wheeloffortune.gamelogic.Player;
+import wheeloffortune.gamelogic.Wheel;
+import wheeloffortune.gamelogic.SectorType;
+import wheeloffortune.gamelogic.Sector;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
+import wheeloffortune.domain.PhraseDBhandler;
+import wheeloffortune.domain.PlayerDBhandler;
 
 public class Game {
     

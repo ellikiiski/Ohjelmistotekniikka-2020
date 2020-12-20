@@ -1,6 +1,12 @@
 
 package wheeloffortune.ui;
 
+import wheeloffortune.ui.views.AddPlayersView;
+import wheeloffortune.ui.views.AddPhraseView;
+import wheeloffortune.ui.views.GameOverView;
+import wheeloffortune.ui.views.GameView;
+import wheeloffortune.ui.views.StartView;
+import wheeloffortune.ui.views.StatisticsView;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;

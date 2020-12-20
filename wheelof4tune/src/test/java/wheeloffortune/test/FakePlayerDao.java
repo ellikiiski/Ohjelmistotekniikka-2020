@@ -4,7 +4,7 @@ package wheeloffortune.test;
 import java.util.ArrayList;
 import java.util.List;
 import wheeloffortune.dao.PlayerDao;
-import wheeloffortune.domain.Player;
+import wheeloffortune.gamelogic.Player;
 
 public class FakePlayerDao implements PlayerDao {
     
