@@ -52,6 +52,7 @@ public class FilePlayerDao implements PlayerDao {
         return players;
     }
     
+    //// apumetodi pelaajalistan luomiseen
     private void initPlayers() throws Exception {
         try {
             Scanner reader = new Scanner(new File(file));
@@ -65,6 +66,7 @@ public class FilePlayerDao implements PlayerDao {
         }
     }
     
+    //// tallentaa pelaajan tiedot tiedostoon
     private void save() throws Exception {
         try (FileWriter writer = new FileWriter(new File(file))) {
             for (Player player : players) {

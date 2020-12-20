@@ -4,7 +4,6 @@ package wheeloffortune.dao;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
 import wheeloffortune.gamelogic.Category;
@@ -13,14 +12,11 @@ import wheeloffortune.gamelogic.Phrase;
 public class FilePhraseDao implements PhraseDao {
     
     private ArrayList<Phrase> phrases;
-    private HashMap<String, Category> categories;
     private String file;
     
     public FilePhraseDao(String fileName) {
         phrases = new ArrayList<>();
-        categories = new HashMap<>();
         file = fileName;
-        initCategories();
         initPhrases();
     }
     
@@ -61,19 +57,13 @@ public class FilePhraseDao implements PhraseDao {
         return phrases;
     }
     
-    private void initCategories() {
-        // tämä toteutus ei oo ehkä kaikista paras kategorian tunnistamiseksi mutta yritän keksiä parempaa
-        categories.put("YLEISTIETO", Category.COMMON);
-        categories.put("TIEDE", Category.SCIENCE);
-        categories.put("KULTTUURI", Category.CULTURE);
-    }
-    
+    //// apumetodi fraasilistan luomiseen
     private void initPhrases() {
         try {
             Scanner reader = new Scanner(new File(file));
             while (reader.hasNextLine()) {
                 String[] parts = reader.nextLine().split("\t");
-                Phrase p = new Phrase(parts[0], categories.get(parts[1]), Integer.valueOf(parts[2]));
+                Phrase p = new Phrase(parts[0], Category.getCategory(parts[1]), Integer.valueOf(parts[2]));
                 phrases.add(p);
             }
         } catch (Exception e) {
@@ -81,6 +71,7 @@ public class FilePhraseDao implements PhraseDao {
         }
     }
     
+    //// tallentaa fraasin tiedot tiedostoon
     private void save() throws Exception {
         try (FileWriter writer = new FileWriter(new File(file))) {
             for (Phrase phrase : phrases) {

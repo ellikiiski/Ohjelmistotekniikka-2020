@@ -10,8 +10,7 @@ import wheeloffortune.domain.PlayerDBhandler;
 public class Game {
     
     private final PlayerDBhandler plDBh;
-    private final PhraseDBhandler phDBh;
-    
+    private final PhraseDBhandler phDBh;    
     private final HashMap<Player, Integer> score;
     private final ArrayList<Player> turnTracker;
     private int turnIndex;

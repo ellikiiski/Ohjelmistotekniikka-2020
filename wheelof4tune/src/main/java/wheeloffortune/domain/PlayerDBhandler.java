@@ -37,6 +37,7 @@ public class PlayerDBhandler {
         }
     }
     
+    //// järjestää pelaajat pankissa olevan rahasumman mukaan parhausjärjestykseen
     public List<Player> getPlayersInOrder() {
         List<Player> players = plDao.getAll();
         Collections.sort(players, Collections.reverseOrder());

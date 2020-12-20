@@ -25,6 +25,7 @@ public class PhraseDBhandler {
         }
     }
     
+    //// palauttaa satunnaisen fraasin tietokannasta
     public Phrase getPhrase() {
         return phDao.getRandomPhrase();
     }
