@@ -32,6 +32,8 @@
                 <configuration>
                     <excludes>
                         <exclude>wheeloffortune/ui/*</exclude>
+                        <exclude>wheeloffortune/ui/views/*</exclude>
+                        <exclude>wheeloffortune/ui/layouts/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>
