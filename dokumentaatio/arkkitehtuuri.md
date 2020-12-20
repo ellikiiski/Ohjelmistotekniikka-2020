@@ -1,10 +1,16 @@
 ## Arkkitehtuuri
 
-### Karkea rakenne
+### Rakenne
 
-Ohjelmassa on kolme tasoa ikäänkuin päällekkäin: ylhäältä alas käyttöliittymä, sovelluslogiikka, tietokannat.
+Ohjelmassa on kolme päätasoa ikäänkuin päällekkäin: ylhäältä alas käyttöliittymä, sovelluslogiikka, tietokannat.
 
-![luokkakaavio alustava](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/arkkitehtuuri.jpg)
+![luokkakaavio](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/luokkakaavio.jpg)
+
+Yllä olevas kuva ei vastaa yksityiskohtaisesti ohjelman luokka- ja pakettirakennetta, vaan kuvaa toiminnan ymmärtämisen kannalta merkittävät luokat. Todellisuudessa ohjelma sisältää vielä
+- <em>Main</em>-luokan sisätltävän <em>main</em>-paketin, josta graafinen käyttöliittymä käynnistetään
+- useita pienempiä pelilogiikan osia kuvaavio luokkia <em>gamlelogic</em>-paketissa
+- tietokantaan tallentamisessa avustavat <em>PlayerDBhandler</em>- ja <em>PhraseDBhandler</em>-luokat paketissa <em>dao</em>
+- lukuisia graafisen käyttöliittymän rakentamisessa apuna käytettyjä näkymäluokkia pakkauksessa <em>ui.views</em> ja niiden rakentamisessa käytettyjä asetteluluokkia pakkauksessa <em>ui.layouts</em>
 
 ### Käyttöliittymä
 
