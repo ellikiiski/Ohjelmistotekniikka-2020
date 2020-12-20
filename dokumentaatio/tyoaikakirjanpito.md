@@ -23,4 +23,5 @@
 | 19.12. | 1        | Statistiikkanäkymän toteutus ja selkeytys fraasin esitykseen |
 | 20.12. | 4        | Virheilmoitukset käyttäjälle näkyviin sekä koodin siistimistä ja selittävien kommenttien lisäystä |
 | 20.12. | 2        | Testaus kuntoon, jäljelle jäikin vain yksi testiluokka |
-| yht    | 54       | | 
+| 20.12. | 4        | Dokumentaatiota ja muuta säätöä |
+| yht    | 58       | | 
