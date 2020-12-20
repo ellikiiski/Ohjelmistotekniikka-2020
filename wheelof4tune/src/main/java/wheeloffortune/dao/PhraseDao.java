@@ -2,7 +2,6 @@
 package wheeloffortune.dao;
 
 import java.util.ArrayList;
-import wheeloffortune.gamelogic.Category;
 import wheeloffortune.gamelogic.Phrase;
 
 public interface PhraseDao {
