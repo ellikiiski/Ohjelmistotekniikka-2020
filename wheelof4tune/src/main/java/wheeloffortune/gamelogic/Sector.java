@@ -3,8 +3,8 @@ package wheeloffortune.gamelogic;
 
 public class Sector {
     
-    private int value;
-    private SectorType type;
+    private final int value;
+    private final SectorType type;
     
     public Sector(int value, SectorType type) {
         this.value = value;

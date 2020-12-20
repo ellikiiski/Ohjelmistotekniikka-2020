@@ -1,8 +1,6 @@
 
 package wheeloffortune.gamelogic;
 
-import wheeloffortune.gamelogic.Category;
-
 public class Phrase {
     
     private final Category category;
@@ -35,14 +33,11 @@ public class Phrase {
         return category;
     }
     
-    public String getCategoryString() {
-        return category.getCategoryName();
-    }
-    
     public int getUses() {
         return used;
     }
     
+    //// tekee annetusta merkkijonosta merkkitaulukon
     private void initLetterArray(String phrase) {
         String trimmed = phrase.trim().toUpperCase();
         this.letters = new char[trimmed.length()];

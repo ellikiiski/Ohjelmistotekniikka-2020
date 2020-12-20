@@ -3,7 +3,7 @@ package wheeloffortune.gamelogic;
 
 public class Player implements Comparable<Player> {
     
-    private String name;
+    private final String name;
     private int bank;
     
     public Player(String name, int bank) {
@@ -21,11 +21,6 @@ public class Player implements Comparable<Player> {
     
     public void addToBank(int howMuch) {
         bank += howMuch;
-    }
-
-    @Override
-    public String toString() {
-        return "Pelaaja: " + name + ", rahaa pankissa: " + bank + "€";
     }
 
     @Override

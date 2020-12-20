@@ -5,8 +5,8 @@ import java.util.Random;
 
 public class Wheel {
     
-    private Sector[] sectors;
-    private int maxWin;
+    private final Sector[] sectors;
+    private final int maxWin;
     private int currentSector;
     
     public Wheel(int maxWin) {
@@ -16,6 +16,8 @@ public class Wheel {
         this.currentSector = 0;
     }
     
+    //// arpoo uuden indeksin arvon muuttujaan currentSector ja palauttaa sen avulla
+    //// taulukosta sectors arvotun sektorin
     public Sector spin() {
         Random rnd = new Random();
         int minSpin = sectors.length / 2;
@@ -28,6 +30,7 @@ public class Wheel {
         return sectors;
     }
     
+    //// alustaa sektorit onnenpyörään eli sectors-taulukkoon
     private void initWheel() {
         for (int i = 0; i < sectors.length; i++) {
             if (i == 0 || i == 12) {

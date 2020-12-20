@@ -84,7 +84,7 @@ public class FilePhraseDao implements PhraseDao {
     private void save() throws Exception {
         try (FileWriter writer = new FileWriter(new File(file))) {
             for (Phrase phrase : phrases) {
-                writer.write(phrase.getPhrase() + "\t" + phrase.getCategoryString() + "\t" + phrase.getUses() + "\n");
+                writer.write(phrase.getPhrase() + "\t" + phrase.getCategory().getName() + "\t" + phrase.getUses() + "\n");
             }
         }
     }

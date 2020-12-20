@@ -52,7 +52,7 @@ public class AddPhraseView implements View {
     private void initCategoryCheckBoxes() {
         categories = new CheckBox[Category.values().length];
         for (int i = 0; i < Category.values().length; i++) {
-            categories[i] = new CheckBox(Category.values()[i].getCategoryName());
+            categories[i] = new CheckBox(Category.values()[i].getName());
         }
     }
     

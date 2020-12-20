@@ -1,10 +1,6 @@
 
 package wheeloffortune.gamelogic;
 
-import wheeloffortune.gamelogic.Player;
-import wheeloffortune.gamelogic.Wheel;
-import wheeloffortune.gamelogic.SectorType;
-import wheeloffortune.gamelogic.Sector;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
@@ -13,17 +9,17 @@ import wheeloffortune.domain.PlayerDBhandler;
 
 public class Game {
     
-    private PlayerDBhandler plDBh;
-    private PhraseDBhandler phDBh;
+    private final PlayerDBhandler plDBh;
+    private final PhraseDBhandler phDBh;
     
-    private HashMap<Player, Integer> score;
-    private ArrayList<Player> turnTracker;
+    private final HashMap<Player, Integer> score;
+    private final ArrayList<Player> turnTracker;
     private int turnIndex;
     private Player playerInTurn;
     private final Wheel wheel;
     private final Phrase phrase;
-    private ArrayList<Character> guessed;
-    private char[] revealed;
+    private final ArrayList<Character> guessed;
+    private final char[] revealed;
     private Sector latestSpin;
     
     public Game(PlayerDBhandler playerDBh, PhraseDBhandler phraseDBh) {
@@ -42,21 +38,24 @@ public class Game {
         latestSpin = null;
     }
     
-    // pelaajien lisäys
+    // PELAAJIEN LISÄYS
     
-    public boolean addPlayer(String name) {
+    public void addPlayer(String name) {
         Player newPlayer = plDBh.addPlayer(name);
         if (newPlayer != null) {
             score.put(newPlayer, 0);
             turnTracker.add(newPlayer);
             playerInTurn = turnTracker.get(0);
-            return true;
-        }        
-        return false;
+        }
     }
     
-    // onnenpyörän pyörittäminen ja sen apumetodit
+    // ONNENPYÖRÄ
     
+    /// Pyörän pyörittäminen
+    
+    //// arpoo muuttujaan latestSpin uuden sektorin
+    //// jos arvottu sektori on rosvo, vuorossa olevan pelaajan pisteet nollaantuvat ja vuoro vaihtuu
+    //// jos arvottu sektori on ohi, vuoro vaihtuu    
     public void spinWheel() {
         latestSpin = wheel.spin();
         if (latestSpinIsBankcrupt()) {
@@ -67,6 +66,8 @@ public class Game {
         }
     }
     
+    /// Apumetodeja
+    
     public boolean latestSpinIsBankcrupt() {
         return latestSpin.getSectorType() == SectorType.BANKCRUPT;
     }
@@ -75,13 +76,21 @@ public class Game {
         return latestSpin.getSectorType() == SectorType.SKIP;
     }
     
+    // VUORONVAIHTO
+    
+    //// vaihtaa vuorossa olevaa pelaajaa kuvaavan muuttujan playerInTurn arvon
+    //// seuraavana listassa turnTracker olevaan pelaajaan    
     private void nextPlayersTurn() {
         turnIndex = (turnIndex + 1) % turnTracker.size();
         playerInTurn = turnTracker.get(turnIndex);
     }
     
-    // pelaajan peliliikkeet ja niiden apumetodit
+    // PELILIIKKEET
     
+    /// Tehtävän ratkaisun yrittäminen
+    
+    //// vertaa parametrina annettavaa merkkijonoa oikeaan ratkaisuun
+    //// ja palauttaa totuustarvon sen mukaan olivatko ne samat    
     public boolean tryToGuessPhrase(String guess) {
         if (guess.toUpperCase().equals(phrase.getPhrase())) {
             revealAll();
@@ -91,6 +100,11 @@ public class Game {
         return false;
     }
     
+    /// Konsonantin veikkaus
+    
+    //// tarkistaa onko parametrina annettu merkki konsonantti
+    //// jos ei, palauttaa -666
+    //// jos on, paljastaa kyseiset kirjaimet fraasista ja palauttaa niiden määrän arvattavana olevassa fraasissa    
     public int guessConsonant(char consonant) {
         if (!isConsonant(consonant)) {
             return -666;
@@ -103,10 +117,16 @@ public class Game {
         return guessedConsonants;
     }
     
+    /// Vokaalin osto
+    
+    //// palauttaa totuusarvon sen mukaan, onko pelaajalla tarpeeksi rahaa ostaakseen vokaalin    
     public boolean canBuyNoun() {
         return score.get(playerInTurn) >= 250;
     }
     
+    //// tarkastaa onko parametrina annettu merkki vokaali
+    //// jos ei, palauttaa -666
+    //// jos on, vähentää pelaajan pisteistä 250 sekä paljastaa kyseiset kirjaimet fraasista ja palauttaa niiden määrän arvattavana olevassa fraasissa    
     public int buyNoun(char noun) {
         if (!isNoun(noun)) {
             return -666;
@@ -115,6 +135,77 @@ public class Game {
         return revealLetter(noun);
     }
     
+    // PISTETILANTEEN MUUTOKSET
+    
+    /// Pisteiden lisääminen
+    
+    //// lisää vuorossa olevan pelaajan pisteisiin viimeisimpänä pyöräytetyn sektorin arvon
+    //// kerrottuna parametrina annetulla luvulla    
+    private void addScore(int x) {
+        score.put(playerInTurn, score.get(playerInTurn) + x * latestSpin.getValue());
+    }
+    
+    /// Pisteiden nollaus
+    
+    //// nollaa vuorossa olevan pelaaja pisteet
+    private void resetScore() {
+        score.put(playerInTurn, 0);
+    }
+    
+    // PELIN PÄÄTTYMINEN
+    
+    //// päättää pelin: tallentaa voittajan keräämät pisteet (=rahasumman) pelaajan pankkiin tietokantaan
+    //// ja palauttaa voittajan keräämät pisteet
+    public int declrareWinner() {
+        plDBh.addMoneyToPlayer(playerInTurn, score.get(playerInTurn));
+        return score.get(playerInTurn);
+    }
+    
+    // GETTEREITÄ
+    
+    public Set<Player> getPlayerList() {
+        return score.keySet();
+    }
+    
+    public Player getPlayerInTurn() {
+        return playerInTurn;
+    }
+    
+    //// palauttaa tällä hetkellä vuorossa olevan pelaajan pistetilanteen
+    public int getScore() {
+        return score.get(playerInTurn);
+    }
+    
+    //// palauttaa fraasin merkkijonona, jossa vain välilyönnit ja tähän mennessä oikein arvatutu kirjaimet näkyvät
+    //// muiden kirjainten tilalla on alaviiva
+    public String getPhraseAsString() {
+        return letterArrayToString();
+    }
+    
+    //// palauttaa muuten samanlaisen merkkijonon kuin getPhraseAsString(),
+    //// mutta jokaisen merkin välissä on ylimääräinen välilyönti
+    //// (tämä helpottaa alaviivojen erottamista toisistaan käyttöliittymässä)
+    public String getPhraseAsStringToPresent() {
+        StringBuilder sb = new StringBuilder("");
+        for (char c : revealed) {
+            sb.append(c);
+            sb.append(" ");
+        }
+        return sb.toString();
+    }
+
+    public String getCategoryName() {
+        return phrase.getCategory().getName();
+    }
+
+    public String getLatestSpinSectorName() {
+        return latestSpin.toString();
+    }
+    
+    // APUMETODEJA
+    
+    //// paljastaa fraasista löytyvät parametrina annettua kirjainta vastaavat kirjaimet
+    //// ja palauttaa niiden lukumäärän
     public int revealLetter(char letter) {
         int lettersFound = 0;
         for (int i = 0; i < phrase.getLetters().length; i++) {
@@ -126,66 +217,12 @@ public class Game {
         guessed.add(letter);
         return lettersFound;
     }
-    
+
     public void revealAll() {
         for (int i = 0; i < revealed.length; i++) {
             revealed[i] = phrase.getLetters()[i];
         }
     }
-    
-    // pisteiden lisäys ja nollaus
-    
-    private void addScore(int x) {
-        score.put(playerInTurn, score.get(playerInTurn) + x * latestSpin.getValue());
-    }
-
-    private void resetScore() {
-        score.put(playerInTurn, 0);
-    }
-    
-    // pelin päättyminen
-    
-    public int declrareWinner() {
-        plDBh.addMoneyToPlayer(playerInTurn, score.get(playerInTurn));
-        return score.get(playerInTurn);
-    }
-    
-    // gettereitä
-    
-    public Set<Player> getPlayerList() {
-        return score.keySet();
-    }
-    
-    public Player getPlayerInTurn() {
-        return playerInTurn;
-    }
-    
-    public int getScore() {
-        return score.get(playerInTurn);
-    }
-    
-    public String getPhraseAsString() {
-        return letterArrayToString();
-    }
-    
-    public String getPhraseAsStringToPresent() {
-        StringBuilder sb = new StringBuilder("");
-        for (char c : revealed) {
-            sb.append(c);
-            sb.append(" ");
-        }
-        return sb.toString();
-    }
-
-    public String getCategory() {
-        return phrase.getCategoryString();
-    }
-
-    public String getLatestSpinSectorName() {
-        return latestSpin.toString();
-    }
-    
-    // apumetodeja
     
     private boolean isConsonant(char c) {
         return c == 'B' || c == 'C' || c == 'D' || c == 'F' || c == 'G' || c == 'H'

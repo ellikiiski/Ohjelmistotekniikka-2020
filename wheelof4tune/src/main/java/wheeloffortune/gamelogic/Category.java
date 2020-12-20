@@ -12,13 +12,13 @@ public enum Category {
         this.name = name;
     }
     
-    public String getCategoryName() {
+    public String getName() {
         return name;
     }
     
     public static Category getCategory(String name) {
         for (Category c : values()) {
-            if (c.getCategoryName().equals(name.toUpperCase())) {
+            if (c.getName().equals(name.toUpperCase())) {
                 return c;
             }
         }

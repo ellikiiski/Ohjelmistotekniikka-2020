@@ -64,7 +64,7 @@ public class GameView implements View {
         }
         
         pllo = initPllo();
-        phlo = new PhraseLayout(game.getPhraseAsStringToPresent(), game.getCategory());
+        phlo = new PhraseLayout(game.getPhraseAsStringToPresent(), game.getCategoryName());
         
         glo.setToInit();
         wlo.setToInit();
