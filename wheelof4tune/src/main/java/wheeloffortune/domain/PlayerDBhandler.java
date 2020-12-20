@@ -2,14 +2,13 @@
 package wheeloffortune.domain;
 
 import wheeloffortune.gamelogic.Player;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import wheeloffortune.dao.FilePlayerDao;
 
 public class PlayerDBhandler {
     
-    private FilePlayerDao plDao;
+    private final FilePlayerDao plDao;
 
     public PlayerDBhandler(String fileName) {
         plDao = new FilePlayerDao(fileName);

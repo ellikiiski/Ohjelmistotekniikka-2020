@@ -11,8 +11,8 @@ import wheeloffortune.gamelogic.Phrase;
 
 public class FilePhraseDao implements PhraseDao {
     
-    private ArrayList<Phrase> phrases;
-    private String file;
+    private final ArrayList<Phrase> phrases;
+    private final String file;
     
     public FilePhraseDao(String fileName) {
         phrases = new ArrayList<>();

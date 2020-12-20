@@ -2,6 +2,3 @@ elli	666
 alma	100
 saku	0
 luuseri	0
-a	0
-s	0
-d	0

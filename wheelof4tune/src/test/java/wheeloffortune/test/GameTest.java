@@ -101,6 +101,16 @@ public class GameTest {
         assertEquals(game.getScore(), 0);
     }
     
+    /// Pelin pääättymisen voittoon testaus
+    
+    @Test
+    public void declareWinner() {
+        forceSpinMoney();
+        game.addScore(13);
+        game.declrareWinner();
+        assertTrue(game.getPlayerInTurn().getBank() % 13 == 0);
+    }
+    
     /// Apumetodien testausta
     
     @Test
