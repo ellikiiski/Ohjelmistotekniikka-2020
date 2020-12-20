@@ -58,19 +58,33 @@ Sovelluslogiikkaan liittyvät komponentit löytyvät pakkauksesta <em>wheeloffor
 
 Sovelluslogiikka pyörii pääosin <em>Game</em>-luokassa, muut luokat muodostavat pienempiä osakokonaisuuksia rakenteen selkeyttämiseksi. Peli eli <em>Game</em>-olio sisältää kolme <em>Player</em>-olioita, yhden <em>Wheel</em>-olion (joka sisältää 24 <em>Sector</em>-oliota) ja yhden <em>Phrase</em>-olion. Lisäksi sektorien ja fraasien kategorisoimisessa auttava enum-luokat <em>SectorType</em> ja <em>Category</em>.
 
-Pelin toiminta perustuu karkeasti jaotellen ännään osaan, jota ovat pelaajien lisääminen, onnenpyörän pyörittäminen, konsonantin veikkaaminen, vokaalin ostaminen, tehtävän ratkaisun araaminen ja pelin loppuminen oikeaan arvaukseen.
+Pelin toiminta voidaan jakaa karkeasti jaotellen kuuteen osaan, jota ovat pelin aloittaminen ja pelaajien lisääminen, onnenpyörän pyörittäminen, konsonantin veikkaaminen, vokaalin ostaminen, tehtävän ratkaisun araaminen ja pelin loppuminen oikeaan arvaukseen.
 
-#### Pelaajien lisääminen
+#### Pelin aloitaminen ja elaajien lisääminen
+
+KESKEN
+
+Pelaajien lisäys tapahtuu yksitellen kutsumalla metodia <em>addPlayer(String name)</em> parametrina pelaajan nimi. Metodi hakee tietokannasta samannimistä pelaajaa <em>Player</em> tai, mikäli sellaista ei löydy, luo uuden pelaajan ja lisää tämän peliin pelaajaksi.
 
 #### Onnenpyörän pyörittäminen
 
+Onnenpyörää pyöritetään vuoron alussa kutsumalla metodia <em>spinWheel</em>, joka puolestaan kutsuu <em>Wheel</em>-luokan <em>Sector</em>-olion palauttavaa metodia <em>spin()</em>. Mikäli saatu sektori on ohi- tai rosvo-sektori, kutsutaann metodia <em>nextPlayersTurn()</em>, joka vaihtaa vuorossa olevan pelaajan seuraavaan. Lisäksi mikäli sektori oli rosvo-sektori, kutsutaan ennen vuoron vaihtoa metodia <em>resetScore()</em>, joka nollaa sektorin pyörittäneen pelaajan pisteet pelissä.
+
 #### Konsonantin veikkaaminen
+
+Konsonantin veikkaaminen tapahtuu pelaajan pyöritettyä onnenpyörästä onnistuneesti jonkin rahasumman. Tällöin kutsutaan metdia <em>guessConsonant(char consonant)</em>, johon annetaan parametrina käyttäjän syöttämä merkki. Metodi tarkistaa, että merkki on aiemmin arvaamaton konsonantti, minkä jälkeen kutsutaan metodia <em>revealLetter(char letter)</em>, johon annetaan parametrina sama merkki. Kyseinen metodi palauttaa luvun, joka vastaa kyseisen merkin esintyymiskertojen määrää fraasissa. Lopuksi kutsutaan metodia <em>nextPlayersTurn()</em>, mikäli tuo luku on nolla eli kyseistä konsonanttia ei löytynyt arvuuteltavasta fraasista.
 
 #### Vokaalin ostaminen
 
+Vokaalin ostaminen onnistuu, kun vuorossa olevalla pelaajalla on vähintään 250€ rahaa kerättynä pelissä. Tällöin kutsutaan metodia <em>buyNoun(char noun)</em>, joka sekin tarkistaa parametrina olevan merkin olevan aiemmin ostamaton vokaali. Vuorossa olevan pelaajan pisteistä vähennetään 250 ja metodi palauttaa kutsumalla metodia <em>revealLetter(char letter)</em> löytyneiden vokaalien lukumäärän.
+
 #### Tehtävän ratkaisun arvaaminen
 
+Vuoron alussa pelaaja voi yrittää ratkaista tehätävä, jolloin kutsutaan metodia <em>tryToGuessPhrase(String guess)</em>, joka vertaa prametrina annettua merkkijonoa oikeaan ratkaisuun ja palautta sen mukaisen totuusarvon. Jos vastaus oli väärin kutsutaan jälleen metodia <em>nextPlayersTurn()</em>.
+
 #### Pelin loppuminen oikeaan arvaukseen
+
+Kun tehtävä on arvattu oikein, kutsutaan metodia <em>declareWinner()</em>, joka tallentaa voitetun rahasumman (pisteet) voittajan pelaajan tietoihin ja palauttaa voittosumman.
 
 ### Pysyväistallennus
 
