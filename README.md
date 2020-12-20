@@ -2,6 +2,7 @@
 
 ### Releaset
 
+- [Loppupalautus](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/releases/tag/Loppupalautus)
 - [Viikko 6](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/releases/tag/viikko6)
 - [Viikko 5](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/releases/tag/viikko5)
 
