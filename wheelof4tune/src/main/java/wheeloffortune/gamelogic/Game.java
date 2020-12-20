@@ -2,6 +2,7 @@
 package wheeloffortune.gamelogic;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Set;
 import wheeloffortune.domain.PhraseDBhandler;
@@ -79,7 +80,7 @@ public class Game {
     
     //// vaihtaa vuorossa olevaa pelaajaa kuvaavan muuttujan playerInTurn arvon
     //// seuraavana listassa turnTracker olevaan pelaajaan    
-    private void nextPlayersTurn() {
+    public void nextPlayersTurn() {
         turnIndex = (turnIndex + 1) % turnTracker.size();
         playerInTurn = turnTracker.get(turnIndex);
     }
@@ -127,6 +128,9 @@ public class Game {
     //// jos ei, palauttaa -666
     //// jos on, vähentää pelaajan pisteistä 250 sekä paljastaa kyseiset kirjaimet fraasista ja palauttaa niiden määrän arvattavana olevassa fraasissa    
     public int buyNoun(char noun) {
+        if (! canBuyNoun()) {
+            return -1;
+        }
         if (!isNoun(noun)) {
             return -666;
         }
@@ -140,14 +144,14 @@ public class Game {
     
     //// lisää vuorossa olevan pelaajan pisteisiin viimeisimpänä pyöräytetyn sektorin arvon
     //// kerrottuna parametrina annetulla luvulla    
-    private void addScore(int x) {
+    public void addScore(int x) {
         score.put(playerInTurn, score.get(playerInTurn) + x * latestSpin.getValue());
     }
     
     /// Pisteiden nollaus
     
     //// nollaa vuorossa olevan pelaaja pisteet
-    private void resetScore() {
+    public void resetScore() {
         score.put(playerInTurn, 0);
     }
     
@@ -224,13 +228,13 @@ public class Game {
     }
     
     private boolean isConsonant(char c) {
-        return c == 'B' || c == 'C' || c == 'D' || c == 'F' || c == 'G' || c == 'H'
-                || c == 'J' || c == 'K' || c == 'L' || c == 'M' || c == 'N' || c == 'P' || c == 'Q'
-                || c == 'R' || c == 'S' || c == 'T' || c == 'V' || c == 'W' || c == 'X' || c == 'Z'; 
+        ArrayList<Character> consonants = new ArrayList<>(Arrays.asList('B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Z'));
+        return consonants.contains(c);
     }
     
     private boolean isNoun(char c) {
-        return c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U' || c == 'Y' || c == 'Å' || c == 'Ä' || c == 'Ö';
+        ArrayList<Character> nouns = new ArrayList<>(Arrays.asList('A', 'E', 'I', 'O', 'U', 'Y', 'Å', 'Ä', 'Ö'));
+        return nouns.contains(c);
     }
     
     private char[] hideLetters() {

@@ -28,7 +28,7 @@ public class PhraseTest {
     
     @Test
     public void category() {
-        assertEquals("YLEISTIETO", phrase.getCategoryString());
+        assertEquals("YLEISTIETO", phrase.getCategory().getName());
     }
     
     @Test

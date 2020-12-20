@@ -5,17 +5,14 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import wheeloffortune.gamelogic.Game;
-import wheeloffortune.gamelogic.Phrase;
 import wheeloffortune.domain.PhraseDBhandler;
 import wheeloffortune.domain.PlayerDBhandler;
 
 public class GameTest {
     
     PlayerDBhandler plDBh;
-    PhraseDBhandler phDBh;
-    
+    PhraseDBhandler phDBh;    
     Game game;
-    Phrase phrase;
     String player1name;
     String player2name;
 
@@ -29,48 +26,85 @@ public class GameTest {
         game.addPlayer(player1name);
         game.addPlayer(player2name);
     }
-
-    @Test
-    public void addPlayers() {
-        assertEquals(game.getScore(), 0);
-    }
+    
+    /// Tehtävän ratkaisemisen testaus
     
     @Test
-    public void firstTurn() {
-        assertEquals(game.playerInTurn(), "eka");
-    }
-
-    @Test
-    public void changeTurn() {
-        game.nextPlayersTurn();
-        assertEquals(game.playerInTurn(), "toka");
-    }
-    
-    @Test
-    public void spinningWheel() {
-        game.spinWheel();
-        assertFalse(game.getLatestSpinSectorName().equals("Ei mikään"));
-    }
-    
-    @Test
-    public void tryToGuessThePhrase() {
+    public void tryToGuessThePhraseRight() {
         assertTrue(game.tryToGuessPhrase("testaaminen on rasittavaa"));
     }
     
     @Test
-    public void guessingConsonant() {
-        game.spinWheel();
+    public void tryToGuessThePhraseWrong() {
+        assertFalse(game.tryToGuessPhrase("testaaminen on mun lepparijuttu"));
+    }
+    
+    /// Konsonantin arvaamisen tehtaus
+    
+    @Test
+    public void guessConsonantRight() {
+        forceSpinMoney();
         int consonants = game.guessConsonant('T');
         assertEquals(consonants, 4);
     }
     
     @Test
-    public void cantBuyNoun() {
-        assertFalse(game.canBuyNoun());
+    public void guessConsonantWrong() {
+        forceSpinMoney();
+        int consonants = game.guessConsonant('W');
+        assertEquals(consonants, 0);
     }
     
     @Test
-    public void hidinPhrase() {
+    public void tryToGuessNounAsConsonant() {
+        forceSpinMoney();
+        int consonants = game.guessConsonant('A');
+        assertEquals(consonants, -666);
+    }
+    
+    /// Vokaalin ostamisen testaus
+    
+    @Test
+    public void tryToBuyNounWithoutEnooughMoney() {
+        game.resetScore();
+        assertEquals(game.buyNoun('A'), -1);
+    }
+    
+    @Test
+    public void buyNounRight() {
+        forceSpinMoney();
+        game.addScore(250);
+        assertEquals(game.buyNoun('A'), 6);
+    }
+    
+    @Test
+    public void buyNounWrong() {
+        forceSpinMoney();
+        game.addScore(250);
+        assertEquals(game.buyNoun('Å'), 0);
+    }
+    
+    @Test
+    public void tryToBuyConsonantAsNoun() {
+        forceSpinMoney();
+        game.addScore(250);
+        assertEquals(game.buyNoun('T'), -666);
+    }
+    
+    /// Rosvosektorin pyörittämisen testaus
+    
+    @Test
+    public void scoreResetsWhenBankcruptIsSpinned() {
+        forceSpinMoney();
+        game.addScore(10);
+        forceSpinBankcrupt();
+        assertEquals(game.getScore(), 0);
+    }
+    
+    /// Apumetodien testausta
+    
+    @Test
+    public void hidingPhrase() {
         assertEquals(game.getPhraseAsString(), "___________ __ __________");
     }
     
@@ -78,5 +112,23 @@ public class GameTest {
     public void revealingLetter() {
         game.revealLetter('A');
         assertEquals(game.getPhraseAsString(), "____AA_____ __ _A____A_AA");
+    }
+    
+    // APUMETODEJA TESTAUKSEEN (onnenpyörän pakottaminen tiettyyn sektoriin)
+    
+    private void forceSpinMoney() {
+        boolean notMoneySpinned = true;
+        while(notMoneySpinned) {
+            game.spinWheel();
+            notMoneySpinned = game.latestSpinIsBankcrupt() || game.latestSpinIsSkip();
+        }
+    }
+    
+    private void forceSpinBankcrupt() {
+        boolean notBcSpinned = true;
+        while (notBcSpinned) {
+            game.spinWheel();
+            notBcSpinned = !game.latestSpinIsBankcrupt();
+        }
     }
 }

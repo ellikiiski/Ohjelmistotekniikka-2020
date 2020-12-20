@@ -9,7 +9,7 @@ import wheeloffortune.gamelogic.Sector;
 import wheeloffortune.gamelogic.SectorType;
 import wheeloffortune.gamelogic.Wheel;
 
-public class SectorAndWheelTest {
+public class WheelTest {
     
     private Wheel wheel;
     
