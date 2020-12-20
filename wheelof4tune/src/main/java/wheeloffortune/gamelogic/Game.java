@@ -14,7 +14,6 @@ public class Game {
     private final PhraseDBhandler phDBh;    
     private final HashMap<Player, Integer> score;
     private final ArrayList<Player> turnTracker;
-    private int turnIndex;
     private Player playerInTurn;
     private final Wheel wheel;
     private final Phrase phrase;
@@ -29,7 +28,6 @@ public class Game {
         
         score = new HashMap<>();
         turnTracker = new ArrayList<>();
-        turnIndex = 0;
         playerInTurn = null;
         wheel = new Wheel(800);
         phrase = phDBh.getPhrase();
@@ -81,8 +79,9 @@ public class Game {
     //// vaihtaa vuorossa olevaa pelaajaa kuvaavan muuttujan playerInTurn arvon
     //// seuraavana listassa turnTracker olevaan pelaajaan    
     public void nextPlayersTurn() {
-        turnIndex = (turnIndex + 1) % turnTracker.size();
-        playerInTurn = turnTracker.get(turnIndex);
+        int index = turnTracker.indexOf(playerInTurn);
+        index = (index + 1) % turnTracker.size();
+        playerInTurn = turnTracker.get(index);
     }
     
     // PELILIIKKEET
