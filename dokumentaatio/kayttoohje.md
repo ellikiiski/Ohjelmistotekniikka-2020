@@ -42,7 +42,7 @@ Itse pelinäkymässä näkyy ylhäällä pelaajat, keskellä arvuuteltava fraasi
 Vuorollaan pelaajat valitsevat kolmesta mahdollisuudesta:
 1. Yrittää ratkaista tehtävä eli arvata arvuuteltava fraasi (nappi "Arvaa ratkaisua")
 2. Pyörittää onnenpyörää (nappi "Pyöritä")
-3. Ostaa vokaali, mikäli pelaajalla on kerättynä vähintään 250€ rahaa
+3. Ostaa vokaali, mikäli pelaajalla on kerättynä vähintään 250€ rahaa (nappi "Osta vokaali")
 
 Ohjetekstit ja nappien disabloituminen ohjaavat vuorossa olevaa pelaaja ja kertovat mitä milloinkin on mahdollista tehdä.
 
