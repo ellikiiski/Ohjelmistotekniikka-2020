@@ -29,7 +29,7 @@ public class AddPhraseView implements View {
         emlo = new ErrorMessageLayout();        
         addNewhraseHere = new Label("Täällä voit lisätä uuden fraasin tietokantaan");
         chooseCategory = new Text("Valitse fraasin kategoria allaolevista (tasan yksi)");
-        writePhrase = new Text("Kirjoita alle uusi fraasi (väh. 10-40!), varo kirjoitusvirheitä");
+        writePhrase = new Text("Kirjoita alle uusi fraasi (10-40 merkkiä), varo kirjoitusvirheitä");
         String[] bs = {"Takaisin aloitussivulle", "Tallenna uusi fraasi"};
         buttonLO = new ButtonLayout(bs, 10);        
         clearView();
