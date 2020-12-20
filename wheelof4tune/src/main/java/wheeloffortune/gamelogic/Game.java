@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Set;
-import wheeloffortune.domain.PhraseDBhandler;
-import wheeloffortune.domain.PlayerDBhandler;
+import wheeloffortune.dao.PhraseDBhandler;
+import wheeloffortune.dao.PlayerDBhandler;
 
 public class Game {
     

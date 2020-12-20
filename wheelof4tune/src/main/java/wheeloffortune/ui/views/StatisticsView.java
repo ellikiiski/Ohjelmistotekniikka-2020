@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import wheeloffortune.gamelogic.Player;
-import wheeloffortune.domain.PlayerDBhandler;
+import wheeloffortune.dao.PlayerDBhandler;
 
 public class StatisticsView implements View {
     

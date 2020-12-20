@@ -1,10 +1,9 @@
 
-package wheeloffortune.domain;
+package wheeloffortune.dao;
 
 import wheeloffortune.gamelogic.Player;
 import java.util.Collections;
 import java.util.List;
-import wheeloffortune.dao.FilePlayerDao;
 
 public class PlayerDBhandler {
     

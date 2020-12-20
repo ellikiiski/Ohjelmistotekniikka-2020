@@ -10,8 +10,8 @@ import wheeloffortune.ui.views.StatisticsView;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
-import wheeloffortune.domain.PhraseDBhandler;
-import wheeloffortune.domain.PlayerDBhandler;
+import wheeloffortune.dao.PhraseDBhandler;
+import wheeloffortune.dao.PlayerDBhandler;
 
 public class GUI extends Application {
 

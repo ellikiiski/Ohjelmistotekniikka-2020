@@ -5,8 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import wheeloffortune.gamelogic.Game;
-import wheeloffortune.domain.PhraseDBhandler;
-import wheeloffortune.domain.PlayerDBhandler;
+import wheeloffortune.dao.PhraseDBhandler;
+import wheeloffortune.dao.PlayerDBhandler;
 
 public class GameTest {
     

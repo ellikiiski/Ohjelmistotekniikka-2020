@@ -1,5 +1,5 @@
 
-package wheeloffortune.domain;
+package wheeloffortune.main;
 
 import wheeloffortune.ui.GUI;
 
