@@ -18,7 +18,6 @@ public class PhraseDBhandler {
             Category c = Category.getCategory(categoryName);
             Phrase p = new Phrase(phrase, c, 0);
             phDao.create(p);
-            System.out.println(p.getPhrase());
             return true;
         } catch (Exception e) {
             return false;
