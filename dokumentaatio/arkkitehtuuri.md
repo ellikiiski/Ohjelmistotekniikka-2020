@@ -91,4 +91,4 @@ Kun tehtävä on arvattu oikein, kutsutaan metodia <em>declareWinner()</em>, jok
 
 Pysyväistallennukseen liittyvät komponentit löytyvät pakkauksesta <em>wheeloffortune.dao</em>.
 
-Ohjelma käyttää hyväkseen kahta tietokantaa: pelaajatietokanta (<em>PlayerDao</em>) ja fraasitietokanta (<em>PhraseDao</em>). Tiedot tallennetaan tiedostoihin <em>PlayerDB.txt</em> ja <em>PhraseDB.txt</em>, joista ne myös tarpeen tullen luetaan.
+Ohjelma käyttää hyväkseen kahta tietokantaa: pelaajatietokanta (<em>PlayerDao</em>) ja fraasitietokanta (<em>PhraseDao</em>). Näitä varten on vielä erikseen olemassa luokat  <em>PlayerDBhandler</em> ja <em>PhraseDBhandler</em>, jotka muokkaavat tietokantaan lisäämistä ja sieltä lukemista koskevia metodeita pelilogiikalle käytettävämpään muotoon. Ne ovat siis eräänlainen ylimääräinen välikappale pelilogiikan ja tallennuksen välissä. Sovelluksen tapauksessa tietokantana toimivat tiedostot <em>PlayerDB.txt</em> ja <em>PhraseDB.txt</em>, joissa tiedot on lueteltu tabulaattori- ja rivivälein eroteltuna.
