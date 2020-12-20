@@ -114,7 +114,7 @@ public class GameTest {
         assertEquals(game.getPhraseAsString(), "____AA_____ __ _A____A_AA");
     }
     
-    // APUMETODEJA TESTAUKSEEN (onnenpyörän pakottaminen tiettyyn sektoriin)
+    // APUMETODi TESTAUKSEEN (onnenpyörän pakottaminen tiettyyn sektoriin)
     
     private void forceSpinMoney() {
         boolean notMoneySpinned = true;
