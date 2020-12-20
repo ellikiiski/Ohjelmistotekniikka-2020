@@ -131,9 +131,11 @@ public class GameView implements View {
                 }
                 newTurn();
                 refresh();
+            } else if (letters == -888) {
+                emlo.setNewErrorMessage("Konsonantti " + guessed.toUpperCase() + " on jo arvattu!");
             } else {
                 emlo.setNewErrorMessage("Arvauksesi ei ollut konsonantti!");
-            }        
+            }
         }
     }
     
@@ -160,6 +162,8 @@ public class GameView implements View {
                 }
                 newTurn();
                 refresh();
+            } else if (letters == -888) {
+                emlo.setNewErrorMessage("Vokaali " + guessed.toUpperCase() + " on jo ostettu!");
             } else {
                 emlo.setNewErrorMessage("Arvauksesi ei ollut vokaali!");
             }

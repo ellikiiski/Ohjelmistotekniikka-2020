@@ -109,6 +109,9 @@ public class Game {
         if (!isConsonant(consonant)) {
             return -666;
         }
+        if (guessed.contains(consonant)) {
+            return -888;
+        }
         int guessedConsonants = revealLetter(consonant);
         addScore(guessedConsonants);
         if (guessedConsonants == 0) {
@@ -133,6 +136,9 @@ public class Game {
         }
         if (!isNoun(noun)) {
             return -666;
+        }
+        if (guessed.contains(noun)) {
+            return -888;
         }
         score.put(playerInTurn, score.get(playerInTurn) - 250);
         return revealLetter(noun);
