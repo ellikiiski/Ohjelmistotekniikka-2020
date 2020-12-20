@@ -30,7 +30,7 @@ Statistiikkanäkymä on varsin yksikertainen, se koostuu vain tekstikomponentist
 
 #### Fraasinlisäysnäkymä
 
-KESKEN
+Fraasinäkymässä on kategorioita kuvaavat checkboxit ja fraasin kirjoittamista varten tekstikenttä sekä tallentamista ja aloitussivulle palaamista varten tarkoitetut napit (hyödyntää <em>ButtonLayout</em>-luokkaa). Lisäksi se sisältää <em>ErrorMessageLayout</em>-asettelun, johon mahdolliset virheilmoitukset tulevat näkyviin.
 
 #### Pelinäkymä
 
@@ -62,8 +62,7 @@ Pelin toiminta voidaan jakaa karkeasti jaotellen kuuteen osaan, jota ovat pelin 
 
 #### Pelin aloitaminen ja elaajien lisääminen
 
-KESKEN
-
+Peli alustetaan konstruktorissa luomalla uusi <em>Wheel</em>-oli ja hakemalla tietokannasta sattumanvarainen fraasi arvuuteltavaksi.
 Pelaajien lisäys tapahtuu yksitellen kutsumalla metodia <em>addPlayer(String name)</em> parametrina pelaajan nimi. Metodi hakee tietokannasta samannimistä pelaajaa <em>Player</em> tai, mikäli sellaista ei löydy, luo uuden pelaajan ja lisää tämän peliin pelaajaksi.
 
 #### Onnenpyörän pyörittäminen
