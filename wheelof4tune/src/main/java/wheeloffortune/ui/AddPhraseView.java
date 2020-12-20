@@ -12,6 +12,8 @@ import wheeloffortune.domain.Category;
 
 public class AddPhraseView implements View {
     
+    private ErrorMessageLayout errors;
+    
     private VBox layout;
     private final Label addNewhraseHere;
     private final Text chooseCategory;
@@ -23,6 +25,8 @@ public class AddPhraseView implements View {
     private Scene scene;
     
     public AddPhraseView() {
+        errors = new ErrorMessageLayout();
+        
         addNewhraseHere = new Label("Täällä voit lisätä uuden fraasin tietokantaan");
         chooseCategory = new Text("Valitse fraasin kategoria allaolevista (tasan yksi)");
 
@@ -31,7 +35,7 @@ public class AddPhraseView implements View {
         String[] bs = {"Takaisin aloitussivulle", "Tallenna uusi fraasi"};
         buttonLO = new ButtonLayout(bs, 10);
         
-        refresh();
+        clearView();
     }
     
     private void initCheckBoxLayout() {
@@ -63,19 +67,37 @@ public class AddPhraseView implements View {
         return "Jotain on nyt pielessä";
     }
     
-    public boolean allowedToSave() {
+    public boolean oneCategorySelected() {
         int categoriesSelected = 0;
         for (CheckBox cb : categories) {
             if (cb.isSelected()) {
                 categoriesSelected++;
             }
         }
-        return categoriesSelected == 1 && phraseText.getText().length() >= 10 && phraseText.getText().length() <= 40;
+        return categoriesSelected == 1;
     }
     
-    public void setInvalidSelections() {
-        Text invalid = new Text("Lue ohjeet (suluissa)!");
-        layout.getChildren().add(invalid);
+    public boolean phraseLongEnough() {
+        return phraseText.getText().length() >= 10;
+    }
+    
+    public boolean phreaseNotTooLong() {
+        return phraseText.getText().length() <= 40;
+    }
+    
+    public void setInvalidCategoriesMessage() {
+        errors.setNewErrorMessage("Valitse tasan yksi kategoria!");
+        refresh();
+    }
+    
+    public void setTooShortPhrase() {
+        errors.setNewErrorMessage("Ehdottamasi fraasi on liian lyhyt!");
+        refresh();
+    }
+    
+    public void setTooLongPhrase() {
+        errors.setNewErrorMessage("Ehdottamasi fraasi on liian pitkä!");
+        refresh();
     }
     
     public Button getBackButton() {
@@ -86,14 +108,19 @@ public class AddPhraseView implements View {
         return buttonLO.getButton("Tallenna uusi fraasi");
     }
     
-    @Override
-    public void refresh() {
+    public void clearView() {
+        errors.clear();
         initCheckBoxLayout();
         phraseText = new TextArea();
         phraseText.setPrefHeight(80);
+        refresh();
+    }
+    
+    @Override
+    public void refresh() {
         layout = new VBox();
         layout.setSpacing(20);
-        layout.getChildren().addAll(addNewhraseHere, chooseCategory, checkBoxLayout, writePhrase, phraseText, buttonLO.getLayout());
+        layout.getChildren().addAll(addNewhraseHere, chooseCategory, checkBoxLayout, writePhrase, phraseText, buttonLO.getLayout(), errors.getLayout());
 
         scene = new Scene(layout, 600, 400);
     }

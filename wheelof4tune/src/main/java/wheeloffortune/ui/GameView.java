@@ -24,6 +24,7 @@ public class GameView implements View {
     private WheelLayout wlo;
     private TurnLayout tlo;
     private GuessLayout glo;
+    private ErrorMessageLayout emlo;
     
     private VBox layout;
     
@@ -41,6 +42,7 @@ public class GameView implements View {
         wlo = new WheelLayout();
         tlo = new TurnLayout();
         glo = new GuessLayout();
+        emlo = new ErrorMessageLayout();
         
         layout = new VBox();
         layout.setSpacing(50);
@@ -98,6 +100,7 @@ public class GameView implements View {
     }
     
     public void newTurn() {
+        emlo.clear();
         phlo.setPhrase(game.getPhraseAsStringToPresent());
         pllo.addMoneyToBank(game.getPlayerInTurn(), game.getScore());
         glo.setToInit();
@@ -110,24 +113,25 @@ public class GameView implements View {
     }
     
     // alustava
-    public boolean guessConsonant() {
+    public void guessConsonant() {
         String guessed = glo.getFieldText();
         String playerGuessing = game.getPlayerInTurn().getName();
         if (guessed.length() != 1) {
-            return false;
-        }
-        int letters = game.guessConsonant(guessed.toUpperCase().charAt(0));
-        if (letters  >= 0) {
-            if (letters == 0) {
-                tlo.setLatestEvent(playerGuessing, "arvasi konsonanttia " + guessed.toUpperCase() + ", eikä sitä löytynyt\nyhtäkään kappaletta. Vuoro vaihtui.");
+            emlo.setNewErrorMessage("Syötä tasan yksi kirjain!");
+        } else {
+            int letters = game.guessConsonant(guessed.toUpperCase().charAt(0));
+            if (letters >= 0) {
+                if (letters == 0) {
+                    tlo.setLatestEvent(playerGuessing, "arvasi konsonanttia " + guessed.toUpperCase() + ", eikä sitä löytynyt\nyhtäkään kappaletta. Vuoro vaihtui.");
+                } else {
+                    tlo.setLatestEvent(playerGuessing, "arvasit konsonanttia " + guessed.toUpperCase() + ", joita löytyi yhteensä " + letters + ".");
+                }
+                newTurn();
+                refresh();
             } else {
-                tlo.setLatestEvent(playerGuessing, "arvasit konsonanttia " + guessed.toUpperCase() + ", joita löytyi yhteensä " + letters + ".");
-            }
-            newTurn();
-            refresh();
-            return true;
+                emlo.setNewErrorMessage("Arvauksesi ei ollut konsonantti!");
+            }        
         }
-        return false;
     }
     
     // alustava
@@ -240,7 +244,7 @@ public class GameView implements View {
         
         layout = new VBox();
         layout.setSpacing(50);
-        layout.getChildren().addAll( pllo.getLayout(), subLO1, subLO2);
+        layout.getChildren().addAll( pllo.getLayout(), subLO1, subLO2, emlo.getLayout());
         
         scene = new Scene(layout, 800, 500);
     }

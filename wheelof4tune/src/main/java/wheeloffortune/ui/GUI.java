@@ -54,6 +54,7 @@ public class GUI extends Application {
         startView.getAddPhraseButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
             public void handle(javafx.event.ActionEvent event) {
+                aPhView.clearView();
                 stage.setScene(aPhView.getScene());
                 stage.setTitle("Lisää uusi fraasi");
             }
@@ -64,12 +65,18 @@ public class GUI extends Application {
         aPhView.getSaveButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
             public void handle(javafx.event.ActionEvent event) {
-                if (aPhView.allowedToSave()) {
+                if (!aPhView.oneCategorySelected()) {
+                    aPhView.setInvalidCategoriesMessage();
+                    stage.setScene(aPhView.getScene());
+                } else if (!aPhView.phraseLongEnough()) {
+                    aPhView.setTooShortPhrase();
+                    stage.setScene(aPhView.getScene());
+                } else if (!aPhView.phreaseNotTooLong()) {
+                    aPhView.setTooLongPhrase();
+                    stage.setScene(aPhView.getScene());
+                } else {
                     phDBh.addPhrase(aPhView.getPhraseText(), aPhView.getCategoryName());
                     stage.setScene(startView.getScene());
-                } else {
-                    aPhView.setInvalidSelections();
-                    stage.setScene(aPhView.getScene());
                 }                
             }
         });
@@ -108,7 +115,7 @@ public class GUI extends Application {
                     stage.setScene(gameView.getScene());
                     stage.setTitle("ONNENPYÖRÄ");
                 } else {
-                    aPlView.invalidPlayersMessage();
+                    aPlView.setInvalidPlayersMessage();
                     stage.setScene(aPlView.getScene());
                 }
             }
@@ -133,11 +140,8 @@ public class GUI extends Application {
         gameView.getGuessButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
             public void handle(javafx.event.ActionEvent event) {
-                if (gameView.guessConsonant()) {
-                    stage.setScene(gameView.getScene());
-                } else {
-                    gameView.setMessage("Hei tarkkana ny");
-                }
+                gameView.guessConsonant();
+                stage.setScene(gameView.getScene());
             }
         });
         

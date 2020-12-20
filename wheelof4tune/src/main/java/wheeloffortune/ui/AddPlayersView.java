@@ -3,7 +3,6 @@ package wheeloffortune.ui;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -11,6 +10,7 @@ import javafx.scene.text.Text;
 
 public class AddPlayersView implements View {
     
+    private ErrorMessageLayout emlo;
     private final Text addPlayers;
     private TextField player1;
     private TextField player2;
@@ -23,10 +23,11 @@ public class AddPlayersView implements View {
     
     public AddPlayersView() {
         
+        emlo = new ErrorMessageLayout();
         addPlayers = new Text("Lisää peliin kolme pelaajaa:");
         add = new Button("Lisää pelaajat");
         
-        refresh();
+        clearView();
     }
     
     public Button getAddPlayersButton() {
@@ -45,27 +46,26 @@ public class AddPlayersView implements View {
         return players;
     }
     
-    public void invalidPlayersMessage() {
-        playerLayout.getChildren().add(new Label("Peliin tarvitaan kolme pelaajaa!"));
-        scene = new Scene(playerLayout);
+    public void setInvalidPlayersMessage() {
+        emlo.setNewErrorMessage("Peliin tarvitaan kolme pelaajaa!");
+        refresh();
     }
     
     public void clearView() {
-        
-    }
-    
-    @Override
-    public void refresh() {
         player1 = new TextField();
         player2 = new TextField();
         player3 = new TextField();
-        
+        refresh();
+    }
+    
+    @Override
+    public void refresh() {        
         subPlayerLayout = new HBox();
         subPlayerLayout.setSpacing(30);
         subPlayerLayout.getChildren().addAll(player1, player2, player3);
         playerLayout = new VBox();
         playerLayout.setSpacing(10);
-        playerLayout.getChildren().addAll(addPlayers, subPlayerLayout, add);
+        playerLayout.getChildren().addAll(addPlayers, subPlayerLayout, add, emlo.getLayout());
 
         scene = new Scene(playerLayout, 600, 400);
     }

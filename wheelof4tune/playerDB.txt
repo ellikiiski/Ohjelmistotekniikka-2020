@@ -1,4 +1,7 @@
-elli	666
 alma	1400
+elli	666
 saku	0
 luuseri	0
+a	0
+s	0
+d	0
