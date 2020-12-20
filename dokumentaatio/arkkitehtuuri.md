@@ -69,6 +69,8 @@ Pelaajien lisäys tapahtuu yksitellen kutsumalla metodia <em>addPlayer(String na
 
 Onnenpyörää pyöritetään vuoron alussa kutsumalla metodia <em>spinWheel</em>, joka puolestaan kutsuu <em>Wheel</em>-luokan <em>Sector</em>-olion palauttavaa metodia <em>spin()</em>. Mikäli saatu sektori on ohi- tai rosvo-sektori, kutsutaann metodia <em>nextPlayersTurn()</em>, joka vaihtaa vuorossa olevan pelaajan seuraavaan. Lisäksi mikäli sektori oli rosvo-sektori, kutsutaan ennen vuoron vaihtoa metodia <em>resetScore()</em>, joka nollaa sektorin pyörittäneen pelaajan pisteet pelissä.
 
+![sekvenssikaavio spin](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/sekvenssikaavio.png)
+
 #### Konsonantin veikkaaminen
 
 Konsonantin veikkaaminen tapahtuu pelaajan pyöritettyä onnenpyörästä onnistuneesti jonkin rahasumman. Tällöin kutsutaan metdia <em>guessConsonant(char consonant)</em>, johon annetaan parametrina käyttäjän syöttämä merkki. Metodi tarkistaa, että merkki on aiemmin arvaamaton konsonantti, minkä jälkeen kutsutaan metodia <em>revealLetter(char letter)</em>, johon annetaan parametrina sama merkki. Kyseinen metodi palauttaa luvun, joka vastaa kyseisen merkin esintyymiskertojen määrää fraasissa. Lopuksi kutsutaan metodia <em>nextPlayersTurn()</em>, mikäli tuo luku on nolla eli kyseistä konsonanttia ei löytynyt arvuuteltavasta fraasista.
@@ -90,9 +92,3 @@ Kun tehtävä on arvattu oikein, kutsutaan metodia <em>declareWinner()</em>, jok
 Pysyväistallennukseen liittyvät komponentit löytyvät pakkauksesta <em>wheeloffortune.dao</em>.
 
 Ohjelma käyttää hyväkseen kahta tietokantaa: pelaajatietokanta (<em>PlayerDao</em>) ja fraasitietokanta (<em>PhraseDao</em>). Tiedot tallennetaan tiedostoihin <em>PlayerDB.txt</em> ja <em>PhraseDB.txt</em>, joista ne myös tarpeen tullen luetaan.
-
-### Esimerkki toiminnallisuudesta
-
-Alla sekvenssikaavio onnenpyörän pyörittämisestä.
-
-![sekvenssikaavio spin](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/sekvenssikaavio.png)
