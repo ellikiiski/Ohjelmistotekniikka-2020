@@ -11,8 +11,6 @@ public interface PhraseDao {
     
     Phrase getRandomPhrase();
 
-    ArrayList<Phrase> getAllFromCategory(Category category);
-
     ArrayList<Phrase> getAll();
     
 }
