@@ -50,13 +50,27 @@ Varsinainen pelinäkymä <em>GameView</em> puolestaan koostuu peräti kuudesta e
 
 ##### Pelin päättyminen voittoon
 
-Kun peli loppuu
+Pelin päätösnäkymä koostuu vain voittajan, oikean ratkaisun ja voittosumman ilmoittavasta tekstistä sekä statistiikkanäkymään sekä aloitussivulle vievistä napeista (hyödyntää <em>ButtonLayout</em>-luokkaa).
 
 ### Sovelluslogiikka
 
-Sovelluslogiikkaan liittyvät komponentit löytyvät pakkauksesta <em>wheeloffortune.domain</em>.
+Sovelluslogiikkaan liittyvät komponentit löytyvät pakkauksesta <em>wheeloffortune.gamelogic</em>.
 
-Sovelluslogiikka pyörii lähinnä <em>Game</em>-luokassa ja muut luokat ovat tavallaan apuolioita pelin pyörittämisessä. Oleellisesti peli sisältää kolme <em>Player</em>-olioita, yhden <em>Wheel</em>-olion ja yhden <em>Phrase</em>-olion. Muut "pienemmät" luokat ovat edelleen edellä mainittujen "apuolioita".
+Sovelluslogiikka pyörii pääosin <em>Game</em>-luokassa, muut luokat muodostavat pienempiä osakokonaisuuksia rakenteen selkeyttämiseksi. Peli eli <em>Game</em>-olio sisältää kolme <em>Player</em>-olioita, yhden <em>Wheel</em>-olion (joka sisältää 24 <em>Sector</em>-oliota) ja yhden <em>Phrase</em>-olion. Lisäksi sektorien ja fraasien kategorisoimisessa auttava enum-luokat <em>SectorType</em> ja <em>Category</em>.
+
+Pelin toiminta perustuu karkeasti jaotellen ännään osaan, jota ovat pelaajien lisääminen, onnenpyörän pyörittäminen, konsonantin veikkaaminen, vokaalin ostaminen, tehtävän ratkaisun araaminen ja pelin loppuminen oikeaan arvaukseen.
+
+#### Pelaajien lisääminen
+
+#### Onnenpyörän pyörittäminen
+
+#### Konsonantin veikkaaminen
+
+#### Vokaalin ostaminen
+
+#### Tehtävän ratkaisun arvaaminen
+
+#### Pelin loppuminen oikeaan arvaukseen
 
 ### Pysyväistallennus
 
