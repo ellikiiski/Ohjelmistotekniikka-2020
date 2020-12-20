@@ -34,3 +34,7 @@ Visuaalisesti käyttöliittymä on varsin ankea ja vaatimaton, mutta itse pelin 
 ### Käyttäjät
 
 Pelin käyttäjät ovat pelaajia, jotka ovat kaikki tasa-arvoisia keskenään. Minkäänlaista kirjautumista ei vaadita.
+
+### Jatkokehitettävää
+
+Toiminnallisuuteen ei jäänyt kovinkaan montaa kehittämiskohdetta. Kuitenkin yksi ominaisuus näin jälkeenpäin mietittyvä jäi toteuttamatta: konsonanttien ja vokaalien loppumisen ilmoittaminen pelaajille. Muuten kaikki toimii toivotusti. Grafiikassa puolestaan olisi hyvin paljon kehitettävää, mutta tämän kurssin puitteissa siihen en pystyyt tämän enempää panostamaan. Lisäksi esimerkiksi jo arvattujen kirjainten kirjainten näyttäminen pelaajille voisi olla hyvä lisä, vaikkei alkuperäiseen onnenpyöräkonseptiin kuulukaan.
