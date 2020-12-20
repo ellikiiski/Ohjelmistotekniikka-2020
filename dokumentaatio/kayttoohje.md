@@ -1,10 +1,10 @@
 ## Käyttöohje - Onnenpyörä
 
-### Lataa ohjelma [täältä](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/releases/tag/viikko6)
+#### Lataa ohjelma [täältä](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/releases/tag/Loppupalautus)
 
 ### Konfigurointi
 
-Kumpikin ohjelman versio olettaa, että käynnistyskansiossa on tiedostot <em>PlayerDB.txt</em> ja <em>PhraseDB.txt</em>, joista ainakin jälkimmäisessä tulee olla vähintään
+Kumpikin ohjelman versio olettaa, että käynnistyskansiossa on tiedosto<em>PhraseDB.txt</em>, jossa tulee olla vähintään
 yksi validi "tietokantarivi".
 
 ### Ohjelman käynnistäminen
@@ -12,7 +12,7 @@ yksi validi "tietokantarivi".
 Käynnistäminen onnistuu komentoriviltä komennolla
 
 <pre>
-$ java -jar wheelof4tune-GUI.jar
+$ java -jar wheelof4tune.jar
 </pre>
 
 #### Aloitusnäkymä
