@@ -112,7 +112,6 @@ public class GameView implements View {
         }
     }
     
-    // alustava
     public void guessConsonant() {
         String guessed = glo.getFieldText();
         String playerGuessing = game.getPlayerInTurn().getName();
@@ -135,41 +134,40 @@ public class GameView implements View {
     }
     
     // alustava
-    public boolean setBuyNoun() {
+    public void setBuyNoun() {
         glo.setBuyNoun();
         tlo.setLatestEvent(game.getPlayerInTurn().getName(), "sinulla on pankissa tarpeeksi rahaa\nostaaksesi vokaalin.");
         tlo.disableAllButtons();
         refresh();
-        return true;
     }
     
     // alustava
-    public boolean buyNoun() {
+    public void buyNoun() {
         String guessed = glo.getFieldText();
         if (guessed.length() != 1) {
-            return false;
-        }
-        int letters = game.buyNoun(guessed.toUpperCase().charAt(0));
-        if (letters >= 0) {
-            if (letters == 0) {
-                tlo.setLatestEvent(game.getPlayerInTurn().getName(), "ostit vokaalin " + guessed.toUpperCase() + ", mutta sitä löytynyt\nyhtäkään kappaletta.");
+            emlo.setNewErrorMessage("Syötä tasan yksi kirjain!");
+        } else {
+            int letters = game.buyNoun(guessed.toUpperCase().charAt(0));
+            if (letters >= 0) {
+                if (letters == 0) {
+                    tlo.setLatestEvent(game.getPlayerInTurn().getName(), "ostit vokaalin " + guessed.toUpperCase() + ", mutta sitä löytynyt\nyhtäkään kappaletta.");
+                } else {
+                    tlo.setLatestEvent(game.getPlayerInTurn().getName(), "ostit vokaalin " + guessed.toUpperCase() + ", ja niitä löytyi yhteensä " + letters + ".");
+                }
+                newTurn();
+                refresh();
             } else {
-                tlo.setLatestEvent(game.getPlayerInTurn().getName(), "ostit vokaalin " + guessed.toUpperCase() + ", ja niitä löytyi yhteensä " + letters + ".");
+                emlo.setNewErrorMessage("Arvauksesi ei ollut vokaali!");
             }
-            newTurn();
-            refresh();
-            return true;
         }
-        return false;
     }
     
     // tätäkin vois vähän pohtia tarkemmin
-    public boolean setGuessThePhrase() {
+    public void setGuessThePhrase() {
         glo.setGuessThePhrase();
         tlo.setLatestEvent(game.getPlayerInTurn().getName(), "haluat yrittää ratkaista tehtävän...");
         tlo.disableAllButtons();
         refresh();
-        return true;
     }
     
     public boolean guessThePhrase() {

@@ -98,6 +98,7 @@ public class GUI extends Application {
         startView.getPlayButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
             public void handle(javafx.event.ActionEvent event) {
+                aPlView.clearView();
                 stage.setScene(aPlView.getScene());
                 stage.setTitle("Lisää pelaajat");
             }
@@ -150,22 +151,16 @@ public class GUI extends Application {
         gameView.getBuyNounButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
             public void handle(javafx.event.ActionEvent event) {
-                if (gameView.setBuyNoun()) {
-                    stage.setScene(gameView.getScene());
-                } else {
-                    gameView.setMessage("Hei tarkkana ny");
-                }
+                gameView.setBuyNoun();
+                stage.setScene(gameView.getScene());
             }
         });
         
         gameView.getBuyButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
             public void handle(javafx.event.ActionEvent event) {
-                if (gameView.buyNoun()) {
-                    stage.setScene(gameView.getScene());
-                } else {
-                    gameView.setMessage("Hei tarkkana ny");
-                }
+                gameView.buyNoun();
+                stage.setScene(gameView.getScene());
             }
         });
         
@@ -174,11 +169,8 @@ public class GUI extends Application {
         gameView.getGuessThePhraseButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
             public void handle(javafx.event.ActionEvent event) {
-                if (gameView.setGuessThePhrase()) {
-                    stage.setScene(gameView.getScene());
-                } else {
-                    gameView.setMessage("Hei tarkkana ny");
-                }
+                gameView.setGuessThePhrase();
+                stage.setScene(gameView.getScene());
             }
         });
         
