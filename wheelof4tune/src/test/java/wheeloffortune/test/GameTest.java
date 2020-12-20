@@ -91,16 +91,6 @@ public class GameTest {
         assertEquals(game.buyNoun('T'), -666);
     }
     
-    /// Rosvosektorin pyörittämisen testaus
-    
-    @Test
-    public void scoreResetsWhenBankcruptIsSpinned() {
-        forceSpinMoney();
-        game.addScore(10);
-        forceSpinBankcrupt();
-        assertEquals(game.getScore(), 0);
-    }
-    
     /// Pelin pääättymisen voittoon testaus
     
     @Test
@@ -131,14 +121,6 @@ public class GameTest {
         while(notMoneySpinned) {
             game.spinWheel();
             notMoneySpinned = game.latestSpinIsBankcrupt() || game.latestSpinIsSkip();
-        }
-    }
-    
-    private void forceSpinBankcrupt() {
-        boolean notBcSpinned = true;
-        while (notBcSpinned) {
-            game.spinWheel();
-            notBcSpinned = !game.latestSpinIsBankcrupt();
         }
     }
 }
