@@ -42,17 +42,6 @@ public class FilePhraseDao implements PhraseDao {
     }
 
     @Override
-    public ArrayList<Phrase> getAllFromCategory(Category category) {
-        ArrayList<Phrase> byCategory = new ArrayList<>();
-        for (Phrase phrase : phrases) {
-            if (phrase.getCategory() == category) {
-                byCategory.add(phrase);
-            }
-        }
-        return byCategory;
-    }
-
-    @Override
     public ArrayList<Phrase> getAll() {
         return phrases;
     }
