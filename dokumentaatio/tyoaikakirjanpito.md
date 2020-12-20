@@ -22,4 +22,5 @@
 | 18.12. | 3        | Myös pelin loppuminen voittoon toimimaan! Ja taas vähän muutoksia asetteluun. |
 | 19.12. | 1        | Statistiikkanäkymän toteutus ja selkeytys fraasin esitykseen |
 | 20.12. | 4        | Virheilmoitukset käyttäjälle näkyviin sekä koodin siistimistä ja selittävien kommenttien lisäystä |
-| yht    | 52       | | 
+| 20.12. | 2        | Testaus kuntoon, jäljelle jäikin vain yksi testiluokka |
+| yht    | 54       | | 
