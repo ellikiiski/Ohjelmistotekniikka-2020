@@ -14,9 +14,6 @@ import wheeloffortune.domain.PhraseDBhandler;
 import wheeloffortune.domain.PlayerDBhandler;
 
 public class GUI extends Application {
-    
-    // GUIssa toimii toistaiseksi kunnolla vain uuden fraasin lisäys.
-    // Pelin pelaamisessa toimii pelaajien lisäys ja onnenpyörän pyörittely.
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -31,10 +28,8 @@ public class GUI extends Application {
         GameView gameView = new GameView();
         GameOverView gameOverView = new GameOverView();
         
-        //
-        // STATISTIIKKANÄKYMÄÄN (ei toteutettu)
-        //
-        
+        // STATISTIIKKANÄKYMÄÄN
+                
         startView.getPlayerStatsButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
             public void handle(javafx.event.ActionEvent event) {
@@ -53,9 +48,7 @@ public class GUI extends Application {
             }
         });
         
-        //
         // UUDEN FLRAASIN LISÄÄMISNÄKYMÄÄN
-        //
         
         startView.getAddPhraseButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
@@ -97,9 +90,7 @@ public class GUI extends Application {
             }
         });
         
-        //
         // PELAAJIEN LISÄYSNÄKYMÄÄN
-        //
         
         startView.getPlayButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
@@ -110,9 +101,7 @@ public class GUI extends Application {
             }
         });
         
-        //
         // PELINÄKYMÄÄN
-        //
         
         aPlView.getAddPlayersButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
@@ -128,11 +117,9 @@ public class GUI extends Application {
             }
         });
         
-        //
         // PELAAMINEN
-        //
         
-        // Onnenpyörän pyörittäminen
+        /// Onnenpyörän pyörittäminen
         
         gameView.getSpinButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
@@ -142,7 +129,7 @@ public class GUI extends Application {
             }
         });
         
-        // Konsonantin veikkaaminen
+        /// Konsonantin veikkaaminen
         
         gameView.getGuessButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
@@ -152,7 +139,9 @@ public class GUI extends Application {
             }
         });
         
-        // vokaalin ostaminen
+        /// Vokaalin ostaminen
+        
+        //// vokaalin ostamisen valitseminen
         
         gameView.getBuyNounButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
@@ -162,6 +151,8 @@ public class GUI extends Application {
             }
         });
         
+        //// vokaalin osto
+        
         gameView.getBuyButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
             public void handle(javafx.event.ActionEvent event) {
@@ -170,7 +161,9 @@ public class GUI extends Application {
             }
         });
         
-        // ratkaisun yrittäminen
+        /// Ratkaisun yrittäminen
+        
+        //// ratkaisun yrittämisen valitseminen
         
         gameView.getGuessThePhraseButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
@@ -179,6 +172,8 @@ public class GUI extends Application {
                 stage.setScene(gameView.getScene());
             }
         });
+        
+        //// ratkaisun yritys
         
         gameView.getSolveButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
@@ -192,7 +187,9 @@ public class GUI extends Application {
             }
         });
         
-        // takaisin aloitussivulle
+        // PELIN VOITTONÄKYMÄ
+        
+        /// akaisin aloitussivulle
         
         gameOverView.getBackToTheStartButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
@@ -202,7 +199,7 @@ public class GUI extends Application {
             }
         });
         
-        // statistiikkanäkymään
+        /// Statistiikkanäkymään
         
         gameOverView.getToStatisticsButton().setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
