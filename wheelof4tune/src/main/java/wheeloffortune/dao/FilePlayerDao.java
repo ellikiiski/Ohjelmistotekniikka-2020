@@ -1,8 +1,11 @@
 
 package wheeloffortune.dao;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -16,11 +19,19 @@ public class FilePlayerDao implements PlayerDao {
     public FilePlayerDao(String fileName) {
         players = new ArrayList<>();
         file = fileName;
+        /*String path = "";
+        try {
+            path = new File(".").getCanonicalPath();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        file = path + "\\src\\main\\resources\\" + fileName;
         try {
             initPlayers();
         } catch (Exception e) {
             System.out.println(e);
-        }
+        }*/
+        initPlayers();
     }
 
     @Override
@@ -53,16 +64,21 @@ public class FilePlayerDao implements PlayerDao {
     }
     
     //// apumetodi pelaajalistan luomiseen
-    private void initPlayers() throws Exception {
+    private void initPlayers() {
+        InputStream s = getClass().getClassLoader().getResourceAsStream(file);
+        InputStreamReader sReader = new InputStreamReader(s);
+        BufferedReader reader = new BufferedReader(sReader);
         try {
-            Scanner reader = new Scanner(new File(file));
-            while (reader.hasNextLine()) {
-                String[] parts = reader.nextLine().split("\t");
+            //Scanner reader = new Scanner(new File(file));
+            String line = reader.readLine();
+            while (line != null) {
+                String[] parts = line.split("\t");
                 Player p = new Player(parts[0], Integer.valueOf(parts[1]));
                 players.add(p);
+                line = reader.readLine();
             }
         } catch (Exception e) {
-            System.out.println("Virhe: " + e);
+            System.out.println("InitPlayers: " + e);
         }
     }
     
