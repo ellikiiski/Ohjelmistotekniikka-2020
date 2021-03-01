@@ -24,7 +24,8 @@
 | 20.12.2020 | 4        | Virheilmoitukset käyttäjälle näkyviin sekä koodin siistimistä ja selittävien kommenttien lisäystä |
 | 20.12.2020 | 2        | Testaus kuntoon, jäljelle jäikin vain yksi testiluokka |
 | 20.12.2020 | 4        | Dokumentaatiota ja muuta säätöä |
-| kurssilla yhteensä | 58 | | 
+| Kurssilla yhteensä | 58 | | 
 | 28.2.2021  | 3        | Selvitystä, miten tietokannat (.txt) saa pakattua mukaan .jar-tiedostoon ja puolittainen toteutus |
-| jälkeen yhteensä | 3 | |
-| YHTEENSÄ YHTEENSÄ | 61 | |
+| 1.3.2021   | 2        | Pysyväistalletusmuutoksen loppuun saattaminen, release 1.1 ja käyttöohjeen päivitys |
+| Jälkeenpäin yhteensä | 5 | |
+| YHTEENSÄ YHTEENSÄ | 63 | |
