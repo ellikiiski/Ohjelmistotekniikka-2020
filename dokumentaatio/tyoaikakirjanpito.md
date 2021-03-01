@@ -24,7 +24,7 @@
 | 20.12.2020 | 4        | Virheilmoitukset käyttäjälle näkyviin sekä koodin siistimistä ja selittävien kommenttien lisäystä |
 | 20.12.2020 | 2        | Testaus kuntoon, jäljelle jäikin vain yksi testiluokka |
 | 20.12.2020 | 4        | Dokumentaatiota ja muuta säätöä |
-| kurssilla yht    | 58 | | 
+| kurssilla yhteensä | 58 | | 
 | 28.2.2021  | 3        | Selvitystä, miten tietokannat (.txt) saa pakattua mukaan .jar-tiedostoon ja puolittainen toteutus |
-| jälkeen yht | 3       | |
-| yhteensä yht | 61     | |
+| jälkeen yhteensä | 3 | |
+| yhteensä yhteensä | 61 | |
