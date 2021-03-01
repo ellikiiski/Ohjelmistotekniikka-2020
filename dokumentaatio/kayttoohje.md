@@ -23,8 +23,6 @@ Aloitusnäkymässä käyttäjällä on kolme vaihtoehtoa:
 
 <img src="https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/ohje1.JPG" alt="aloitusnäkymä" width="600"/>
 
-![aloitusnäkymä](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/ohje1.JPG)
-
 #### Pelinäkymä
 
 ##### Pelaajien lisäys
@@ -32,13 +30,14 @@ Aloitusnäkymässä käyttäjällä on kolme vaihtoehtoa:
 Kun käyttäjä aloittaa pelin, ohjelma siirtyy ensin näkymään, jossa käyttäjä syöttää kolmen pelaajan nimet tekstikenttiin ja painaa nappia Lisää pelaajat.
 Tällöin pelaajat siirtyvät peliin aktiivisiksi pelaajiksi (ja mikäli heitä ei löytynyt jo valmiiksi tietokannasta, heidät lisätään sinne).
 
-![aloitusnäkymä](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/ohje3.JPG)
+<img src="https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/ohje3.JPG" alt="pelaajien lisäys" width="600"/>
 
 ##### Pelaaminen
 
 Itse pelinäkymässä näkyy ylhäällä pelaajat, keskellä arvuuteltava fraasi ja viimeksi onnenpyörästä pyöräytetty sektori, ja alhaalla viimeisin pelitapahtuma, vuorossa oleva pelaaja sekä hänen peliliikemahollisuutensa kussakin tilanteessa.
 
-![aloitusnäkymä](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/ohje4.JPG)
+<img src="https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/ohje4.JPG" alt="pelaamisnäkymä" width="600"/>
+
 
 Vuorollaan pelaajat valitsevat kolmesta mahdollisuudesta:
 1. Yrittää ratkaista tehtävä eli arvata arvuuteltava fraasi (nappi "Arvaa ratkaisua")
@@ -51,19 +50,18 @@ Ohjetekstit ja nappien disabloituminen ohjaavat vuorossa olevaa pelaaja ja kerto
 
 Kun joku pelaajista arvaa fraasin oikein, peli loppuu ja siirtyy voittonäkymään. Tästä näkymästä voi joko siirtyä tarkastelemaan statiikoita tai takaisin aloitussivulle.
 
-![aloitusnäkymä](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/ohje5.JPG)
+<img src="https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/ohje5.JPG" alt="voittonäkymä" width="600"/>
 
 #### Pelaajatilastot
 
 Tilastonäkymässä käyttäjä voi tarkastella pelaajien keräämiä rahasummia.
 
-![aloitusnäkymä](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/ohje6.JPG)
+<img src="https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/ohje6.JPG" alt="tilastonäkymä" width="600"/>
 
 #### Uuden fraasin lisääminen
 
 Fraasinäkymässä käyttäjä voi kirjoittaa tekstikenttään haluamansa fraasin ja valita sille kategorian. Ohjeita minimipituudesta ja yhteen kategoriaan kuulumisesta
 tulee noudattaa. Painettaessa Tallenna-nappia fraasi tallentuu tietokantaan ja se tulee arvuuteltavaksi tulevaisuuden pelissä.
 
-![aloitusnäkymä](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/ohje2.JPG)
-
+<img src="https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/ohje2.JPG" alt="fraasin lisääminen" width="600"/>
 
