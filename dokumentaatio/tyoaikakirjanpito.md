@@ -27,4 +27,4 @@
 | kurssilla yhteensä | 58 | | 
 | 28.2.2021  | 3        | Selvitystä, miten tietokannat (.txt) saa pakattua mukaan .jar-tiedostoon ja puolittainen toteutus |
 | jälkeen yhteensä | 3 | |
-| yhteensä yhteensä | 61 | |
+| YHTEENSÄ YHTEENSÄ | 61 | |
