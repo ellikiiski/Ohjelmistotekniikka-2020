@@ -1,5 +1,7 @@
 ## Testausdokumentti
 
+#### Ei ajan tasalla!
+
 Ohjelmaa on testattu JUnit testein sekä manuaalisesti graafista käyttöliittymää käyttäen. Myös järjestelmätestaus on suoritettu Windows-koneella.
 
 ### JUnit-testaus
