@@ -19,18 +19,6 @@ public class FilePlayerDao implements PlayerDao {
     public FilePlayerDao(String fileName) {
         players = new ArrayList<>();
         file = fileName;
-        /*String path = "";
-        try {
-            path = new File(".").getCanonicalPath();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        file = path + "\\src\\main\\resources\\" + fileName;
-        try {
-            initPlayers();
-        } catch (Exception e) {
-            System.out.println(e);
-        }*/
         initPlayers();
     }
 
@@ -65,21 +53,30 @@ public class FilePlayerDao implements PlayerDao {
     
     //// apumetodi pelaajalistan luomiseen
     private void initPlayers() {
-        InputStream s = getClass().getClassLoader().getResourceAsStream(file);
-        InputStreamReader sReader = new InputStreamReader(s);
-        BufferedReader reader = new BufferedReader(sReader);
         try {
-            //Scanner reader = new Scanner(new File(file));
-            String line = reader.readLine();
-            while (line != null) {
-                String[] parts = line.split("\t");
+            Scanner reader = new Scanner(new File(file));
+            while (reader.hasNextLine()) {
+                String[] parts = reader.nextLine().split("\t");
                 Player p = new Player(parts[0], Integer.valueOf(parts[1]));
                 players.add(p);
-                line = reader.readLine();
             }
-        } catch (Exception e) {
-            System.out.println("InitPlayers: " + e);
+        } catch (Exception e1) {
+            InputStream s = getClass().getClassLoader().getResourceAsStream(file);
+            InputStreamReader sReader = new InputStreamReader(s);
+            BufferedReader reader = new BufferedReader(sReader);
+            try {
+                String line = reader.readLine();
+                while (line != null) {
+                    String[] parts = line.split("\t");
+                    Player p = new Player(parts[0], Integer.valueOf(parts[1]));
+                    players.add(p);
+                    line = reader.readLine();
+                }
+            } catch (Exception e2) {
+                System.out.println("Initializing Players from jar: " + e2);
+            }
         }
+        
     }
     
     //// tallentaa pelaajan tiedot tiedostoon

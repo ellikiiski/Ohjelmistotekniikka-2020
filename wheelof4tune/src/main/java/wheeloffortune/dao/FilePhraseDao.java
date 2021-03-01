@@ -19,13 +19,6 @@ public class FilePhraseDao implements PhraseDao {
     
     public FilePhraseDao(String fileName) {
         this.file = fileName;
-        /*String path = "";
-        try {
-            path = new File(".").getCanonicalPath();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        file = path + "\\src\\main\\resources\\" + fileName;*/
         phrases = new ArrayList<>();
         initPhrases();
     }
@@ -58,21 +51,29 @@ public class FilePhraseDao implements PhraseDao {
     
     //// apumetodi fraasilistan luomiseen
     private void initPhrases() {
-        InputStream s = getClass().getClassLoader().getResourceAsStream(file);
-        InputStreamReader sReader = new InputStreamReader(s);
-        BufferedReader reader = new BufferedReader(sReader);
         try {
-            //Scanner reader = new Scanner(new File(file));
-            String line = reader.readLine();
-            while (line != null) {
-                String[] parts = line.split("\t");
+            Scanner reader = new Scanner(new File(file));
+            while (reader.hasNextLine()) {
+                String[] parts = reader.nextLine().split("\t");
                 Phrase p = new Phrase(parts[0], Category.getCategory(parts[1]), Integer.valueOf(parts[2]));
                 phrases.add(p);
-                line = reader.readLine();
             }
-        } catch (Exception e) {
-            System.out.println("InitPhrases: " + e);
-        }
+        } catch (Exception e1) {
+            InputStream s = getClass().getClassLoader().getResourceAsStream(file);
+            InputStreamReader sReader = new InputStreamReader(s);
+            BufferedReader reader = new BufferedReader(sReader);
+            try {
+                String line = reader.readLine();
+                while (line != null) {
+                    String[] parts = line.split("\t");
+                    Phrase p = new Phrase(parts[0], Category.getCategory(parts[1]), Integer.valueOf(parts[2]));
+                    phrases.add(p);
+                    line = reader.readLine();
+                }
+            } catch (Exception e2) {
+                System.out.println("Initializing Phrases from jar: " + e2);
+            }
+        }        
     }
     
     //// tallentaa fraasin tiedot tiedostoon

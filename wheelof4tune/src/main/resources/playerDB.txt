@@ -1,6 +1,1 @@
-a	950
-s	0
-d	0
-elli	100
-nolla	0
-kuuskuuskuus	666
+elli	666
