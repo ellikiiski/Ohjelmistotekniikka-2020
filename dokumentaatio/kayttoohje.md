@@ -21,7 +21,7 @@ Aloitusnäkymässä käyttäjällä on kolme vaihtoehtoa:
 2. Lisätä uuden fraasin pelin tietokantaan myöhemmin pelatavaksi
 3. Tarkastella pelaajastatistiikkoja
 
-<img src="https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/ohje1.JPG" alt="aloitusnäkymä" width="60"/>
+<img src="https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/ohje1.JPG" alt="aloitusnäkymä" width="600"/>
 
 ![aloitusnäkymä](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/ohje1.JPG)
 
