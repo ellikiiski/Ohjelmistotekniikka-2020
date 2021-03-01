@@ -2,7 +2,8 @@
 
 ### Releaset
 
-- [Loppupalautus](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/releases/tag/Loppupalautus)
+- [Wheel of Fortune 1.1](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/releases/tag/v1.1)
+- [Wheel of Fortune 1.0](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/releases/tag/v1.0) (kurssin loppupalautus)
 - [Viikko 6](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/releases/tag/viikko6)
 - [Viikko 5](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/releases/tag/viikko5)
 
