@@ -4,7 +4,7 @@
 
 ### Konfigurointi
 
-Ohjelmaa käytettäessä eli peliä pelatessa samaan kansioon ohjelmatiedoston (*wheelof4tune.jar*) ilmestyy kaksi tekstitiedostoa (*playerDB.txt* ja *phraseDB.txt*) pelaajien ja fraasien tallennusta varten. Jotta pelikertojen aikana lisätyt fraasit ja pelaajatiedot säilyvät, on nöiden tekstitiedostojen oltava samassa kansiossa ohjelman kanssa.
+Ohjelmaa käytettäessä eli peliä pelatessa samaan kansioon ohjelmatiedoston (*wheelof4tune.jar*) ilmestyy kaksi tekstitiedostoa (*playerDB.txt* ja *phraseDB.txt*) pelaajien ja fraasien tallennusta varten. Jotta pelikertojen aikana lisätyt fraasit ja pelaajatiedot säilyvät, on näiden tekstitiedostojen oltava samassa kansiossa ohjelman kanssa.
 
 ### Ohjelman käynnistäminen
 
