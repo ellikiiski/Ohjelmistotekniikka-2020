@@ -21,7 +21,7 @@ Aloitusnäkymässä käyttäjällä on kolme vaihtoehtoa:
 2. Lisätä uuden fraasin pelin tietokantaan myöhemmin pelatavaksi
 3. Tarkastella pelaajastatistiikkoja
 
-![aloitusnäkymä](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/ohje1.JPG)
+![aloitusnäkymä](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/ohje1.JPG){:width="36px"}
 
 #### Pelinäkymä
 
@@ -30,7 +30,7 @@ Aloitusnäkymässä käyttäjällä on kolme vaihtoehtoa:
 Kun käyttäjä aloittaa pelin, ohjelma siirtyy ensin näkymään, jossa käyttäjä syöttää kolmen pelaajan nimet tekstikenttiin ja painaa nappia Lisää pelaajat.
 Tällöin pelaajat siirtyvät peliin aktiivisiksi pelaajiksi (ja mikäli heitä ei löytynyt jo valmiiksi tietokannasta, heidät lisätään sinne).
 
-![aloitusnäkymä](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/ohje3.JPG){ width=50% }
+![aloitusnäkymä](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/ohje3.JPG)
 
 ##### Pelaaminen
 
