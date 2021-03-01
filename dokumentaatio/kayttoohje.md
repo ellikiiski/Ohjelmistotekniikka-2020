@@ -1,11 +1,10 @@
 ## Käyttöohje - Onnenpyörä
 
-#### Lataa ohjelma [täältä](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/releases/tag/Loppupalautus)
+#### Lataa ohjelma [täältä](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/releases/tag/v1.1).
 
 ### Konfigurointi
 
-Kumpikin ohjelman versio olettaa, että käynnistyskansiossa on tiedosto<em>PhraseDB.txt</em>, jossa tulee olla vähintään
-yksi validi "tietokantarivi".
+Ohjelmaa käytettäessä eli peliä pelatessa samaan kansioon ohjelmatiedoston (*wheelof4tune.jar*) ilmestyy kaksi tekstitiedostoa (*playerDB.txt* ja *phraseDB.txt*) pelaajien ja fraasien tallennusta varten. Jotta pelikertojen aikana lisätyt fraasit ja pelaajatiedot säilyvät, on nöiden tekstitiedostojen oltava samassa kansiossa ohjelman kanssa.
 
 ### Ohjelman käynnistäminen
 
@@ -31,7 +30,7 @@ Aloitusnäkymässä käyttäjällä on kolme vaihtoehtoa:
 Kun käyttäjä aloittaa pelin, ohjelma siirtyy ensin näkymään, jossa käyttäjä syöttää kolmen pelaajan nimet tekstikenttiin ja painaa nappia Lisää pelaajat.
 Tällöin pelaajat siirtyvät peliin aktiivisiksi pelaajiksi (ja mikäli heitä ei löytynyt jo valmiiksi tietokannasta, heidät lisätään sinne).
 
-![aloitusnäkymä](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/ohje3.JPG)
+![aloitusnäkymä](https://github.com/ellikiiski/Ohjelmistotekniikka-2020/blob/main/kuvat/ohje3.JPG =100x)
 
 ##### Pelaaminen
 
